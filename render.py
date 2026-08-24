@@ -1,5 +1,6 @@
 """Turn cached week data into the static pages GitHub Pages serves."""
 
+import json
 import os
 import shutil
 from datetime import datetime, timezone, timedelta
@@ -94,3 +95,33 @@ def build_site(weeks, config):
         print(f"Wrote docs/{name}")
 
     open(os.path.join(DOCS, ".nojekyll"), "w").close()
+
+
+def build_keepers_page(config):
+    """Render docs/keepers.html from keepers.json, if it exists.
+
+    Independent of weekly matchup data on purpose: keeper declarations exist
+    (and are worth publishing) long before the season's first played week.
+    """
+    keepers_path = os.path.join(HERE, "keepers.json")
+    if not os.path.exists(keepers_path):
+        return
+
+    with open(keepers_path) as f:
+        data = json.load(f)
+
+    os.makedirs(DOCS, exist_ok=True)
+    shutil.copy(os.path.join(TEMPLATES, "style.css"), os.path.join(DOCS, "style.css"))
+
+    env = _env()
+    template = env.get_template("keepers.html.j2")
+    html = template.render(
+        site_title=config["site_title"],
+        season=config["year"],
+        keepers=data.get("teams", {}),
+        keepers_updated=data.get("updated"),
+        updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
+    )
+    with open(os.path.join(DOCS, "keepers.html"), "w") as f:
+        f.write(html)
+    print("Wrote docs/keepers.html")
