@@ -175,20 +175,29 @@ def build_home_page(config):
 
     years = data.get("years", {})
     current_teams = data.get("current_teams", [])
+    logos = {t["name"]: t.get("logo_url", "") for t in current_teams}
 
     wins = {}
     for year, team in years.items():
         wins.setdefault(team, []).append(year)
 
     champions = sorted(
-        ({"name": team, "years": sorted(yrs)} for team, yrs in wins.items()),
+        ({"name": team, "years": sorted(yrs), "logo_url": logos.get(team, "")}
+         for team, yrs in wins.items()),
         key=lambda t: (-len(t["years"]), t["name"]),
     )
     champion_names = set(wins.keys())
-    non_champions = sorted(t for t in current_teams if t not in champion_names)
+    non_champions = sorted(
+        (t for t in current_teams if t["name"] not in champion_names),
+        key=lambda t: t["name"],
+    )
 
     os.makedirs(DOCS, exist_ok=True)
     shutil.copy(os.path.join(TEMPLATES, "style.css"), os.path.join(DOCS, "style.css"))
+    mountains_src = os.path.join(TEMPLATES, "img", "mountains.png")
+    if os.path.exists(mountains_src):
+        os.makedirs(os.path.join(DOCS, "img"), exist_ok=True)
+        shutil.copy(mountains_src, os.path.join(DOCS, "img", "mountains.png"))
 
     env = _env()
     template = env.get_template("home.html.j2")

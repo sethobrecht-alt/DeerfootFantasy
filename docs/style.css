@@ -448,103 +448,100 @@ body {
 .foot p { max-width: 46rem; margin: 0 auto; }
 .foot__fine { margin-top: 0.75rem; opacity: 0.7; }
 
-/* ---------- summits (homepage) ---------- */
+/* ---------- ridge (homepage) ---------- */
 
-.summits {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  align-items: end;
-  gap: 1.25rem;
-}
-
-.summit-label {
-  margin: 0 0 0.6rem;
-  font-family: var(--data);
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--whistle);
-  text-align: center;
-}
-
-.summit {
+.ridge {
   position: relative;
   border: 1px solid var(--rule);
-}
-
-.summit--champions { min-height: 28rem; }
-.summit--peak { min-height: 15rem; }
-
-.summit__art {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.summit__body {
-  position: relative;
-  z-index: 1;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem 0.75rem;
-}
-
-.summit__climb {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  width: 100%;
-}
-
-.summit__team {
   background: var(--chalk);
-  border: 1px solid var(--turf-deep);
-  padding: 0.3rem 0.6rem;
-  text-align: center;
-  line-height: 1.25;
-  max-width: 13rem;
+  overflow: hidden;
 }
 
-.summit__team strong {
+.ridge__art {
   display: block;
-  font-family: var(--display);
-  font-variation-settings: 'wdth' 100, 'wght' 650;
-  font-size: 0.82rem;
+  width: 100%;
+  height: auto;
+}
+
+.ridge__label {
+  position: absolute;
+  top: 19%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: var(--data);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--chalk);
+  text-shadow: 0 1px 5px rgba(0,0,0,0.7), 0 0 2px rgba(0,0,0,0.6);
+  white-space: nowrap;
+}
+
+.ridge__cluster {
+  position: absolute;
+  top: 30%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  max-width: 6.8rem;
+}
+
+.badge {
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--chalk);
+  border: 2px solid var(--chalk);
+  box-shadow: 0 1px 5px rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.badge--champion {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-color: var(--flag);
+  border-width: 2px;
+}
+
+.badge__initial {
+  font-family: var(--data);
+  font-weight: 500;
+  font-size: 0.85rem;
   color: var(--ink);
 }
 
-.summit__years {
-  display: block;
-  font-family: var(--data);
-  font-size: 0.62rem;
-  color: var(--whistle);
-}
-
-.summit__team--plain {
-  font-family: var(--data);
-  font-size: 0.72rem;
-  color: var(--ink);
-}
-
-.summit__empty {
+.ridge__empty {
   margin: 0;
   background: var(--chalk);
   border: 1px solid var(--turf-deep);
-  padding: 0.3rem 0.6rem;
+  padding: 0.25rem 0.55rem;
   font-family: var(--data);
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   color: var(--ink);
+  white-space: nowrap;
 }
 
 @media (max-width: 34rem) {
-  .summits { grid-template-columns: 1fr; }
-  .summit--champions { min-height: 24rem; }
-  .summit--peak { min-height: 13rem; }
+  .ridge__label,
+  .ridge__cluster {
+    position: static;
+    transform: none;
+    max-width: none;
+    margin: 0.6rem auto 0;
+  }
+  .ridge__label {
+    color: var(--whistle);
+    text-shadow: none;
+    text-align: center;
+  }
 }
 
 /* ---------- draft history ---------- */
