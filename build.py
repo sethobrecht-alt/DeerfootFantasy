@@ -94,6 +94,7 @@ def main():
     render.build_keepers_page(config)
     render.build_draft_history_page(config)
     render.build_standings_page(config)
+    render.build_league_basics_page(config)
     render.build_home_page(config)
     print("Done. Open docs/index.html")
 
