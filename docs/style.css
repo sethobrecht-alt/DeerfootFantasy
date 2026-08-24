@@ -455,6 +455,9 @@ body {
   border: 1px solid var(--rule);
   background: var(--chalk);
   overflow: hidden;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .ridge__art {
@@ -465,32 +468,33 @@ body {
 
 .ridge__label {
   position: absolute;
-  top: 19%;
+  top: 6%;
   transform: translateX(-50%);
   margin: 0;
+  background: var(--turf-deep);
+  padding: 0.3rem 0.65rem;
   font-family: var(--data);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--chalk);
-  text-shadow: 0 1px 5px rgba(0,0,0,0.7), 0 0 2px rgba(0,0,0,0.6);
   white-space: nowrap;
 }
 
 .ridge__cluster {
   position: absolute;
-  top: 30%;
+  top: 32%;
   transform: translateX(-50%);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.35rem;
-  max-width: 6.8rem;
+  gap: 0.4rem;
+  max-width: 11rem;
 }
 
 .badge {
-  width: 2rem;
-  height: 2rem;
+  width: 2.6rem;
+  height: 2.6rem;
   flex: none;
   border-radius: 50%;
   overflow: hidden;
@@ -505,10 +509,10 @@ body {
 .badge img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .badge--champion {
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 3rem;
+  height: 3rem;
   border-color: var(--flag);
-  border-width: 2px;
+  border-width: 3px;
 }
 
 .badge__initial {
@@ -538,8 +542,9 @@ body {
     margin: 0.6rem auto 0;
   }
   .ridge__label {
-    color: var(--whistle);
-    text-shadow: none;
+    display: block;
+    width: fit-content;
+    margin: 0.6rem auto 0;
     text-align: center;
   }
 }
