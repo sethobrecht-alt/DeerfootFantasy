@@ -189,6 +189,18 @@ body {
 
 .game--house { border-left: 5px solid var(--turf); }
 
+.keepers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.keepers-grid .game { margin-bottom: 0; }
+
+@media (max-width: 34rem) {
+  .keepers-grid { grid-template-columns: 1fr; }
+}
+
 .game__tag {
   margin: 0 0 1rem;
   display: inline-block;

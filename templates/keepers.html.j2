@@ -32,28 +32,30 @@
       {% if keepers_updated %}Last updated {{ keepers_updated }}.{% endif %}
     </p>
 
-    {% for team, picks in keepers.items() %}
-    <article class="game">
-      <p class="score__team" style="margin-bottom: 0.85rem;">{{ team }}</p>
-      {% if picks %}
-      <ul class="penalties">
-        {% for p in picks %}
-        <li class="penalty" style="grid-template-columns: 1fr auto;">
-          <span class="penalty__text">
-            <strong>{{ p.player }}</strong>
-            {% if p.pro_team or p.position %} &middot; {{ p.pro_team }} {{ p.position }}{% endif %}
-          </span>
-          <span class="penalty__cost" style="color: var(--whistle);">
-            {% if p.round %}Rd {{ p.round }}{% if p.pick %}, Pick {{ p.pick }}{% endif %}{% endif %}
-          </span>
-        </li>
-        {% endfor %}
-      </ul>
-      {% else %}
-      <p class="power__note" style="margin: 0;">No keepers declared yet.</p>
-      {% endif %}
-    </article>
-    {% endfor %}
+    <div class="keepers-grid">
+      {% for team, picks in keepers.items() %}
+      <article class="game">
+        <p class="score__team" style="margin-bottom: 0.85rem;">{{ team }}</p>
+        {% if picks %}
+        <ul class="penalties">
+          {% for p in picks %}
+          <li class="penalty" style="grid-template-columns: 1fr auto;">
+            <span class="penalty__text">
+              <strong>{{ p.player }}</strong>
+              {% if p.pro_team or p.position %} &middot; {{ p.pro_team }} {{ p.position }}{% endif %}
+            </span>
+            <span class="penalty__cost" style="color: var(--whistle);">
+              {% if p.round %}Rd {{ p.round }}{% if p.pick %}, Pick {{ p.pick }}{% endif %}{% endif %}
+            </span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="power__note" style="margin: 0;">No keepers declared yet.</p>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
   </section>
 
   <nav class="archive" aria-label="Site">
