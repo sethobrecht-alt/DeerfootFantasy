@@ -15,7 +15,6 @@
 <header class="masthead">
   <div class="masthead__inner">
     <p class="masthead__eyebrow">Official rulings &middot; {{ season }} season</p>
-    <h1 class="masthead__title">{{ site_title }}</h1>
     <p class="masthead__headline">Welcome Deerfoot Footballers</p>
   </div>
 </header>
@@ -23,6 +22,17 @@
 <div class="stripe" role="presentation"></div>
 
 <main class="page">
+
+  <nav class="archive" aria-label="Site">
+    <h2 class="section-title">Around the league</h2>
+    <ul class="archive__list">
+      <li><a class="archive__link" href="recap.html">Latest recap</a></li>
+      <li><a class="archive__link" href="keepers.html">Keeper declarations</a></li>
+      <li><a class="archive__link" href="draft-history.html">Draft history</a></li>
+    </ul>
+  </nav>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
 
   <section class="peaks" aria-labelledby="peaks-heading">
     <h2 class="section-title" id="peaks-heading">The standing</h2>
@@ -32,10 +42,8 @@
         <p class="summit-label" id="summit-champions-label">Champions Summit</p>
         <div class="summit summit--champions" aria-labelledby="summit-champions-label">
           <svg class="summit__art" viewBox="0 0 400 520" preserveAspectRatio="none" aria-hidden="true">
-            <polygon points="10,520 150,230 200,40 250,230 390,520"
-                      fill="var(--turf)" stroke="var(--turf-deep)" stroke-width="3"></polygon>
-            <polygon points="170,130 200,40 230,130 200,165"
-                      fill="#EAF2ED" stroke="var(--turf-deep)" stroke-width="2"></polygon>
+            <path d="M0,520 C40,260 130,160 200,130 C270,160 360,260 400,520 Z"
+                  fill="var(--turf)" stroke="var(--turf-deep)" stroke-width="3"></path>
           </svg>
           <div class="summit__body">
             <div class="summit__climb">
@@ -56,8 +64,8 @@
         <p class="summit-label" id="summit-peak-label">Beak Peak</p>
         <div class="summit summit--peak" aria-labelledby="summit-peak-label">
           <svg class="summit__art" viewBox="0 0 400 280" preserveAspectRatio="none" aria-hidden="true">
-            <polygon points="10,280 200,70 390,280"
-                      fill="var(--turf)" stroke="var(--turf-deep)" stroke-width="3"></polygon>
+            <path d="M0,280 C50,150 150,90 200,90 C250,90 350,150 400,280 Z"
+                  fill="var(--turf)" stroke="var(--turf-deep)" stroke-width="3"></path>
           </svg>
           <div class="summit__body">
             <div class="summit__climb">
@@ -77,17 +85,6 @@
       since renamed may be missing from its actual summit.
     </p>
   </section>
-
-  <div class="stripe stripe--inline" role="presentation"></div>
-
-  <nav class="archive" aria-label="Site">
-    <h2 class="section-title">Around the league</h2>
-    <ul class="archive__list">
-      <li><a class="archive__link" href="recap.html">Latest recap</a></li>
-      <li><a class="archive__link" href="keepers.html">Keeper declarations</a></li>
-      <li><a class="archive__link" href="draft-history.html">Draft history</a></li>
-    </ul>
-  </nav>
 
 </main>
 
