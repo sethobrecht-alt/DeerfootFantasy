@@ -1,0 +1,43 @@
+{
+  "_note": "ESPN's read API does not expose keeper declarations (confirmed by probe_espn.py). This file is maintained by hand from the league's keepers page and used until the draft actually runs, at which point draftDetail.picks[].keeper becomes reliable.",
+  "source": "https://fantasy.espn.com/football/league/keepers?leagueId=311243487",
+  "updated": "2026-08-24",
+  "teams": {
+    "The Island Gudge": [
+      {"player": "Tyler Warren", "pro_team": "IND", "position": "TE", "round": 8, "pick": 4},
+      {"player": "Quinshon Judkins", "pro_team": "CLE", "position": "RB", "round": 11, "pick": 9}
+    ],
+    "The Goose is Loose": [
+      {"player": "Brock Bowers", "pro_team": "LV", "position": "TE", "round": 6, "pick": 9},
+      {"player": "Jonathan Taylor", "pro_team": "IND", "position": "RB", "round": 1, "pick": 4}
+    ],
+    "Chase Brown Had a Bad Scare": [],
+    "The Machine Knows": [],
+    "Team Bradford": [
+      {"player": "Bijan Robinson", "pro_team": "ATL", "position": "RB", "round": 1, "pick": 10},
+      {"player": "Harold Fannin Jr.", "pro_team": "CLE", "position": "TE", "round": 2, "pick": 3}
+    ],
+    "Catalina Wine Mixon": [
+      {"player": "George Pickens", "pro_team": "DAL", "position": "WR", "round": 4, "pick": 6},
+      {"player": "De'Von Achane", "pro_team": "MIA", "position": "RB", "round": 1, "pick": 7}
+    ],
+    "Harley Jarvis": [
+      {"player": "Ja'Marr Chase", "pro_team": "CIN", "position": "WR", "round": 1, "pick": 8},
+      {"player": "Rashee Rice", "pro_team": "KC", "position": "WR", "round": 7, "pick": 8}
+    ],
+    "55 Burgers": [],
+    "Ricky Huns": [
+      {"player": "Ladd McConkey", "pro_team": "LAC", "position": "WR", "round": 4, "pick": 8},
+      {"player": "Jaxson Dart", "pro_team": "NYG", "position": "QB", "round": 13, "pick": 5}
+    ],
+    "Love Thy Naber": [
+      {"player": "James Cook III", "pro_team": "BUF", "position": "RB", "round": 2, "pick": 2},
+      {"player": "Chris Olave", "pro_team": "NO", "position": "WR", "round": 5, "pick": 11}
+    ],
+    "Funk that Junk": [],
+    "Team Fox": [
+      {"player": "Omarion Hampton", "pro_team": "LAC", "position": "RB", "round": 2, "pick": 1},
+      {"player": "Jameson Williams", "pro_team": "DET", "position": "WR", "round": 7, "pick": 12}
+    ]
+  }
+}
