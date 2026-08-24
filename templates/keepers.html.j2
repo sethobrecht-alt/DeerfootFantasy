@@ -24,6 +24,66 @@
 
 <main class="page">
 
+  {% if calc_year %}
+  <section class="calculator" aria-labelledby="calc-heading">
+    <h2 class="section-title" id="calc-heading">Keeper cost calculator</h2>
+    <p class="power__note">
+      Type a player's name to see what round they cost in the {{ calc_year }} draft,
+      and whether they were a keeper that year.
+    </p>
+
+    <form id="calc-form" class="draft-toolbar" onsubmit="return false;">
+      <input type="text" id="calc-search" class="draft-search" list="calc-players"
+             placeholder="Search a player..." aria-label="Search a player">
+      <datalist id="calc-players"></datalist>
+      <button type="submit" class="draft-pill draft-pill--active">Check</button>
+    </form>
+
+    <div id="calc-result"></div>
+
+    <script type="application/json" id="calc-data">{{ calc_data_json|safe }}</script>
+    <script>
+    (function () {
+      var data = JSON.parse(document.getElementById('calc-data').textContent);
+      var form = document.getElementById('calc-form');
+      var input = document.getElementById('calc-search');
+      var datalist = document.getElementById('calc-players');
+      var resultEl = document.getElementById('calc-result');
+
+      Object.keys(data).sort().forEach(function (key) {
+        var opt = document.createElement('option');
+        opt.value = data[key].player;
+        datalist.appendChild(opt);
+      });
+
+      function render(name) {
+        var rec = data[name.trim().toLowerCase()];
+        if (!rec) {
+          resultEl.innerHTML = '<article class="game"><p class="score__team" ' +
+            'style="margin-bottom: 0.5rem;">' + name + '</p>' +
+            '<p class="power__note" style="margin:0;">Undrafted</p></article>';
+          return;
+        }
+        var pickText = 'Round ' + rec.round + (rec.pick ? ', Pick ' + rec.pick : '');
+        var keeperText = rec.keeper
+          ? '<span class="draft-keeper">K</span> Was a keeper'
+          : 'Not a keeper';
+        resultEl.innerHTML = '<article class="game"><p class="score__team" ' +
+          'style="margin-bottom: 0.5rem;">' + rec.player + '</p>' +
+          '<p style="margin:0;">' + pickText + '</p>' +
+          '<p style="margin: 0.4rem 0 0;">' + keeperText + '</p></article>';
+      }
+
+      form.addEventListener('submit', function () {
+        if (input.value.trim()) render(input.value);
+      });
+    })();
+    </script>
+  </section>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+  {% endif %}
+
   <section class="keepers" aria-labelledby="keepers-heading">
     <h2 class="section-title" id="keepers-heading">Who's protected</h2>
     <p class="power__note">

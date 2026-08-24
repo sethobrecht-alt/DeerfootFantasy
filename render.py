@@ -110,6 +110,26 @@ def build_keepers_page(config):
     with open(keepers_path) as f:
         data = json.load(f)
 
+    calc_year = None
+    calc_data = {}
+    history_path = os.path.join(HERE, "draft_history.json")
+    if os.path.exists(history_path):
+        with open(history_path) as f:
+            history = json.load(f)
+        years = history.get("years", {})
+        if years:
+            calc_year = max(years.keys())
+            for pick in years[calc_year]:
+                name = pick.get("player")
+                if not name:
+                    continue
+                calc_data[name.lower()] = {
+                    "player": name,
+                    "round": pick.get("round"),
+                    "pick": pick.get("pick"),
+                    "keeper": bool(pick.get("keeper")),
+                }
+
     os.makedirs(DOCS, exist_ok=True)
     shutil.copy(os.path.join(TEMPLATES, "style.css"), os.path.join(DOCS, "style.css"))
 
@@ -120,6 +140,8 @@ def build_keepers_page(config):
         season=config["year"],
         keepers=data.get("teams", {}),
         keepers_updated=data.get("updated"),
+        calc_year=calc_year,
+        calc_data_json=json.dumps(calc_data),
         updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
     )
     with open(os.path.join(DOCS, "keepers.html"), "w") as f:

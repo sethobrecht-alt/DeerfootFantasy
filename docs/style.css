@@ -197,6 +197,8 @@ body {
 
 .keepers-grid .game { margin-bottom: 0; }
 
+.calculator #calc-result .game { max-width: 22rem; }
+
 @media (max-width: 34rem) {
   .keepers-grid { grid-template-columns: 1fr; }
 }
