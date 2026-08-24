@@ -37,15 +37,23 @@
   <div class="stripe stripe--inline" role="presentation"></div>
 
   {% if years %}
-  <section class="standings" aria-labelledby="average-heading">
-    <h2 class="section-title" id="average-heading">All-time average finish</h2>
-    <p class="power__note">
+  <section class="standings" aria-labelledby="standings-heading">
+    <h2 class="section-title" id="standings-heading">Final standings, year by year</h2>
+
+    <div class="draft-pills" id="standings-year-pills" role="group" aria-label="Select a year or the all-time average" style="margin-bottom: 1.25rem;">
+      <button type="button" class="draft-pill" data-view="average">Average</button>
+      {% for y in years %}
+      <button type="button" class="draft-pill{% if loop.first %} draft-pill--active{% endif %}" data-view="{{ y }}">{{ y }}</button>
+      {% endfor %}
+    </div>
+
+    <p class="power__note" id="average-note" style="display:none;">
       Averages each manager's final and regular-season finish across every year
       they've played, then ranks them best to worst. Matched by ESPN account, not
       team name, so a renamed team still gets full credit for its history.
     </p>
 
-    <div class="standingsboard" id="average-board" role="table" aria-label="All-time average finish">
+    <div class="standingsboard" id="average-board" role="table" aria-label="All-time average finish" style="display:none;">
       <div class="avgrow avgrow--head" role="row">
         <span role="columnheader">Rk</span>
         <span role="columnheader">Team</span>
@@ -56,22 +64,10 @@
       <div id="average-rows"></div>
     </div>
 
-    <p class="foot__fine" style="margin-top: 1rem; color: var(--whistle);">
+    <p class="foot__fine" id="average-disclaimer" style="margin-top: 1rem; color: var(--whistle); display:none;">
       Shown under each manager's current team name, even for years played under a
       different name.
     </p>
-  </section>
-
-  <div class="stripe stripe--inline" role="presentation"></div>
-
-  <section class="standings" aria-labelledby="standings-heading">
-    <h2 class="section-title" id="standings-heading">Final standings, year by year</h2>
-
-    <div class="draft-pills" id="standings-year-pills" role="group" aria-label="Select a year" style="margin-bottom: 1.25rem;">
-      {% for y in years %}
-      <button type="button" class="draft-pill{% if loop.first %} draft-pill--active{% endif %}" data-year="{{ y }}">{{ y }}</button>
-      {% endfor %}
-    </div>
 
     <div class="standingsboard" id="standings-board" role="table" aria-label="Final standings">
       <div class="standingsrow standingsrow--head" role="row">
@@ -93,14 +89,19 @@
     var data = JSON.parse(document.getElementById('standings-data').textContent);
     var currentTeams = JSON.parse(document.getElementById('current-teams-data').textContent);
 
-    // ---- year-by-year table ----
-    var rowsEl = document.getElementById('standings-rows');
     var pillsEl = document.getElementById('standings-year-pills');
     var years = Object.keys(data).sort().reverse();
-    var activeYear = years[0];
+    var activeView = years[0];
 
-    function renderYear() {
-      var rows = data[activeYear] || [];
+    var standingsBoard = document.getElementById('standings-board');
+    var averageBoard = document.getElementById('average-board');
+    var averageNote = document.getElementById('average-note');
+    var averageDisclaimer = document.getElementById('average-disclaimer');
+    var rowsEl = document.getElementById('standings-rows');
+    var avgRowsEl = document.getElementById('average-rows');
+
+    function renderYear(year) {
+      var rows = data[year] || [];
       rowsEl.innerHTML = rows.map(function (r) {
         var record = r.wins + '-' + r.losses + (r.ties ? '-' + r.ties : '');
         return '<div class="standingsrow" role="row">' +
@@ -114,24 +115,10 @@
       }).join('');
     }
 
-    pillsEl.addEventListener('click', function (e) {
-      var btn = e.target.closest('.draft-pill');
-      if (!btn) return;
-      pillsEl.querySelectorAll('.draft-pill').forEach(function (b) {
-        b.classList.remove('draft-pill--active');
-      });
-      btn.classList.add('draft-pill--active');
-      activeYear = btn.dataset.year;
-      renderYear();
-    });
-
-    renderYear();
-
-    // ---- all-time average finish table ----
+    // ---- all-time average finish ----
     // Grouped by owner (a stable ESPN account), not team name, so a team
     // that changed its name still gets full credit for every year its
     // owner played, rather than looking like a 1-year-old team.
-    var avgRowsEl = document.getElementById('average-rows');
     var currentNameByOwner = {};
     currentTeams.forEach(function (t) { currentNameByOwner[t.owner_id] = t.team; });
 
@@ -166,6 +153,28 @@
         '<span role="cell">' + r.years + '</span>' +
         '</div>';
     }).join('');
+
+    function render() {
+      var showAverage = activeView === 'average';
+      averageBoard.style.display = showAverage ? '' : 'none';
+      averageNote.style.display = showAverage ? '' : 'none';
+      averageDisclaimer.style.display = showAverage ? '' : 'none';
+      standingsBoard.style.display = showAverage ? 'none' : '';
+      if (!showAverage) renderYear(activeView);
+    }
+
+    pillsEl.addEventListener('click', function (e) {
+      var btn = e.target.closest('.draft-pill');
+      if (!btn) return;
+      pillsEl.querySelectorAll('.draft-pill').forEach(function (b) {
+        b.classList.remove('draft-pill--active');
+      });
+      btn.classList.add('draft-pill--active');
+      activeView = btn.dataset.view;
+      render();
+    });
+
+    render();
   })();
   </script>
   {% else %}
