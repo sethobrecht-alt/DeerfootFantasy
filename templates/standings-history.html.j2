@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site_title }} — Standings history</title>
+<meta name="description" content="Final standings by year for {{ site_title }}.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <p class="masthead__eyebrow">Official rulings &middot; {{ season }} season</p>
+    <h1 class="masthead__title">{{ site_title }}</h1>
+    <p class="masthead__week">Standings history</p>
+  </div>
+</header>
+
+<div class="stripe" role="presentation"></div>
+
+<main class="page">
+
+  <nav class="archive" aria-label="Site">
+    <h2 class="section-title">Around the league</h2>
+    <ul class="archive__list">
+      <li><a class="archive__link" href="index.html">Home</a></li>
+      <li><a class="archive__link" href="recap.html">Latest recap</a></li>
+      <li><a class="archive__link" href="keepers.html">Keeper declarations</a></li>
+      <li><a class="archive__link" href="draft-history.html">Draft history</a></li>
+    </ul>
+  </nav>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+
+  <section class="standings" aria-labelledby="standings-heading">
+    <h2 class="section-title" id="standings-heading">Final standings, year by year</h2>
+
+    {% if years %}
+    <div class="draft-pills" id="standings-year-pills" role="group" aria-label="Select a year" style="margin-bottom: 1.25rem;">
+      {% for y in years %}
+      <button type="button" class="draft-pill{% if loop.first %} draft-pill--active{% endif %}" data-year="{{ y }}">{{ y }}</button>
+      {% endfor %}
+    </div>
+
+    <div class="standingsboard" id="standings-board" role="table" aria-label="Final standings">
+      <div class="standingsrow standingsrow--head" role="row">
+        <span role="columnheader">Rk</span>
+        <span role="columnheader">Team</span>
+        <span role="columnheader">Record</span>
+        <span role="columnheader">PF</span>
+        <span role="columnheader">PA</span>
+      </div>
+      <div id="standings-rows"></div>
+    </div>
+
+    <script type="application/json" id="standings-data">{{ years_json|safe }}</script>
+    <script>
+    (function () {
+      var data = JSON.parse(document.getElementById('standings-data').textContent);
+      var rowsEl = document.getElementById('standings-rows');
+      var pillsEl = document.getElementById('standings-year-pills');
+      var years = Object.keys(data).sort().reverse();
+      var activeYear = years[0];
+
+      function render() {
+        var rows = data[activeYear] || [];
+        rowsEl.innerHTML = rows.map(function (r) {
+          var record = r.wins + '-' + r.losses + (r.ties ? '-' + r.ties : '');
+          return '<div class="standingsrow" role="row">' +
+            '<span role="cell">' + (r.rank != null ? r.rank : '') + '</span>' +
+            '<span role="cell">' + (r.team || '') + '</span>' +
+            '<span role="cell">' + record + '</span>' +
+            '<span role="cell">' + r.points_for.toFixed(1) + '</span>' +
+            '<span role="cell">' + r.points_against.toFixed(1) + '</span>' +
+            '</div>';
+        }).join('');
+      }
+
+      pillsEl.addEventListener('click', function (e) {
+        var btn = e.target.closest('.draft-pill');
+        if (!btn) return;
+        pillsEl.querySelectorAll('.draft-pill').forEach(function (b) {
+          b.classList.remove('draft-pill--active');
+        });
+        btn.classList.add('draft-pill--active');
+        activeYear = btn.dataset.year;
+        render();
+      });
+
+      render();
+    })();
+    </script>
+    {% else %}
+    <p class="power__note">No standings fetched yet.</p>
+    {% endif %}
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>Updated {{ updated }}.</p>
+</footer>
+
+</body>
+</html>

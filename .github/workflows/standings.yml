@@ -1,0 +1,60 @@
+name: Fetch standings history
+
+# Fetches past-season final standings and commits them, plus the
+# rendered page, back to the repo. Run this once per year you want
+# added — a finished season's standings don't change.
+
+on:
+  workflow_dispatch:
+    inputs:
+      league_id:
+        description: "Your ESPN league ID"
+        required: true
+        type: string
+      years:
+        description: "Space-separated completed seasons to fetch"
+        required: false
+        default: "2023 2024 2025"
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install espn-api jinja2
+
+      - name: Fetch standings
+        env:
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          SWID: ${{ secrets.SWID }}
+        run: |
+          python fetch_standings.py "${{ inputs.league_id }}" --years ${{ inputs.years }}
+
+      - name: Render the page
+        run: |
+          python -c "
+          import json, render
+          config = json.load(open('config.json'))
+          render.build_standings_page(config)
+          "
+
+      - name: Commit the results
+        run: |
+          git config user.name "league-bot"
+          git config user.email "league-bot@users.noreply.github.com"
+          git add standings_history.json docs/standings-history.html docs/style.css
+          if git diff --staged --quiet; then
+            echo "Nothing new."
+          else
+            git commit -m "Update standings history"
+            git push
+          fi
