@@ -210,6 +210,32 @@ def build_standings_page(config):
     print("Wrote docs/standings-history.html")
 
 
+def build_league_basics_page(config):
+    """Render docs/league-basics.html from league_basics.json, if it exists."""
+    path = os.path.join(HERE, "league_basics.json")
+    if not os.path.exists(path):
+        return
+
+    with open(path) as f:
+        data = json.load(f)
+
+    os.makedirs(DOCS, exist_ok=True)
+    shutil.copy(os.path.join(TEMPLATES, "style.css"), os.path.join(DOCS, "style.css"))
+
+    env = _env()
+    template = env.get_template("league-basics.html.j2")
+    html = template.render(
+        site_title=config["site_title"],
+        season=config["year"],
+        settings=data.get("settings", []),
+        buy_in=data.get("buy_in", {}),
+        updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
+    )
+    with open(os.path.join(DOCS, "league-basics.html"), "w") as f:
+        f.write(html)
+    print("Wrote docs/league-basics.html")
+
+
 def build_home_page(config):
     """Render docs/index.html — the site's front door — from champions.json.
 

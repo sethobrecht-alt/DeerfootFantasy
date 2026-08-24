@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site_title }} — League basics</title>
+<meta name="description" content="Settings and buy-in details for {{ site_title }}.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <p class="masthead__eyebrow">Official rulings &middot; {{ season }} season</p>
+    <h1 class="masthead__title">{{ site_title }}</h1>
+    <p class="masthead__week">League basics</p>
+  </div>
+</header>
+
+<div class="stripe" role="presentation"></div>
+
+<main class="page">
+
+  <nav class="archive" aria-label="Site">
+    <h2 class="section-title">Around the league</h2>
+    <ul class="archive__list">
+      <li><a class="archive__link" href="index.html">Home</a></li>
+      <li><a class="archive__link" href="recap.html">Latest recap</a></li>
+      <li><a class="archive__link" href="keepers.html">Keeper declarations</a></li>
+      <li><a class="archive__link" href="draft-history.html">Draft history</a></li>
+      <li><a class="archive__link" href="standings-history.html">Standings history</a></li>
+    </ul>
+  </nav>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+
+  <section class="keepers" aria-labelledby="basics-heading">
+    <h2 class="section-title" id="basics-heading">League basics</h2>
+
+    <div class="keepers-grid">
+      <article class="game">
+        <p class="score__team" style="margin-bottom: 0.85rem;">Basic Settings</p>
+        <ul class="penalties" style="margin-top: 0;">
+          {% for s in settings %}
+          <li class="penalty" style="grid-template-columns: 1fr auto;">
+            <span class="penalty__text">{{ s.label }}</span>
+            <span class="penalty__cost" style="color: var(--whistle);">{{ s.value }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </article>
+
+      <article class="game">
+        <p class="score__team" style="margin-bottom: 0.85rem;">Buy In</p>
+        <p class="power__note" style="margin: -0.35rem 0 0.5rem;">{{ buy_in.title }}</p>
+        <ul class="penalties" style="margin-top: 0;">
+          {% for s in buy_in.summary %}
+          <li class="penalty" style="grid-template-columns: 1fr auto;">
+            <span class="penalty__text">{{ s.label }}</span>
+            <span class="penalty__cost" style="color: var(--whistle);">{{ s.value }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        <p class="power__note" style="margin: 1.1rem 0 0.5rem;">{{ buy_in.payouts_title }}</p>
+        <ul class="penalties" style="margin-top: 0;">
+          {% for s in buy_in.payouts %}
+          <li class="penalty" style="grid-template-columns: 1fr auto;">
+            <span class="penalty__text">{{ s.label }}</span>
+            <span class="penalty__cost" style="color: var(--whistle);">{{ s.value }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>Updated {{ updated }}.</p>
+</footer>
+
+</body>
+</html>

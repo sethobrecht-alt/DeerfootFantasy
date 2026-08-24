@@ -1,0 +1,27 @@
+{
+  "settings": [
+    {"label": "Scoring", "value": "0.5 PPR"},
+    {"label": "Passing TD", "value": "4 pts"},
+    {"label": "Keepers", "value": "2"},
+    {"label": "FAAB Budget", "value": "$100"},
+    {"label": "Trade Deadline", "value": "12/2/2026 @ 12:00 PM ET"},
+    {"label": "Playoffs Begin", "value": "Week 15"},
+    {"label": "Playoff Teams", "value": "Top 6"},
+    {"label": "Playoff Tiebreaker", "value": "Total Points For"}
+  ],
+  "buy_in": {
+    "title": "2025 Buy In",
+    "summary": [
+      {"label": "Buy In / Person", "value": "$50"},
+      {"label": "Total Pot", "value": "$600"}
+    ],
+    "payouts_title": "Pay Out Details",
+    "payouts": [
+      {"label": "Weekly High Score", "value": "$5"},
+      {"label": "Regular Season Winner", "value": "$150"},
+      {"label": "3rd Place", "value": "$50"},
+      {"label": "2nd Place", "value": "$100"},
+      {"label": "Champion", "value": "$230"}
+    ]
+  }
+}
