@@ -25,6 +25,17 @@
 
 <main class="page">
 
+  <nav class="archive" aria-label="Site">
+    <h2 class="section-title">Around the league</h2>
+    <ul class="archive__list">
+      <li><a class="archive__link" href="index.html">Home</a></li>
+      <li><a class="archive__link" href="keepers.html">Keeper declarations</a></li>
+      <li><a class="archive__link" href="draft-history.html">Draft history</a></li>
+    </ul>
+  </nav>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+
   {% if flag_of_week %}
   <section class="flagwrap" aria-labelledby="flag-heading">
     <h2 class="flagwrap__label" id="flag-heading">Flag of the week</h2>
@@ -173,13 +184,6 @@
 </main>
 
 <footer class="foot">
-  <p>
-    <a href="index.html" style="color: inherit;">Home</a>
-    &middot;
-    <a href="keepers.html" style="color: inherit;">Keeper declarations</a>
-    &middot;
-    <a href="draft-history.html" style="color: inherit;">Draft history</a>
-  </p>
   <p>Updated {{ updated }}. Rebuilt every Tuesday from ESPN.</p>
   <p class="foot__fine">Recaps are written by a language model and are not a reliable
   source of truth about anything, including whose fault it was.</p>
