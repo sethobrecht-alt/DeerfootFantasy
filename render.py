@@ -181,6 +181,33 @@ def build_draft_history_page(config):
     print("Wrote docs/draft-history.html")
 
 
+def build_standings_page(config):
+    """Render docs/standings-history.html from standings_history.json, if it exists."""
+    path = os.path.join(HERE, "standings_history.json")
+    if not os.path.exists(path):
+        return
+
+    with open(path) as f:
+        data = json.load(f)
+
+    os.makedirs(DOCS, exist_ok=True)
+    shutil.copy(os.path.join(TEMPLATES, "style.css"), os.path.join(DOCS, "style.css"))
+
+    years = data.get("years", {})
+    env = _env()
+    template = env.get_template("standings-history.html.j2")
+    html = template.render(
+        site_title=config["site_title"],
+        season=config["year"],
+        years=sorted(years.keys(), reverse=True),
+        years_json=json.dumps(years),
+        updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
+    )
+    with open(os.path.join(DOCS, "standings-history.html"), "w") as f:
+        f.write(html)
+    print("Wrote docs/standings-history.html")
+
+
 def build_home_page(config):
     """Render docs/index.html — the site's front door — from champions.json.
 
