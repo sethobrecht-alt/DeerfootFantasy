@@ -24,6 +24,17 @@
 
 <main class="page">
 
+  <nav class="archive" aria-label="Site">
+    <h2 class="section-title">Around the league</h2>
+    <ul class="archive__list">
+      <li><a class="archive__link" href="index.html">Home</a></li>
+      <li><a class="archive__link" href="recap.html">Latest recap</a></li>
+      <li><a class="archive__link" href="draft-history.html">Draft history</a></li>
+    </ul>
+  </nav>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+
   {% if calc_year %}
   <section class="calculator" aria-labelledby="calc-heading">
     <h2 class="section-title" id="calc-heading">Keeper cost calculator</h2>
@@ -132,15 +143,6 @@
       {% endfor %}
     </div>
   </section>
-
-  <nav class="archive" aria-label="Site">
-    <h2 class="section-title">Elsewhere</h2>
-    <ul class="archive__list">
-      <li><a class="archive__link" href="index.html">Home</a></li>
-      <li><a class="archive__link" href="recap.html">Latest recap</a></li>
-      <li><a class="archive__link" href="draft-history.html">Draft history</a></li>
-    </ul>
-  </nav>
 
 </main>
 
