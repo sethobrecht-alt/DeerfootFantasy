@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deerfoot Lodge Fantasy — Standings history</title>
+<meta name="description" content="Final standings by year for Deerfoot Lodge Fantasy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <p class="masthead__eyebrow">Official rulings &middot; 2026 season</p>
+    <h1 class="masthead__title">Deerfoot Lodge Fantasy</h1>
+    <p class="masthead__week">Standings history</p>
+  </div>
+</header>
+
+<div class="stripe" role="presentation"></div>
+
+<main class="page">
+
+  <nav class="archive" aria-label="Site">
+    <h2 class="section-title">Around the league</h2>
+    <ul class="archive__list">
+      <li><a class="archive__link" href="index.html">Home</a></li>
+      <li><a class="archive__link" href="recap.html">Latest recap</a></li>
+      <li><a class="archive__link" href="keepers.html">Keeper declarations</a></li>
+      <li><a class="archive__link" href="draft-history.html">Draft history</a></li>
+    </ul>
+  </nav>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+
+  <section class="standings" aria-labelledby="standings-heading">
+    <h2 class="section-title" id="standings-heading">Final standings, year by year</h2>
+
+    <div class="draft-pills" id="standings-year-pills" role="group" aria-label="Select a year" style="margin-bottom: 1.25rem;">
+      <button type="button" class="draft-pill draft-pill--active" data-year="2025">2025</button>
+      <button type="button" class="draft-pill" data-year="2024">2024</button>
+      <button type="button" class="draft-pill" data-year="2023">2023</button>
+    </div>
+
+    <div class="standingsboard" id="standings-board" role="table" aria-label="Final standings">
+      <div class="standingsrow standingsrow--head" role="row">
+        <span role="columnheader">Rk</span>
+        <span role="columnheader">Team</span>
+        <span role="columnheader">Record</span>
+        <span role="columnheader">PF</span>
+        <span role="columnheader">PA</span>
+      </div>
+      <div id="standings-rows"></div>
+    </div>
+
+    <script type="application/json" id="standings-data">{"2023": [{"rank": 1, "team": "The Island Gudge", "wins": 11, "losses": 3, "ties": 0, "points_for": 1588.82, "points_against": 1365.38}, {"rank": 2, "team": "Catalina Wine Mixon", "wins": 10, "losses": 4, "ties": 0, "points_for": 1615.44, "points_against": 1493.26}, {"rank": 3, "team": "55 Burgers", "wins": 8, "losses": 6, "ties": 0, "points_for": 1529.18, "points_against": 1412.32}, {"rank": 4, "team": "Mac Daddy", "wins": 10, "losses": 4, "ties": 0, "points_for": 1621.06, "points_against": 1395.88}, {"rank": 5, "team": "Ricky Huns", "wins": 8, "losses": 6, "ties": 0, "points_for": 1508.28, "points_against": 1441.16}, {"rank": 6, "team": "Starbucks Lovers", "wins": 9, "losses": 5, "ties": 0, "points_for": 1553.26, "points_against": 1435.02}, {"rank": 7, "team": "Harley Jarvis", "wins": 4, "losses": 10, "ties": 0, "points_for": 1398.48, "points_against": 1534.82}, {"rank": 8, "team": "The Goose is Loose", "wins": 4, "losses": 10, "ties": 0, "points_for": 1227.68, "points_against": 1481.94}, {"rank": 9, "team": "Funk that Junk", "wins": 7, "losses": 7, "ties": 0, "points_for": 1330.54, "points_against": 1385.24}, {"rank": 10, "team": "Tractorcito Szn", "wins": 2, "losses": 12, "ties": 0, "points_for": 1346.86, "points_against": 1560.76}, {"rank": 11, "team": "Team Bradford", "wins": 5, "losses": 9, "ties": 0, "points_for": 1317.22, "points_against": 1392.46}, {"rank": 12, "team": "Uptown Sluggers ", "wins": 6, "losses": 8, "ties": 0, "points_for": 1252.0, "points_against": 1390.58}], "2024": [{"rank": 1, "team": "Funk that Junk", "wins": 10, "losses": 4, "ties": 0, "points_for": 1724.74, "points_against": 1443.32}, {"rank": 2, "team": "55 Burgers", "wins": 8, "losses": 6, "ties": 0, "points_for": 1405.08, "points_against": 1345.92}, {"rank": 3, "team": "Harley Jarvis", "wins": 10, "losses": 4, "ties": 0, "points_for": 1632.7, "points_against": 1338.24}, {"rank": 4, "team": "Boss Hill", "wins": 8, "losses": 6, "ties": 0, "points_for": 1554.14, "points_against": 1440.48}, {"rank": 5, "team": "The Goose is Loose", "wins": 10, "losses": 4, "ties": 0, "points_for": 1535.92, "points_against": 1433.6}, {"rank": 6, "team": "Catalina Wine Mixon", "wins": 8, "losses": 6, "ties": 0, "points_for": 1535.36, "points_against": 1490.34}, {"rank": 7, "team": "Crashee Rice", "wins": 6, "losses": 8, "ties": 0, "points_for": 1493.0, "points_against": 1484.36}, {"rank": 8, "team": "Breece's Cups", "wins": 7, "losses": 7, "ties": 0, "points_for": 1369.26, "points_against": 1395.34}, {"rank": 9, "team": "Team Bradford", "wins": 5, "losses": 9, "ties": 0, "points_for": 1429.98, "points_against": 1451.06}, {"rank": 10, "team": "The Island Gudge", "wins": 5, "losses": 9, "ties": 0, "points_for": 1360.94, "points_against": 1481.86}, {"rank": 11, "team": "Ricky Huns", "wins": 4, "losses": 10, "ties": 0, "points_for": 1210.02, "points_against": 1587.34}, {"rank": 12, "team": "The Machine Knows", "wins": 3, "losses": 11, "ties": 0, "points_for": 1233.02, "points_against": 1592.3}], "2025": [{"rank": 1, "team": "Team Bradford", "wins": 8, "losses": 6, "ties": 0, "points_for": 1463.74, "points_against": 1401.76}, {"rank": 2, "team": "Chase Brown Had a Bad Scare", "wins": 10, "losses": 4, "ties": 0, "points_for": 1501.0, "points_against": 1370.72}, {"rank": 3, "team": "Catalina Wine Mixon", "wins": 11, "losses": 3, "ties": 0, "points_for": 1480.84, "points_against": 1364.96}, {"rank": 4, "team": "The Island Gudge", "wins": 12, "losses": 2, "ties": 0, "points_for": 1638.62, "points_against": 1313.34}, {"rank": 5, "team": "Ricky Huns", "wins": 7, "losses": 7, "ties": 0, "points_for": 1521.66, "points_against": 1477.0}, {"rank": 6, "team": "The Goose is Loose", "wins": 7, "losses": 7, "ties": 0, "points_for": 1376.42, "points_against": 1448.54}, {"rank": 7, "team": "Love Thy Naber", "wins": 5, "losses": 9, "ties": 0, "points_for": 1436.4, "points_against": 1429.86}, {"rank": 8, "team": "The Machine Knows", "wins": 4, "losses": 10, "ties": 0, "points_for": 1381.96, "points_against": 1579.32}, {"rank": 9, "team": "Harley Jarvis", "wins": 6, "losses": 8, "ties": 0, "points_for": 1497.74, "points_against": 1554.18}, {"rank": 10, "team": "Team Fox", "wins": 3, "losses": 11, "ties": 0, "points_for": 1280.66, "points_against": 1445.24}, {"rank": 11, "team": "Funk that Junk", "wins": 5, "losses": 9, "ties": 0, "points_for": 1303.28, "points_against": 1532.54}, {"rank": 12, "team": "55 Burgers", "wins": 6, "losses": 8, "ties": 0, "points_for": 1422.36, "points_against": 1387.22}]}</script>
+    <script>
+    (function () {
+      var data = JSON.parse(document.getElementById('standings-data').textContent);
+      var rowsEl = document.getElementById('standings-rows');
+      var pillsEl = document.getElementById('standings-year-pills');
+      var years = Object.keys(data).sort().reverse();
+      var activeYear = years[0];
+
+      function render() {
+        var rows = data[activeYear] || [];
+        rowsEl.innerHTML = rows.map(function (r) {
+          var record = r.wins + '-' + r.losses + (r.ties ? '-' + r.ties : '');
+          return '<div class="standingsrow" role="row">' +
+            '<span role="cell">' + (r.rank != null ? r.rank : '') + '</span>' +
+            '<span role="cell">' + (r.team || '') + '</span>' +
+            '<span role="cell">' + record + '</span>' +
+            '<span role="cell">' + r.points_for.toFixed(1) + '</span>' +
+            '<span role="cell">' + r.points_against.toFixed(1) + '</span>' +
+            '</div>';
+        }).join('');
+      }
+
+      pillsEl.addEventListener('click', function (e) {
+        var btn = e.target.closest('.draft-pill');
+        if (!btn) return;
+        pillsEl.querySelectorAll('.draft-pill').forEach(function (b) {
+          b.classList.remove('draft-pill--active');
+        });
+        btn.classList.add('draft-pill--active');
+        activeYear = btn.dataset.year;
+        render();
+      });
+
+      render();
+    })();
+    </script>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>Updated August 24, 2026 at 1:36 PM ET.</p>
+</footer>
+
+</body>
+</html>

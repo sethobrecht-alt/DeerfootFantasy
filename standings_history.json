@@ -1,0 +1,335 @@
+{
+  "league_id": 311243487,
+  "years": {
+    "2023": [
+      {
+        "rank": 1,
+        "team": "The Island Gudge",
+        "wins": 11,
+        "losses": 3,
+        "ties": 0,
+        "points_for": 1588.82,
+        "points_against": 1365.38
+      },
+      {
+        "rank": 2,
+        "team": "Catalina Wine Mixon",
+        "wins": 10,
+        "losses": 4,
+        "ties": 0,
+        "points_for": 1615.44,
+        "points_against": 1493.26
+      },
+      {
+        "rank": 3,
+        "team": "55 Burgers",
+        "wins": 8,
+        "losses": 6,
+        "ties": 0,
+        "points_for": 1529.18,
+        "points_against": 1412.32
+      },
+      {
+        "rank": 4,
+        "team": "Mac Daddy",
+        "wins": 10,
+        "losses": 4,
+        "ties": 0,
+        "points_for": 1621.06,
+        "points_against": 1395.88
+      },
+      {
+        "rank": 5,
+        "team": "Ricky Huns",
+        "wins": 8,
+        "losses": 6,
+        "ties": 0,
+        "points_for": 1508.28,
+        "points_against": 1441.16
+      },
+      {
+        "rank": 6,
+        "team": "Starbucks Lovers",
+        "wins": 9,
+        "losses": 5,
+        "ties": 0,
+        "points_for": 1553.26,
+        "points_against": 1435.02
+      },
+      {
+        "rank": 7,
+        "team": "Harley Jarvis",
+        "wins": 4,
+        "losses": 10,
+        "ties": 0,
+        "points_for": 1398.48,
+        "points_against": 1534.82
+      },
+      {
+        "rank": 8,
+        "team": "The Goose is Loose",
+        "wins": 4,
+        "losses": 10,
+        "ties": 0,
+        "points_for": 1227.68,
+        "points_against": 1481.94
+      },
+      {
+        "rank": 9,
+        "team": "Funk that Junk",
+        "wins": 7,
+        "losses": 7,
+        "ties": 0,
+        "points_for": 1330.54,
+        "points_against": 1385.24
+      },
+      {
+        "rank": 10,
+        "team": "Tractorcito Szn",
+        "wins": 2,
+        "losses": 12,
+        "ties": 0,
+        "points_for": 1346.86,
+        "points_against": 1560.76
+      },
+      {
+        "rank": 11,
+        "team": "Team Bradford",
+        "wins": 5,
+        "losses": 9,
+        "ties": 0,
+        "points_for": 1317.22,
+        "points_against": 1392.46
+      },
+      {
+        "rank": 12,
+        "team": "Uptown Sluggers ",
+        "wins": 6,
+        "losses": 8,
+        "ties": 0,
+        "points_for": 1252.0,
+        "points_against": 1390.58
+      }
+    ],
+    "2024": [
+      {
+        "rank": 1,
+        "team": "Funk that Junk",
+        "wins": 10,
+        "losses": 4,
+        "ties": 0,
+        "points_for": 1724.74,
+        "points_against": 1443.32
+      },
+      {
+        "rank": 2,
+        "team": "55 Burgers",
+        "wins": 8,
+        "losses": 6,
+        "ties": 0,
+        "points_for": 1405.08,
+        "points_against": 1345.92
+      },
+      {
+        "rank": 3,
+        "team": "Harley Jarvis",
+        "wins": 10,
+        "losses": 4,
+        "ties": 0,
+        "points_for": 1632.7,
+        "points_against": 1338.24
+      },
+      {
+        "rank": 4,
+        "team": "Boss Hill",
+        "wins": 8,
+        "losses": 6,
+        "ties": 0,
+        "points_for": 1554.14,
+        "points_against": 1440.48
+      },
+      {
+        "rank": 5,
+        "team": "The Goose is Loose",
+        "wins": 10,
+        "losses": 4,
+        "ties": 0,
+        "points_for": 1535.92,
+        "points_against": 1433.6
+      },
+      {
+        "rank": 6,
+        "team": "Catalina Wine Mixon",
+        "wins": 8,
+        "losses": 6,
+        "ties": 0,
+        "points_for": 1535.36,
+        "points_against": 1490.34
+      },
+      {
+        "rank": 7,
+        "team": "Crashee Rice",
+        "wins": 6,
+        "losses": 8,
+        "ties": 0,
+        "points_for": 1493.0,
+        "points_against": 1484.36
+      },
+      {
+        "rank": 8,
+        "team": "Breece's Cups",
+        "wins": 7,
+        "losses": 7,
+        "ties": 0,
+        "points_for": 1369.26,
+        "points_against": 1395.34
+      },
+      {
+        "rank": 9,
+        "team": "Team Bradford",
+        "wins": 5,
+        "losses": 9,
+        "ties": 0,
+        "points_for": 1429.98,
+        "points_against": 1451.06
+      },
+      {
+        "rank": 10,
+        "team": "The Island Gudge",
+        "wins": 5,
+        "losses": 9,
+        "ties": 0,
+        "points_for": 1360.94,
+        "points_against": 1481.86
+      },
+      {
+        "rank": 11,
+        "team": "Ricky Huns",
+        "wins": 4,
+        "losses": 10,
+        "ties": 0,
+        "points_for": 1210.02,
+        "points_against": 1587.34
+      },
+      {
+        "rank": 12,
+        "team": "The Machine Knows",
+        "wins": 3,
+        "losses": 11,
+        "ties": 0,
+        "points_for": 1233.02,
+        "points_against": 1592.3
+      }
+    ],
+    "2025": [
+      {
+        "rank": 1,
+        "team": "Team Bradford",
+        "wins": 8,
+        "losses": 6,
+        "ties": 0,
+        "points_for": 1463.74,
+        "points_against": 1401.76
+      },
+      {
+        "rank": 2,
+        "team": "Chase Brown Had a Bad Scare",
+        "wins": 10,
+        "losses": 4,
+        "ties": 0,
+        "points_for": 1501.0,
+        "points_against": 1370.72
+      },
+      {
+        "rank": 3,
+        "team": "Catalina Wine Mixon",
+        "wins": 11,
+        "losses": 3,
+        "ties": 0,
+        "points_for": 1480.84,
+        "points_against": 1364.96
+      },
+      {
+        "rank": 4,
+        "team": "The Island Gudge",
+        "wins": 12,
+        "losses": 2,
+        "ties": 0,
+        "points_for": 1638.62,
+        "points_against": 1313.34
+      },
+      {
+        "rank": 5,
+        "team": "Ricky Huns",
+        "wins": 7,
+        "losses": 7,
+        "ties": 0,
+        "points_for": 1521.66,
+        "points_against": 1477.0
+      },
+      {
+        "rank": 6,
+        "team": "The Goose is Loose",
+        "wins": 7,
+        "losses": 7,
+        "ties": 0,
+        "points_for": 1376.42,
+        "points_against": 1448.54
+      },
+      {
+        "rank": 7,
+        "team": "Love Thy Naber",
+        "wins": 5,
+        "losses": 9,
+        "ties": 0,
+        "points_for": 1436.4,
+        "points_against": 1429.86
+      },
+      {
+        "rank": 8,
+        "team": "The Machine Knows",
+        "wins": 4,
+        "losses": 10,
+        "ties": 0,
+        "points_for": 1381.96,
+        "points_against": 1579.32
+      },
+      {
+        "rank": 9,
+        "team": "Harley Jarvis",
+        "wins": 6,
+        "losses": 8,
+        "ties": 0,
+        "points_for": 1497.74,
+        "points_against": 1554.18
+      },
+      {
+        "rank": 10,
+        "team": "Team Fox",
+        "wins": 3,
+        "losses": 11,
+        "ties": 0,
+        "points_for": 1280.66,
+        "points_against": 1445.24
+      },
+      {
+        "rank": 11,
+        "team": "Funk that Junk",
+        "wins": 5,
+        "losses": 9,
+        "ties": 0,
+        "points_for": 1303.28,
+        "points_against": 1532.54
+      },
+      {
+        "rank": 12,
+        "team": "55 Burgers",
+        "wins": 6,
+        "losses": 8,
+        "ties": 0,
+        "points_for": 1422.36,
+        "points_against": 1387.22
+      }
+    ]
+  }
+}
