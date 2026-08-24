@@ -36,10 +36,37 @@
 
   <div class="stripe stripe--inline" role="presentation"></div>
 
+  {% if years %}
+  <section class="standings" aria-labelledby="average-heading">
+    <h2 class="section-title" id="average-heading">All-time average finish</h2>
+    <p class="power__note">
+      Averages each of this year's teams' final and regular-season finish across
+      every year they've played under their current name, then ranks them best to
+      worst. A team with fewer years behind it (see "Yrs") has a noisier average.
+    </p>
+
+    <div class="standingsboard" id="average-board" role="table" aria-label="All-time average finish">
+      <div class="avgrow avgrow--head" role="row">
+        <span role="columnheader">Rk</span>
+        <span role="columnheader">Team</span>
+        <span role="columnheader">Avg final</span>
+        <span role="columnheader">Avg reg.</span>
+        <span role="columnheader">Yrs</span>
+      </div>
+      <div id="average-rows"></div>
+    </div>
+
+    <p class="foot__fine" style="margin-top: 1rem; color: var(--whistle);">
+      Matched by current team name, so a team that's since renamed only counts the
+      years it played under its current name.
+    </p>
+  </section>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+
   <section class="standings" aria-labelledby="standings-heading">
     <h2 class="section-title" id="standings-heading">Final standings, year by year</h2>
 
-    {% if years %}
     <div class="draft-pills" id="standings-year-pills" role="group" aria-label="Select a year" style="margin-bottom: 1.25rem;">
       {% for y in years %}
       <button type="button" class="draft-pill{% if loop.first %} draft-pill--active{% endif %}" data-year="{{ y }}">{{ y }}</button>
@@ -49,6 +76,7 @@
     <div class="standingsboard" id="standings-board" role="table" aria-label="Final standings">
       <div class="standingsrow standingsrow--head" role="row">
         <span role="columnheader">Rk</span>
+        <span role="columnheader">Reg</span>
         <span role="columnheader">Team</span>
         <span role="columnheader">Record</span>
         <span role="columnheader">PF</span>
@@ -56,48 +84,92 @@
       </div>
       <div id="standings-rows"></div>
     </div>
-
-    <script type="application/json" id="standings-data">{{ years_json|safe }}</script>
-    <script>
-    (function () {
-      var data = JSON.parse(document.getElementById('standings-data').textContent);
-      var rowsEl = document.getElementById('standings-rows');
-      var pillsEl = document.getElementById('standings-year-pills');
-      var years = Object.keys(data).sort().reverse();
-      var activeYear = years[0];
-
-      function render() {
-        var rows = data[activeYear] || [];
-        rowsEl.innerHTML = rows.map(function (r) {
-          var record = r.wins + '-' + r.losses + (r.ties ? '-' + r.ties : '');
-          return '<div class="standingsrow" role="row">' +
-            '<span role="cell">' + (r.rank != null ? r.rank : '') + '</span>' +
-            '<span role="cell">' + (r.team || '') + '</span>' +
-            '<span role="cell">' + record + '</span>' +
-            '<span role="cell">' + r.points_for.toFixed(1) + '</span>' +
-            '<span role="cell">' + r.points_against.toFixed(1) + '</span>' +
-            '</div>';
-        }).join('');
-      }
-
-      pillsEl.addEventListener('click', function (e) {
-        var btn = e.target.closest('.draft-pill');
-        if (!btn) return;
-        pillsEl.querySelectorAll('.draft-pill').forEach(function (b) {
-          b.classList.remove('draft-pill--active');
-        });
-        btn.classList.add('draft-pill--active');
-        activeYear = btn.dataset.year;
-        render();
-      });
-
-      render();
-    })();
-    </script>
-    {% else %}
-    <p class="power__note">No standings fetched yet.</p>
-    {% endif %}
   </section>
+
+  <script type="application/json" id="standings-data">{{ years_json|safe }}</script>
+  <script type="application/json" id="current-teams-data">{{ current_teams_json|safe }}</script>
+  <script>
+  (function () {
+    var data = JSON.parse(document.getElementById('standings-data').textContent);
+    var currentTeams = JSON.parse(document.getElementById('current-teams-data').textContent);
+
+    // ---- year-by-year table ----
+    var rowsEl = document.getElementById('standings-rows');
+    var pillsEl = document.getElementById('standings-year-pills');
+    var years = Object.keys(data).sort().reverse();
+    var activeYear = years[0];
+
+    function renderYear() {
+      var rows = data[activeYear] || [];
+      rowsEl.innerHTML = rows.map(function (r) {
+        var record = r.wins + '-' + r.losses + (r.ties ? '-' + r.ties : '');
+        return '<div class="standingsrow" role="row">' +
+          '<span role="cell">' + (r.rank != null ? r.rank : '') + '</span>' +
+          '<span role="cell">' + (r.regular_finish != null ? r.regular_finish : '') + '</span>' +
+          '<span role="cell">' + (r.team || '') + '</span>' +
+          '<span role="cell">' + record + '</span>' +
+          '<span role="cell">' + r.points_for.toFixed(1) + '</span>' +
+          '<span role="cell">' + r.points_against.toFixed(1) + '</span>' +
+          '</div>';
+      }).join('');
+    }
+
+    pillsEl.addEventListener('click', function (e) {
+      var btn = e.target.closest('.draft-pill');
+      if (!btn) return;
+      pillsEl.querySelectorAll('.draft-pill').forEach(function (b) {
+        b.classList.remove('draft-pill--active');
+      });
+      btn.classList.add('draft-pill--active');
+      activeYear = btn.dataset.year;
+      renderYear();
+    });
+
+    renderYear();
+
+    // ---- all-time average finish table ----
+    var avgRowsEl = document.getElementById('average-rows');
+    var currentSet = {};
+    currentTeams.forEach(function (name) { currentSet[name] = true; });
+
+    var acc = {};
+    years.forEach(function (year) {
+      (data[year] || []).forEach(function (r) {
+        if (!r.team || !currentSet[r.team]) return;
+        var a = acc[r.team] || (acc[r.team] = { sumFinal: 0, sumReg: 0, count: 0 });
+        if (r.rank != null) a.sumFinal += r.rank;
+        if (r.regular_finish != null) a.sumReg += r.regular_finish;
+        a.count += 1;
+      });
+    });
+
+    var averages = Object.keys(acc).map(function (name) {
+      var a = acc[name];
+      return {
+        team: name,
+        avgFinal: a.sumFinal / a.count,
+        avgReg: a.sumReg / a.count,
+        years: a.count,
+      };
+    });
+    averages.sort(function (x, y) { return x.avgFinal - y.avgFinal; });
+
+    avgRowsEl.innerHTML = averages.map(function (r, i) {
+      return '<div class="avgrow" role="row">' +
+        '<span role="cell">' + (i + 1) + '</span>' +
+        '<span role="cell">' + r.team + '</span>' +
+        '<span role="cell">' + r.avgFinal.toFixed(1) + '</span>' +
+        '<span role="cell">' + r.avgReg.toFixed(1) + '</span>' +
+        '<span role="cell">' + r.years + '</span>' +
+        '</div>';
+    }).join('');
+  })();
+  </script>
+  {% else %}
+  <section class="standings">
+    <p class="power__note">No standings fetched yet.</p>
+  </section>
+  {% endif %}
 
 </main>
 
