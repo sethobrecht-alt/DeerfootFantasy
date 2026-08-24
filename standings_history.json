@@ -4,6 +4,7 @@
     "2023": [
       {
         "rank": 1,
+        "regular_finish": 1,
         "team": "The Island Gudge",
         "wins": 11,
         "losses": 3,
@@ -13,6 +14,7 @@
       },
       {
         "rank": 2,
+        "regular_finish": 3,
         "team": "Catalina Wine Mixon",
         "wins": 10,
         "losses": 4,
@@ -22,6 +24,7 @@
       },
       {
         "rank": 3,
+        "regular_finish": 5,
         "team": "55 Burgers",
         "wins": 8,
         "losses": 6,
@@ -31,6 +34,7 @@
       },
       {
         "rank": 4,
+        "regular_finish": 2,
         "team": "Mac Daddy",
         "wins": 10,
         "losses": 4,
@@ -40,6 +44,7 @@
       },
       {
         "rank": 5,
+        "regular_finish": 6,
         "team": "Ricky Huns",
         "wins": 8,
         "losses": 6,
@@ -49,6 +54,7 @@
       },
       {
         "rank": 6,
+        "regular_finish": 4,
         "team": "Starbucks Lovers",
         "wins": 9,
         "losses": 5,
@@ -58,6 +64,7 @@
       },
       {
         "rank": 7,
+        "regular_finish": 10,
         "team": "Harley Jarvis",
         "wins": 4,
         "losses": 10,
@@ -67,6 +74,7 @@
       },
       {
         "rank": 8,
+        "regular_finish": 11,
         "team": "The Goose is Loose",
         "wins": 4,
         "losses": 10,
@@ -76,6 +84,7 @@
       },
       {
         "rank": 9,
+        "regular_finish": 7,
         "team": "Funk that Junk",
         "wins": 7,
         "losses": 7,
@@ -85,6 +94,7 @@
       },
       {
         "rank": 10,
+        "regular_finish": 12,
         "team": "Tractorcito Szn",
         "wins": 2,
         "losses": 12,
@@ -94,6 +104,7 @@
       },
       {
         "rank": 11,
+        "regular_finish": 9,
         "team": "Team Bradford",
         "wins": 5,
         "losses": 9,
@@ -103,6 +114,7 @@
       },
       {
         "rank": 12,
+        "regular_finish": 8,
         "team": "Uptown Sluggers ",
         "wins": 6,
         "losses": 8,
@@ -114,6 +126,7 @@
     "2024": [
       {
         "rank": 1,
+        "regular_finish": 1,
         "team": "Funk that Junk",
         "wins": 10,
         "losses": 4,
@@ -123,6 +136,7 @@
       },
       {
         "rank": 2,
+        "regular_finish": 6,
         "team": "55 Burgers",
         "wins": 8,
         "losses": 6,
@@ -132,6 +146,7 @@
       },
       {
         "rank": 3,
+        "regular_finish": 2,
         "team": "Harley Jarvis",
         "wins": 10,
         "losses": 4,
@@ -141,6 +156,7 @@
       },
       {
         "rank": 4,
+        "regular_finish": 4,
         "team": "Boss Hill",
         "wins": 8,
         "losses": 6,
@@ -150,6 +166,7 @@
       },
       {
         "rank": 5,
+        "regular_finish": 3,
         "team": "The Goose is Loose",
         "wins": 10,
         "losses": 4,
@@ -159,6 +176,7 @@
       },
       {
         "rank": 6,
+        "regular_finish": 5,
         "team": "Catalina Wine Mixon",
         "wins": 8,
         "losses": 6,
@@ -168,6 +186,7 @@
       },
       {
         "rank": 7,
+        "regular_finish": 8,
         "team": "Crashee Rice",
         "wins": 6,
         "losses": 8,
@@ -177,6 +196,7 @@
       },
       {
         "rank": 8,
+        "regular_finish": 7,
         "team": "Breece's Cups",
         "wins": 7,
         "losses": 7,
@@ -186,6 +206,7 @@
       },
       {
         "rank": 9,
+        "regular_finish": 9,
         "team": "Team Bradford",
         "wins": 5,
         "losses": 9,
@@ -195,6 +216,7 @@
       },
       {
         "rank": 10,
+        "regular_finish": 10,
         "team": "The Island Gudge",
         "wins": 5,
         "losses": 9,
@@ -204,6 +226,7 @@
       },
       {
         "rank": 11,
+        "regular_finish": 11,
         "team": "Ricky Huns",
         "wins": 4,
         "losses": 10,
@@ -213,6 +236,7 @@
       },
       {
         "rank": 12,
+        "regular_finish": 12,
         "team": "The Machine Knows",
         "wins": 3,
         "losses": 11,
@@ -224,6 +248,7 @@
     "2025": [
       {
         "rank": 1,
+        "regular_finish": 4,
         "team": "Team Bradford",
         "wins": 8,
         "losses": 6,
@@ -233,6 +258,7 @@
       },
       {
         "rank": 2,
+        "regular_finish": 3,
         "team": "Chase Brown Had a Bad Scare",
         "wins": 10,
         "losses": 4,
@@ -242,6 +268,7 @@
       },
       {
         "rank": 3,
+        "regular_finish": 2,
         "team": "Catalina Wine Mixon",
         "wins": 11,
         "losses": 3,
@@ -251,6 +278,7 @@
       },
       {
         "rank": 4,
+        "regular_finish": 1,
         "team": "The Island Gudge",
         "wins": 12,
         "losses": 2,
@@ -260,6 +288,7 @@
       },
       {
         "rank": 5,
+        "regular_finish": 5,
         "team": "Ricky Huns",
         "wins": 7,
         "losses": 7,
@@ -269,6 +298,7 @@
       },
       {
         "rank": 6,
+        "regular_finish": 6,
         "team": "The Goose is Loose",
         "wins": 7,
         "losses": 7,
@@ -278,6 +308,7 @@
       },
       {
         "rank": 7,
+        "regular_finish": 9,
         "team": "Love Thy Naber",
         "wins": 5,
         "losses": 9,
@@ -287,6 +318,7 @@
       },
       {
         "rank": 8,
+        "regular_finish": 11,
         "team": "The Machine Knows",
         "wins": 4,
         "losses": 10,
@@ -296,6 +328,7 @@
       },
       {
         "rank": 9,
+        "regular_finish": 7,
         "team": "Harley Jarvis",
         "wins": 6,
         "losses": 8,
@@ -305,6 +338,7 @@
       },
       {
         "rank": 10,
+        "regular_finish": 12,
         "team": "Team Fox",
         "wins": 3,
         "losses": 11,
@@ -314,6 +348,7 @@
       },
       {
         "rank": 11,
+        "regular_finish": 10,
         "team": "Funk that Junk",
         "wins": 5,
         "losses": 9,
@@ -323,6 +358,7 @@
       },
       {
         "rank": 12,
+        "regular_finish": 8,
         "team": "55 Burgers",
         "wins": 6,
         "losses": 8,
@@ -331,5 +367,19 @@
         "points_against": 1387.22
       }
     ]
-  }
+  },
+  "current_teams": [
+    "55 Burgers",
+    "Catalina Wine Mixon",
+    "Chase Brown Had a Bad Scare",
+    "Funk that Junk",
+    "Harley Jarvis",
+    "Love Thy Naber",
+    "Ricky Huns",
+    "Team Bradford",
+    "Team Fox",
+    "The Goose is Loose",
+    "The Island Gudge",
+    "The Machine Knows"
+  ]
 }

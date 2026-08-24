@@ -36,6 +36,33 @@
 
   <div class="stripe stripe--inline" role="presentation"></div>
 
+  <section class="standings" aria-labelledby="average-heading">
+    <h2 class="section-title" id="average-heading">All-time average finish</h2>
+    <p class="power__note">
+      Averages each of this year's teams' final and regular-season finish across
+      every year they've played under their current name, then ranks them best to
+      worst. A team with fewer years behind it (see "Yrs") has a noisier average.
+    </p>
+
+    <div class="standingsboard" id="average-board" role="table" aria-label="All-time average finish">
+      <div class="avgrow avgrow--head" role="row">
+        <span role="columnheader">Rk</span>
+        <span role="columnheader">Team</span>
+        <span role="columnheader">Avg final</span>
+        <span role="columnheader">Avg reg.</span>
+        <span role="columnheader">Yrs</span>
+      </div>
+      <div id="average-rows"></div>
+    </div>
+
+    <p class="foot__fine" style="margin-top: 1rem; color: var(--whistle);">
+      Matched by current team name, so a team that's since renamed only counts the
+      years it played under its current name.
+    </p>
+  </section>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+
   <section class="standings" aria-labelledby="standings-heading">
     <h2 class="section-title" id="standings-heading">Final standings, year by year</h2>
 
@@ -48,6 +75,7 @@
     <div class="standingsboard" id="standings-board" role="table" aria-label="Final standings">
       <div class="standingsrow standingsrow--head" role="row">
         <span role="columnheader">Rk</span>
+        <span role="columnheader">Reg</span>
         <span role="columnheader">Team</span>
         <span role="columnheader">Record</span>
         <span role="columnheader">PF</span>
@@ -55,50 +83,92 @@
       </div>
       <div id="standings-rows"></div>
     </div>
-
-    <script type="application/json" id="standings-data">{"2023": [{"rank": 1, "team": "The Island Gudge", "wins": 11, "losses": 3, "ties": 0, "points_for": 1588.82, "points_against": 1365.38}, {"rank": 2, "team": "Catalina Wine Mixon", "wins": 10, "losses": 4, "ties": 0, "points_for": 1615.44, "points_against": 1493.26}, {"rank": 3, "team": "55 Burgers", "wins": 8, "losses": 6, "ties": 0, "points_for": 1529.18, "points_against": 1412.32}, {"rank": 4, "team": "Mac Daddy", "wins": 10, "losses": 4, "ties": 0, "points_for": 1621.06, "points_against": 1395.88}, {"rank": 5, "team": "Ricky Huns", "wins": 8, "losses": 6, "ties": 0, "points_for": 1508.28, "points_against": 1441.16}, {"rank": 6, "team": "Starbucks Lovers", "wins": 9, "losses": 5, "ties": 0, "points_for": 1553.26, "points_against": 1435.02}, {"rank": 7, "team": "Harley Jarvis", "wins": 4, "losses": 10, "ties": 0, "points_for": 1398.48, "points_against": 1534.82}, {"rank": 8, "team": "The Goose is Loose", "wins": 4, "losses": 10, "ties": 0, "points_for": 1227.68, "points_against": 1481.94}, {"rank": 9, "team": "Funk that Junk", "wins": 7, "losses": 7, "ties": 0, "points_for": 1330.54, "points_against": 1385.24}, {"rank": 10, "team": "Tractorcito Szn", "wins": 2, "losses": 12, "ties": 0, "points_for": 1346.86, "points_against": 1560.76}, {"rank": 11, "team": "Team Bradford", "wins": 5, "losses": 9, "ties": 0, "points_for": 1317.22, "points_against": 1392.46}, {"rank": 12, "team": "Uptown Sluggers ", "wins": 6, "losses": 8, "ties": 0, "points_for": 1252.0, "points_against": 1390.58}], "2024": [{"rank": 1, "team": "Funk that Junk", "wins": 10, "losses": 4, "ties": 0, "points_for": 1724.74, "points_against": 1443.32}, {"rank": 2, "team": "55 Burgers", "wins": 8, "losses": 6, "ties": 0, "points_for": 1405.08, "points_against": 1345.92}, {"rank": 3, "team": "Harley Jarvis", "wins": 10, "losses": 4, "ties": 0, "points_for": 1632.7, "points_against": 1338.24}, {"rank": 4, "team": "Boss Hill", "wins": 8, "losses": 6, "ties": 0, "points_for": 1554.14, "points_against": 1440.48}, {"rank": 5, "team": "The Goose is Loose", "wins": 10, "losses": 4, "ties": 0, "points_for": 1535.92, "points_against": 1433.6}, {"rank": 6, "team": "Catalina Wine Mixon", "wins": 8, "losses": 6, "ties": 0, "points_for": 1535.36, "points_against": 1490.34}, {"rank": 7, "team": "Crashee Rice", "wins": 6, "losses": 8, "ties": 0, "points_for": 1493.0, "points_against": 1484.36}, {"rank": 8, "team": "Breece's Cups", "wins": 7, "losses": 7, "ties": 0, "points_for": 1369.26, "points_against": 1395.34}, {"rank": 9, "team": "Team Bradford", "wins": 5, "losses": 9, "ties": 0, "points_for": 1429.98, "points_against": 1451.06}, {"rank": 10, "team": "The Island Gudge", "wins": 5, "losses": 9, "ties": 0, "points_for": 1360.94, "points_against": 1481.86}, {"rank": 11, "team": "Ricky Huns", "wins": 4, "losses": 10, "ties": 0, "points_for": 1210.02, "points_against": 1587.34}, {"rank": 12, "team": "The Machine Knows", "wins": 3, "losses": 11, "ties": 0, "points_for": 1233.02, "points_against": 1592.3}], "2025": [{"rank": 1, "team": "Team Bradford", "wins": 8, "losses": 6, "ties": 0, "points_for": 1463.74, "points_against": 1401.76}, {"rank": 2, "team": "Chase Brown Had a Bad Scare", "wins": 10, "losses": 4, "ties": 0, "points_for": 1501.0, "points_against": 1370.72}, {"rank": 3, "team": "Catalina Wine Mixon", "wins": 11, "losses": 3, "ties": 0, "points_for": 1480.84, "points_against": 1364.96}, {"rank": 4, "team": "The Island Gudge", "wins": 12, "losses": 2, "ties": 0, "points_for": 1638.62, "points_against": 1313.34}, {"rank": 5, "team": "Ricky Huns", "wins": 7, "losses": 7, "ties": 0, "points_for": 1521.66, "points_against": 1477.0}, {"rank": 6, "team": "The Goose is Loose", "wins": 7, "losses": 7, "ties": 0, "points_for": 1376.42, "points_against": 1448.54}, {"rank": 7, "team": "Love Thy Naber", "wins": 5, "losses": 9, "ties": 0, "points_for": 1436.4, "points_against": 1429.86}, {"rank": 8, "team": "The Machine Knows", "wins": 4, "losses": 10, "ties": 0, "points_for": 1381.96, "points_against": 1579.32}, {"rank": 9, "team": "Harley Jarvis", "wins": 6, "losses": 8, "ties": 0, "points_for": 1497.74, "points_against": 1554.18}, {"rank": 10, "team": "Team Fox", "wins": 3, "losses": 11, "ties": 0, "points_for": 1280.66, "points_against": 1445.24}, {"rank": 11, "team": "Funk that Junk", "wins": 5, "losses": 9, "ties": 0, "points_for": 1303.28, "points_against": 1532.54}, {"rank": 12, "team": "55 Burgers", "wins": 6, "losses": 8, "ties": 0, "points_for": 1422.36, "points_against": 1387.22}]}</script>
-    <script>
-    (function () {
-      var data = JSON.parse(document.getElementById('standings-data').textContent);
-      var rowsEl = document.getElementById('standings-rows');
-      var pillsEl = document.getElementById('standings-year-pills');
-      var years = Object.keys(data).sort().reverse();
-      var activeYear = years[0];
-
-      function render() {
-        var rows = data[activeYear] || [];
-        rowsEl.innerHTML = rows.map(function (r) {
-          var record = r.wins + '-' + r.losses + (r.ties ? '-' + r.ties : '');
-          return '<div class="standingsrow" role="row">' +
-            '<span role="cell">' + (r.rank != null ? r.rank : '') + '</span>' +
-            '<span role="cell">' + (r.team || '') + '</span>' +
-            '<span role="cell">' + record + '</span>' +
-            '<span role="cell">' + r.points_for.toFixed(1) + '</span>' +
-            '<span role="cell">' + r.points_against.toFixed(1) + '</span>' +
-            '</div>';
-        }).join('');
-      }
-
-      pillsEl.addEventListener('click', function (e) {
-        var btn = e.target.closest('.draft-pill');
-        if (!btn) return;
-        pillsEl.querySelectorAll('.draft-pill').forEach(function (b) {
-          b.classList.remove('draft-pill--active');
-        });
-        btn.classList.add('draft-pill--active');
-        activeYear = btn.dataset.year;
-        render();
-      });
-
-      render();
-    })();
-    </script>
   </section>
+
+  <script type="application/json" id="standings-data">{"2023": [{"rank": 1, "regular_finish": 1, "team": "The Island Gudge", "wins": 11, "losses": 3, "ties": 0, "points_for": 1588.82, "points_against": 1365.38}, {"rank": 2, "regular_finish": 3, "team": "Catalina Wine Mixon", "wins": 10, "losses": 4, "ties": 0, "points_for": 1615.44, "points_against": 1493.26}, {"rank": 3, "regular_finish": 5, "team": "55 Burgers", "wins": 8, "losses": 6, "ties": 0, "points_for": 1529.18, "points_against": 1412.32}, {"rank": 4, "regular_finish": 2, "team": "Mac Daddy", "wins": 10, "losses": 4, "ties": 0, "points_for": 1621.06, "points_against": 1395.88}, {"rank": 5, "regular_finish": 6, "team": "Ricky Huns", "wins": 8, "losses": 6, "ties": 0, "points_for": 1508.28, "points_against": 1441.16}, {"rank": 6, "regular_finish": 4, "team": "Starbucks Lovers", "wins": 9, "losses": 5, "ties": 0, "points_for": 1553.26, "points_against": 1435.02}, {"rank": 7, "regular_finish": 10, "team": "Harley Jarvis", "wins": 4, "losses": 10, "ties": 0, "points_for": 1398.48, "points_against": 1534.82}, {"rank": 8, "regular_finish": 11, "team": "The Goose is Loose", "wins": 4, "losses": 10, "ties": 0, "points_for": 1227.68, "points_against": 1481.94}, {"rank": 9, "regular_finish": 7, "team": "Funk that Junk", "wins": 7, "losses": 7, "ties": 0, "points_for": 1330.54, "points_against": 1385.24}, {"rank": 10, "regular_finish": 12, "team": "Tractorcito Szn", "wins": 2, "losses": 12, "ties": 0, "points_for": 1346.86, "points_against": 1560.76}, {"rank": 11, "regular_finish": 9, "team": "Team Bradford", "wins": 5, "losses": 9, "ties": 0, "points_for": 1317.22, "points_against": 1392.46}, {"rank": 12, "regular_finish": 8, "team": "Uptown Sluggers ", "wins": 6, "losses": 8, "ties": 0, "points_for": 1252.0, "points_against": 1390.58}], "2024": [{"rank": 1, "regular_finish": 1, "team": "Funk that Junk", "wins": 10, "losses": 4, "ties": 0, "points_for": 1724.74, "points_against": 1443.32}, {"rank": 2, "regular_finish": 6, "team": "55 Burgers", "wins": 8, "losses": 6, "ties": 0, "points_for": 1405.08, "points_against": 1345.92}, {"rank": 3, "regular_finish": 2, "team": "Harley Jarvis", "wins": 10, "losses": 4, "ties": 0, "points_for": 1632.7, "points_against": 1338.24}, {"rank": 4, "regular_finish": 4, "team": "Boss Hill", "wins": 8, "losses": 6, "ties": 0, "points_for": 1554.14, "points_against": 1440.48}, {"rank": 5, "regular_finish": 3, "team": "The Goose is Loose", "wins": 10, "losses": 4, "ties": 0, "points_for": 1535.92, "points_against": 1433.6}, {"rank": 6, "regular_finish": 5, "team": "Catalina Wine Mixon", "wins": 8, "losses": 6, "ties": 0, "points_for": 1535.36, "points_against": 1490.34}, {"rank": 7, "regular_finish": 8, "team": "Crashee Rice", "wins": 6, "losses": 8, "ties": 0, "points_for": 1493.0, "points_against": 1484.36}, {"rank": 8, "regular_finish": 7, "team": "Breece's Cups", "wins": 7, "losses": 7, "ties": 0, "points_for": 1369.26, "points_against": 1395.34}, {"rank": 9, "regular_finish": 9, "team": "Team Bradford", "wins": 5, "losses": 9, "ties": 0, "points_for": 1429.98, "points_against": 1451.06}, {"rank": 10, "regular_finish": 10, "team": "The Island Gudge", "wins": 5, "losses": 9, "ties": 0, "points_for": 1360.94, "points_against": 1481.86}, {"rank": 11, "regular_finish": 11, "team": "Ricky Huns", "wins": 4, "losses": 10, "ties": 0, "points_for": 1210.02, "points_against": 1587.34}, {"rank": 12, "regular_finish": 12, "team": "The Machine Knows", "wins": 3, "losses": 11, "ties": 0, "points_for": 1233.02, "points_against": 1592.3}], "2025": [{"rank": 1, "regular_finish": 4, "team": "Team Bradford", "wins": 8, "losses": 6, "ties": 0, "points_for": 1463.74, "points_against": 1401.76}, {"rank": 2, "regular_finish": 3, "team": "Chase Brown Had a Bad Scare", "wins": 10, "losses": 4, "ties": 0, "points_for": 1501.0, "points_against": 1370.72}, {"rank": 3, "regular_finish": 2, "team": "Catalina Wine Mixon", "wins": 11, "losses": 3, "ties": 0, "points_for": 1480.84, "points_against": 1364.96}, {"rank": 4, "regular_finish": 1, "team": "The Island Gudge", "wins": 12, "losses": 2, "ties": 0, "points_for": 1638.62, "points_against": 1313.34}, {"rank": 5, "regular_finish": 5, "team": "Ricky Huns", "wins": 7, "losses": 7, "ties": 0, "points_for": 1521.66, "points_against": 1477.0}, {"rank": 6, "regular_finish": 6, "team": "The Goose is Loose", "wins": 7, "losses": 7, "ties": 0, "points_for": 1376.42, "points_against": 1448.54}, {"rank": 7, "regular_finish": 9, "team": "Love Thy Naber", "wins": 5, "losses": 9, "ties": 0, "points_for": 1436.4, "points_against": 1429.86}, {"rank": 8, "regular_finish": 11, "team": "The Machine Knows", "wins": 4, "losses": 10, "ties": 0, "points_for": 1381.96, "points_against": 1579.32}, {"rank": 9, "regular_finish": 7, "team": "Harley Jarvis", "wins": 6, "losses": 8, "ties": 0, "points_for": 1497.74, "points_against": 1554.18}, {"rank": 10, "regular_finish": 12, "team": "Team Fox", "wins": 3, "losses": 11, "ties": 0, "points_for": 1280.66, "points_against": 1445.24}, {"rank": 11, "regular_finish": 10, "team": "Funk that Junk", "wins": 5, "losses": 9, "ties": 0, "points_for": 1303.28, "points_against": 1532.54}, {"rank": 12, "regular_finish": 8, "team": "55 Burgers", "wins": 6, "losses": 8, "ties": 0, "points_for": 1422.36, "points_against": 1387.22}]}</script>
+  <script type="application/json" id="current-teams-data">["55 Burgers", "Catalina Wine Mixon", "Chase Brown Had a Bad Scare", "Funk that Junk", "Harley Jarvis", "Love Thy Naber", "Ricky Huns", "Team Bradford", "Team Fox", "The Goose is Loose", "The Island Gudge", "The Machine Knows"]</script>
+  <script>
+  (function () {
+    var data = JSON.parse(document.getElementById('standings-data').textContent);
+    var currentTeams = JSON.parse(document.getElementById('current-teams-data').textContent);
+
+    // ---- year-by-year table ----
+    var rowsEl = document.getElementById('standings-rows');
+    var pillsEl = document.getElementById('standings-year-pills');
+    var years = Object.keys(data).sort().reverse();
+    var activeYear = years[0];
+
+    function renderYear() {
+      var rows = data[activeYear] || [];
+      rowsEl.innerHTML = rows.map(function (r) {
+        var record = r.wins + '-' + r.losses + (r.ties ? '-' + r.ties : '');
+        return '<div class="standingsrow" role="row">' +
+          '<span role="cell">' + (r.rank != null ? r.rank : '') + '</span>' +
+          '<span role="cell">' + (r.regular_finish != null ? r.regular_finish : '') + '</span>' +
+          '<span role="cell">' + (r.team || '') + '</span>' +
+          '<span role="cell">' + record + '</span>' +
+          '<span role="cell">' + r.points_for.toFixed(1) + '</span>' +
+          '<span role="cell">' + r.points_against.toFixed(1) + '</span>' +
+          '</div>';
+      }).join('');
+    }
+
+    pillsEl.addEventListener('click', function (e) {
+      var btn = e.target.closest('.draft-pill');
+      if (!btn) return;
+      pillsEl.querySelectorAll('.draft-pill').forEach(function (b) {
+        b.classList.remove('draft-pill--active');
+      });
+      btn.classList.add('draft-pill--active');
+      activeYear = btn.dataset.year;
+      renderYear();
+    });
+
+    renderYear();
+
+    // ---- all-time average finish table ----
+    var avgRowsEl = document.getElementById('average-rows');
+    var currentSet = {};
+    currentTeams.forEach(function (name) { currentSet[name] = true; });
+
+    var acc = {};
+    years.forEach(function (year) {
+      (data[year] || []).forEach(function (r) {
+        if (!r.team || !currentSet[r.team]) return;
+        var a = acc[r.team] || (acc[r.team] = { sumFinal: 0, sumReg: 0, count: 0 });
+        if (r.rank != null) a.sumFinal += r.rank;
+        if (r.regular_finish != null) a.sumReg += r.regular_finish;
+        a.count += 1;
+      });
+    });
+
+    var averages = Object.keys(acc).map(function (name) {
+      var a = acc[name];
+      return {
+        team: name,
+        avgFinal: a.sumFinal / a.count,
+        avgReg: a.sumReg / a.count,
+        years: a.count,
+      };
+    });
+    averages.sort(function (x, y) { return x.avgFinal - y.avgFinal; });
+
+    avgRowsEl.innerHTML = averages.map(function (r, i) {
+      return '<div class="avgrow" role="row">' +
+        '<span role="cell">' + (i + 1) + '</span>' +
+        '<span role="cell">' + r.team + '</span>' +
+        '<span role="cell">' + r.avgFinal.toFixed(1) + '</span>' +
+        '<span role="cell">' + r.avgReg.toFixed(1) + '</span>' +
+        '<span role="cell">' + r.years + '</span>' +
+        '</div>';
+    }).join('');
+  })();
+  </script>
 
 </main>
 
 <footer class="foot">
-  <p>Updated August 24, 2026 at 1:36 PM ET.</p>
+  <p>Updated August 24, 2026 at 1:48 PM ET.</p>
 </footer>
 
 </body>
