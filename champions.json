@@ -6,17 +6,53 @@
     "2025": "Team Bradford"
   },
   "current_teams": [
-    "55 Burgers",
-    "Catalina Wine Mixon",
-    "Chase Brown Had a Bad Scare",
-    "Funk that Junk",
-    "Harley Jarvis",
-    "Love Thy Naber",
-    "Ricky Huns",
-    "Team Bradford",
-    "Team Fox",
-    "The Goose is Loose",
-    "The Island Gudge",
-    "The Machine Knows"
+    {
+      "name": "55 Burgers",
+      "logo_url": "https://g.espncdn.com/lm-static/logo-packs/core/BobsBurgers/Burger_Logo.svg"
+    },
+    {
+      "name": "Catalina Wine Mixon",
+      "logo_url": "https://m.media-amazon.com/images/M/MV5BODViZDg3ZjYtMzhiYS00YTVkLTk4MzktYWUxMTlkYjc1NjdlXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+      "name": "Chase Brown Had a Bad Scare",
+      "logo_url": "https://g.espncdn.com/lm-static/logo-packs/ffl/BlitznBears-MartinLaksman/bears-07.svg"
+    },
+    {
+      "name": "Funk that Junk",
+      "logo_url": "https://g.espncdn.com/lm-static/logo-packs/core/AnimalHeads/animal_heads-13.svg"
+    },
+    {
+      "name": "Harley Jarvis",
+      "logo_url": "https://g.espncdn.com/lm-static/logo-packs/ffl/Referee-MartinLaksman/referee-01.svg"
+    },
+    {
+      "name": "Love Thy Naber",
+      "logo_url": "https://g.espncdn.com/lm-static/logo-packs/core/Mascots/mascots-1.svg"
+    },
+    {
+      "name": "Ricky Huns",
+      "logo_url": "https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-6.svg"
+    },
+    {
+      "name": "Team Bradford",
+      "logo_url": "https://g.espncdn.com/lm-static/logo-packs/core/Incredibles/incredibles_1.svg"
+    },
+    {
+      "name": "Team Fox",
+      "logo_url": "https://g.espncdn.com/lm-static/logo-packs/ffl/TeamKinny-MartinLaksman/TeamKinny-19.svg"
+    },
+    {
+      "name": "The Goose is Loose",
+      "logo_url": "https://g.espncdn.com/lm-static/logo-packs/ffl/CreepShow-ToddDetwiler/CreepShow-01.svg"
+    },
+    {
+      "name": "The Island Gudge",
+      "logo_url": "https://g.espncdn.com/lm-static/logo-packs/ffl/AtTheStadium-RobbHarskamp/At_The_Stadium_13.svg"
+    },
+    {
+      "name": "The Machine Knows",
+      "logo_url": "https://g.espncdn.com/lm-static/ffl/images/default_logos/6.svg"
+    }
   ]
 }
