@@ -56,7 +56,7 @@ def build_site(weeks, config):
     weights = config.get("power_ranking_weights", {"points": 0.6, "record": 0.4})
 
     archive = [{"week": w["week"], "href": f"week-{w['week']}.html"} for w in weeks]
-    archive[-1]["href"] = "index.html"
+    archive[-1]["href"] = "recap.html"
     archive = list(reversed(archive))
 
     updated = datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET")
@@ -89,7 +89,7 @@ def build_site(weeks, config):
         )
 
         is_latest = i == len(weeks) - 1
-        name = "index.html" if is_latest else f"week-{week['week']}.html"
+        name = "recap.html" if is_latest else f"week-{week['week']}.html"
         with open(os.path.join(DOCS, name), "w") as f:
             f.write(html)
         print(f"Wrote docs/{name}")
@@ -157,3 +157,48 @@ def build_draft_history_page(config):
     with open(os.path.join(DOCS, "draft-history.html"), "w") as f:
         f.write(html)
     print("Wrote docs/draft-history.html")
+
+
+def build_home_page(config):
+    """Render docs/index.html — the site's front door — from champions.json.
+
+    Team-name matching only works if a team's name has stayed the same
+    since the year it won; a renamed team could be missed. Noted on the
+    page itself rather than silently assumed correct.
+    """
+    champions_path = os.path.join(HERE, "champions.json")
+    if not os.path.exists(champions_path):
+        return
+
+    with open(champions_path) as f:
+        data = json.load(f)
+
+    years = data.get("years", {})
+    current_teams = data.get("current_teams", [])
+
+    wins = {}
+    for year, team in years.items():
+        wins.setdefault(team, []).append(year)
+
+    champions = sorted(
+        ({"name": team, "years": sorted(yrs)} for team, yrs in wins.items()),
+        key=lambda t: (-len(t["years"]), t["name"]),
+    )
+    champion_names = set(wins.keys())
+    non_champions = sorted(t for t in current_teams if t not in champion_names)
+
+    os.makedirs(DOCS, exist_ok=True)
+    shutil.copy(os.path.join(TEMPLATES, "style.css"), os.path.join(DOCS, "style.css"))
+
+    env = _env()
+    template = env.get_template("home.html.j2")
+    html = template.render(
+        site_title=config["site_title"],
+        season=config["year"],
+        champions=champions,
+        non_champions=non_champions,
+        updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
+    )
+    with open(os.path.join(DOCS, "index.html"), "w") as f:
+        f.write(html)
+    print("Wrote docs/index.html")
