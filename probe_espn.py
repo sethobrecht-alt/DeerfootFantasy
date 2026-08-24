@@ -158,6 +158,45 @@ def check_roster_keeper_fields(league_id, year):
     print(f"  saved: {save(f'roster_{year}', data)}")
 
 
+def find_named_players(league_id, year, names):
+    """Dump every field on specific players' roster entries, no filtering.
+
+    hunt_keeper_fields only looks at keys whose *name* mentions "keeper". If
+    ESPN's keepers page (the commissioner UI, separate from this read API)
+    is driven by a differently-named field, that search would miss it. This
+    looks at the full entry for players you know are keepers, so nothing
+    is filtered out by a naming guess.
+    """
+    heading("Named player lookup")
+    wanted = {n.strip().lower() for n in names if n.strip()}
+    if not wanted:
+        return
+    data, err = get(league_id, year, ["mRoster", "mTeam", "mDraftDetail", "mSettings"])
+    if err or not data:
+        print(f"  Failed: {err}")
+        return
+
+    found_any = False
+    for team in data.get("teams", []):
+        for entry in team.get("roster", {}).get("entries", []):
+            pool = entry.get("playerPoolEntry", {})
+            player = pool.get("player", {})
+            full = player.get("fullName", "")
+            if full.lower() not in wanted:
+                continue
+            found_any = True
+            print(f"\n  {full} (team {team.get('id')})")
+            print(f"    playerPoolEntry keys: {sorted(pool.keys())}")
+            print(f"    roster entry keys: {sorted(entry.keys())}")
+            print(f"    full playerPoolEntry:\n" +
+                  "\n".join(f"      {line}" for line in
+                            json.dumps(pool, indent=2).splitlines()))
+
+    if not found_any:
+        print("  None of the named players were found on any roster.")
+    print(f"\n  saved: {save(f'named_players_{year}', data)}")
+
+
 def walk(obj, needle, path=""):
     """Yield every path in a JSON blob whose key mentions `needle`."""
     if isinstance(obj, dict):
@@ -238,6 +277,8 @@ def main():
     ap.add_argument("--year", type=int, default=2026)
     ap.add_argument("--back-to", type=int, default=2015,
                     help="earliest season to test for history")
+    ap.add_argument("--find-players", default="",
+                    help="comma-separated player names to dump full roster-entry fields for")
     args = ap.parse_args()
 
     data = check_access(args.league_id, args.year)
@@ -247,6 +288,8 @@ def main():
     check_draft(args.league_id, args.year)
     check_roster_keeper_fields(args.league_id, args.year)
     hunt_keeper_fields(args.league_id, args.year)
+    if args.find_players:
+        find_named_players(args.league_id, args.year, args.find_players.split(","))
     check_history(args.league_id, args.year, args.back_to)
 
     heading("Next")
