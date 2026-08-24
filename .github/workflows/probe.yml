@@ -1,0 +1,55 @@
+name: Probe league
+
+# Runs the diagnostic on GitHub instead of your own machine. Nothing is written
+# back to the repo — the results come out as a downloadable file.
+
+on:
+  workflow_dispatch:
+    inputs:
+      league_id:
+        description: "Your ESPN league ID (the number in your league URL)"
+        required: true
+        type: string
+      year:
+        description: "Season"
+        required: false
+        default: "2026"
+        type: string
+      back_to:
+        description: "Earliest season to test for history"
+        required: false
+        default: "2015"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - name: Run the probe
+        env:
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          SWID: ${{ secrets.SWID }}
+        run: |
+          python probe_espn.py "${{ inputs.league_id }}" \
+            --year "${{ inputs.year }}" \
+            --back-to "${{ inputs.back_to }}"
+
+      - name: Package the results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe-output
+          path: probe-output/
+          if-no-files-found: warn
+          retention-days: 7

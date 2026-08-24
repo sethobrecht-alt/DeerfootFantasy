@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site_title }} — Week {{ week.week }}</title>
+<meta name="description" content="Week {{ week.week }} results, recaps and power rankings for {{ site_title }}.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <p class="masthead__eyebrow">Official rulings &middot; {{ season }} season</p>
+    <h1 class="masthead__title">{{ site_title }}</h1>
+    <p class="masthead__week">Week {{ week.week }}</p>
+    {% if week.headline %}<p class="masthead__headline">{{ week.headline }}</p>{% endif %}
+  </div>
+</header>
+
+<div class="stripe" role="presentation"></div>
+
+<main class="page">
+
+  {% if flag_of_week %}
+  <section class="flagwrap" aria-labelledby="flag-heading">
+    <h2 class="flagwrap__label" id="flag-heading">Flag of the week</h2>
+    <div class="flag">
+      <div class="flag__body">
+        <p class="flag__call">Illegal procedure</p>
+        <p class="flag__team">{{ flag_of_week.team }}</p>
+        <p class="flag__detail">
+          Started <strong>{{ flag_of_week.actually_started }}</strong> at {{ flag_of_week.slot }}
+          for {{ flag_of_week.starter_points }}.
+          <strong>{{ flag_of_week.should_have_started }}</strong> sat on the bench
+          and scored {{ flag_of_week.bench_points }}.
+        </p>
+        <p class="flag__penalty">
+          <span class="flag__number">{{ flag_of_week.points_lost }}</span>
+          <span class="flag__unit">points, declined</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="games" aria-labelledby="games-heading">
+    <h2 class="section-title" id="games-heading">The matchups</h2>
+
+    {% for m in week.matchups %}
+    {% set house = m.home.name == favourite or m.away.name == favourite %}
+    <article class="game{% if house %} game--house{% endif %}">
+
+      <div class="score">
+        {% for side in [m.home, m.away] %}
+        {% set won = m.winner == side.name %}
+        <div class="score__side{% if won %} score__side--won{% endif %}">
+          <p class="score__team">{{ side.name }}</p>
+          <p class="score__points">{{ '%.2f'|format(side.score) }}</p>
+        </div>
+        {% if loop.first %}<p class="score__v">vs</p>{% endif %}
+        {% endfor %}
+      </div>
+
+      {% if house %}<p class="game__tag">House team</p>{% endif %}
+
+      {% for para in m.recap.split('\n\n') %}
+      <p class="game__recap">{{ para }}</p>
+      {% endfor %}
+
+      <div class="game__stats">
+        {% for side in [m.home, m.away] %}
+        <div class="statblock">
+          <p class="statblock__who">{{ side.abbrev }}</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>{{ side.starters[0].name }} &middot; {{ side.starters[0].points }}</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>{{ '%.2f'|format(side.optimal_score) }}</span>
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+
+      {% set flags = [] %}
+      {% for side in [m.home, m.away] %}
+        {% if side.blunders and not (shield_favourite and side.name == favourite) %}
+          {% set _ = flags.append((side.name, side.blunders[0], side.points_left_on_bench)) %}
+        {% endif %}
+      {% endfor %}
+      {% if flags %}
+      <ul class="penalties">
+        {% for team, b, total in flags %}
+        <li class="penalty">
+          <span class="penalty__mark" aria-hidden="true"></span>
+          <span class="penalty__text">
+            <strong>{{ team }}</strong> benched {{ b.should_have_started }}
+            ({{ b.bench_points }}) and started {{ b.actually_started }}
+            ({{ b.starter_points }}) at {{ b.slot }}.
+          </span>
+          <span class="penalty__cost">&minus;{{ total }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+    </article>
+    {% endfor %}
+  </section>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+
+  <section class="power" aria-labelledby="power-heading">
+    <h2 class="section-title" id="power-heading">Power rankings</h2>
+    <p class="power__note">
+      Rating blends total points ({{ (weights.points * 100)|round|int }}%)
+      and winning percentage ({{ (weights.record * 100)|round|int }}%),
+      scaled across the league.
+    </p>
+
+    <ol class="board">
+      {% for t in rankings %}
+      <li class="board__row{% if t.name == favourite %} board__row--house{% endif %}">
+        <span class="board__rank">{{ t.rank }}</span>
+        <span class="board__move
+          {%- if t.movement > 0 %} board__move--up{% elif t.movement < 0 %} board__move--down{% endif %}">
+          {%- if t.is_new -%}&middot;
+          {%- elif t.movement > 0 -%}&#9650;{{ t.movement }}
+          {%- elif t.movement < 0 -%}&#9660;{{ -t.movement }}
+          {%- else -%}&mdash;{%- endif -%}
+        </span>
+        <span class="board__team">
+          {{ t.name }}
+          <span class="board__record">{{ t.record }} &middot; {{ '%.1f'|format(t.points_for) }} PF</span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: {{ t.rating }}%"></span>
+          <span class="board__value">{{ '%.1f'|format(t.rating) }}</span>
+        </span>
+      </li>
+      {% endfor %}
+    </ol>
+
+    {% if wasted %}
+    <p class="power__waste">
+      Season points left on benches:
+      {% for t in wasted %}<span class="waste"><strong>{{ t.name }}</strong> {{ '%.1f'|format(t.bench_points_wasted) }}</span>{% endfor %}
+    </p>
+    {% endif %}
+  </section>
+
+  {% if archive|length > 1 %}
+  <nav class="archive" aria-label="Past weeks">
+    <h2 class="section-title">Past weeks</h2>
+    <ul class="archive__list">
+      {% for a in archive %}
+      <li>
+        <a class="archive__link{% if a.week == week.week %} archive__link--current{% endif %}"
+           href="{{ a.href }}"{% if a.week == week.week %} aria-current="page"{% endif %}>
+          Week {{ a.week }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+  {% endif %}
+
+</main>
+
+<footer class="foot">
+  <p>Updated {{ updated }}. Rebuilt every Tuesday from ESPN.</p>
+  <p class="foot__fine">Recaps are written by a language model and are not a reliable
+  source of truth about anything, including whose fault it was.</p>
+</footer>
+
+</body>
+</html>
