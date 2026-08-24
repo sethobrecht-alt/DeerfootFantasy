@@ -15,7 +15,7 @@
     "The Machine Knows": [],
     "Team Bradford": [
       {"player": "Bijan Robinson", "pro_team": "ATL", "position": "RB", "round": 1, "pick": 10},
-      {"player": "Harold Fannin Jr.", "pro_team": "CLE", "position": "TE", "round": 2, "pick": 3}
+      {"player": "Harold Fannin Jr.", "pro_team": "CLE", "position": "TE", "round": 8, "pick": 3}
     ],
     "Catalina Wine Mixon": [
       {"player": "George Pickens", "pro_team": "DAL", "position": "WR", "round": 4, "pick": 6},
