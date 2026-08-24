@@ -194,6 +194,7 @@ def build_standings_page(config):
     shutil.copy(os.path.join(TEMPLATES, "style.css"), os.path.join(DOCS, "style.css"))
 
     years = data.get("years", {})
+    current_teams = data.get("current_teams", [])
     env = _env()
     template = env.get_template("standings-history.html.j2")
     html = template.render(
@@ -201,6 +202,7 @@ def build_standings_page(config):
         season=config["year"],
         years=sorted(years.keys(), reverse=True),
         years_json=json.dumps(years),
+        current_teams_json=json.dumps(current_teams),
         updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
     )
     with open(os.path.join(DOCS, "standings-history.html"), "w") as f:

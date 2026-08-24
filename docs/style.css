@@ -699,8 +699,8 @@ body {
 
 .standingsrow {
   display: grid;
-  grid-template-columns: 2.4rem 1fr 5.5rem 4rem 4rem;
-  gap: 0.75rem;
+  grid-template-columns: 2rem 2rem 1fr 5rem 3.5rem 3.5rem;
+  gap: 0.6rem;
   padding: 0.6rem 0.85rem;
   border-bottom: 1px solid var(--rule);
   font-size: 0.88rem;
@@ -718,15 +718,45 @@ body {
 }
 
 .standingsrow span:first-child,
-.standingsrow span:nth-child(3),
+.standingsrow span:nth-child(2),
 .standingsrow span:nth-child(4),
-.standingsrow span:nth-child(5) {
+.standingsrow span:nth-child(5),
+.standingsrow span:nth-child(6) {
+  font-family: var(--data);
+  color: var(--whistle);
+}
+
+.avgrow {
+  display: grid;
+  grid-template-columns: 2rem 1fr 5.5rem 5.5rem 3.5rem;
+  gap: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.88rem;
+}
+
+.avgrow:last-child { border-bottom: none; }
+
+.avgrow--head {
+  font-family: var(--data);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--whistle);
+  background: var(--chalk);
+}
+
+.avgrow span:first-child,
+.avgrow span:nth-child(3),
+.avgrow span:nth-child(4),
+.avgrow span:nth-child(5) {
   font-family: var(--data);
   color: var(--whistle);
 }
 
 @media (max-width: 30rem) {
-  .standingsrow { grid-template-columns: 1.6rem 1fr 4rem 3rem 3rem; gap: 0.5rem; font-size: 0.8rem; }
+  .standingsrow { grid-template-columns: 1.3rem 2.1rem 1fr 3.2rem 3rem 3rem; gap: 0.35rem; font-size: 0.76rem; }
+  .avgrow { grid-template-columns: 1.6rem 1fr 3.6rem 3.6rem 2.4rem; gap: 0.5rem; font-size: 0.8rem; }
 }
 
 /* ---------- accessibility ---------- */

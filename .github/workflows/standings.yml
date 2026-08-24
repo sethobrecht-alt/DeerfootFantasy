@@ -16,6 +16,11 @@ on:
         required: false
         default: "2023 2024 2025"
         type: string
+      current_year:
+        description: "Season to pull the current team list from"
+        required: false
+        default: "2026"
+        type: string
 
 permissions:
   contents: write
@@ -37,7 +42,9 @@ jobs:
           ESPN_S2: ${{ secrets.ESPN_S2 }}
           SWID: ${{ secrets.SWID }}
         run: |
-          python fetch_standings.py "${{ inputs.league_id }}" --years ${{ inputs.years }}
+          python fetch_standings.py "${{ inputs.league_id }}" \
+            --years ${{ inputs.years }} \
+            --current-year "${{ inputs.current_year }}"
 
       - name: Render the page
         run: |

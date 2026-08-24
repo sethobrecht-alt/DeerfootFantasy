@@ -7,7 +7,7 @@ straight to the repo.
 
     export ESPN_S2='your_espn_s2_cookie'
     export SWID='{YOUR-SWID-WITH-BRACES}'
-    python fetch_standings.py 123456 --years 2023 2024 2025
+    python fetch_standings.py 123456 --years 2023 2024 2025 --current-year 2026
 
 Writes standings_history.json.
 """
@@ -31,6 +31,7 @@ def fetch_year(league_id, year, espn_s2, swid):
     for team in league.standings():
         rows.append({
             "rank": team.final_standing,
+            "regular_finish": team.standing,
             "team": team.team_name,
             "wins": team.wins,
             "losses": team.losses,
@@ -47,6 +48,8 @@ def main():
     ap.add_argument("league_id", type=int)
     ap.add_argument("--years", type=int, nargs="+", required=True,
                     help="completed seasons to fetch final standings for")
+    ap.add_argument("--current-year", type=int, required=True,
+                    help="season to pull the full current team list from")
     args = ap.parse_args()
 
     espn_s2, swid = os.environ.get("ESPN_S2"), os.environ.get("SWID")
@@ -72,7 +75,13 @@ def main():
         print(f"  {len(rows)} teams")
         years[str(year)] = rows
 
-    out = {"league_id": args.league_id, "years": years}
+    print(f"Fetching current ({args.current_year}) team list...")
+    current = League(league_id=args.league_id, year=args.current_year,
+                      espn_s2=espn_s2, swid=swid)
+    current_teams = sorted(t.team_name for t in current.teams)
+    print(f"  {len(current_teams)} teams")
+
+    out = {"league_id": args.league_id, "years": years, "current_teams": current_teams}
     with open(OUT, "w") as f:
         json.dump(out, f, indent=2)
     print(f"Wrote {OUT} ({sum(len(r) for r in years.values())} total team-seasons across {len(years)} years)")
