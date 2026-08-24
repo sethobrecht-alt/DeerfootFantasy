@@ -27,8 +27,8 @@
   <section class="calculator" aria-labelledby="calc-heading">
     <h2 class="section-title" id="calc-heading">Keeper cost calculator</h2>
     <p class="power__note">
-      Type a player's name to see what round they cost in the 2025 draft,
-      and whether they were a keeper that year.
+      Type a player's name to see what round it costs to keep them this year, based on
+      their 2025 draft round and whether they were already a keeper then.
     </p>
 
     <form id="calc-form" class="draft-toolbar" onsubmit="return false;">
@@ -55,6 +55,8 @@
         datalist.appendChild(opt);
       });
 
+      var calcYear = "2025";
+
       function render(name) {
         var rec = data[name.trim().toLowerCase()];
         if (!rec) {
@@ -63,14 +65,27 @@
             '<p class="power__note" style="margin:0;">Undrafted</p></article>';
           return;
         }
+
         var pickText = 'Round ' + rec.round + (rec.pick ? ', Pick ' + rec.pick : '');
         var keeperText = rec.keeper
           ? '<span class="draft-keeper">K</span> Was a keeper'
           : 'Not a keeper';
-        resultEl.innerHTML = '<article class="game"><p class="score__team" ' +
-          'style="margin-bottom: 0.5rem;">' + rec.player + '</p>' +
-          '<p style="margin:0;">' + pickText + '</p>' +
-          '<p style="margin: 0.4rem 0 0;">' + keeperText + '</p></article>';
+
+        var discount = rec.keeper ? 2 : 1;
+        var rawCost = rec.round - discount;
+        var costRound = Math.max(1, rawCost);
+        var floored = rawCost < 1;
+
+        resultEl.innerHTML = '<article class="game">' +
+          '<p class="score__team" style="margin-bottom: 0.5rem;">' + rec.player + '</p>' +
+          '<p class="calc-cost-label">This year&rsquo;s keeper cost</p>' +
+          '<p class="calc-cost-value">Round ' + costRound + '</p>' +
+          (floored ? '<p class="calc-cost-note">Already at the round 1 floor</p>' : '') +
+          '<div class="calc-detail">' +
+            '<p style="margin:0;">' + pickText + ' in ' + calcYear + '</p>' +
+            '<p style="margin: 0.3rem 0 0;">' + keeperText + '</p>' +
+          '</div>' +
+        '</article>';
       }
 
       form.addEventListener('submit', function () {
@@ -273,7 +288,7 @@ Rd 7, Pick 12            </span>
 </main>
 
 <footer class="foot">
-  <p>Updated August 24, 2026 at 12:47 PM ET.</p>
+  <p>Updated August 24, 2026 at 12:59 PM ET.</p>
   <p class="foot__fine">Keeper declarations are self-reported by the commissioner from ESPN's
   keepers page and may lag the source by a few days.</p>
 </footer>
