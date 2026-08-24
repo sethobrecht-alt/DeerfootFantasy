@@ -25,6 +25,21 @@ except ImportError:
 OUT = "standings_history.json"
 
 
+def owner_id(team):
+    """The stable identity behind a team, independent of whatever it's named.
+
+    A team can have multiple co-owners; the first one is used as the primary
+    identity a team is tracked by across renames. Falls back to the team
+    name itself if ESPN didn't return owner data for some reason, so a
+    row is never dropped for lack of an owner id.
+    """
+    if team.owners:
+        oid = team.owners[0].get("id")
+        if oid:
+            return oid
+    return "name:" + team.team_name
+
+
 def fetch_year(league_id, year, espn_s2, swid):
     league = League(league_id=league_id, year=year, espn_s2=espn_s2, swid=swid)
     rows = []
@@ -33,6 +48,7 @@ def fetch_year(league_id, year, espn_s2, swid):
             "rank": team.final_standing,
             "regular_finish": team.standing,
             "team": team.team_name,
+            "owner_id": owner_id(team),
             "wins": team.wins,
             "losses": team.losses,
             "ties": team.ties,
@@ -78,7 +94,10 @@ def main():
     print(f"Fetching current ({args.current_year}) team list...")
     current = League(league_id=args.league_id, year=args.current_year,
                       espn_s2=espn_s2, swid=swid)
-    current_teams = sorted(t.team_name for t in current.teams)
+    current_teams = sorted(
+        ({"owner_id": owner_id(t), "team": t.team_name} for t in current.teams),
+        key=lambda t: t["team"],
+    )
     print(f"  {len(current_teams)} teams")
 
     out = {"league_id": args.league_id, "years": years, "current_teams": current_teams}
