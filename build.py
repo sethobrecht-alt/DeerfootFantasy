@@ -91,6 +91,7 @@ def main():
         refresh(config, args.week)
 
     render.build_site(load_cached(), config)
+    render.build_keepers_page(config)
     print("Done. Open docs/index.html")
 
 
