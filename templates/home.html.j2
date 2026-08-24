@@ -43,8 +43,8 @@
     <div class="ridge">
       <img class="ridge__art" src="img/mountains.png" alt="" aria-hidden="true">
 
-      <p class="ridge__label" style="left: 39%;" id="champions-summit-label">Champions Summit</p>
-      <div class="ridge__cluster" style="left: 39%;" aria-labelledby="champions-summit-label">
+      <p class="ridge__label" style="left: 34%; top: 4%;" id="champions-summit-label">Champions Summit</p>
+      <div class="ridge__cluster" style="left: 34%; top: 10%; max-width: 15rem;" aria-labelledby="champions-summit-label">
         {% for team in champions %}
         <div class="badge badge--champion" title="{{ team.name }} ({{ team.years|join(', ') }})">
           {% if team.logo_url %}
@@ -59,8 +59,9 @@
         {% endfor %}
       </div>
 
-      <p class="ridge__label" style="left: 62%;" id="beak-peak-label">Beak Peak</p>
-      <div class="ridge__cluster" style="left: 62%;" aria-labelledby="beak-peak-label">
+      <p class="ridge__label" style="left: 77%; top: 20%;" id="beak-peak-label">Beak Peak</p>
+      <p class="ridge__tagline" style="left: 77%; top: 25.5%;">losers</p>
+      <div class="ridge__cluster" style="left: 77%; top: 30.5%;" aria-labelledby="beak-peak-label">
         {% for team in non_champions %}
         <div class="badge" title="{{ team.name }}">
           {% if team.logo_url %}

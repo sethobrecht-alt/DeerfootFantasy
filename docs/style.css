@@ -528,6 +528,18 @@ body {
   white-space: nowrap;
 }
 
+.ridge__tagline {
+  position: absolute;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: var(--body);
+  font-style: italic;
+  text-transform: lowercase;
+  font-size: 0.85rem;
+  color: var(--whistle);
+  white-space: nowrap;
+}
+
 .ridge__cluster {
   position: absolute;
   top: 32%;
@@ -556,8 +568,8 @@ body {
 .badge img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .badge--champion {
-  width: 3rem;
-  height: 3rem;
+  width: 4.4rem;
+  height: 4.4rem;
   border-color: var(--flag);
   border-width: 3px;
 }
@@ -582,6 +594,7 @@ body {
 
 @media (max-width: 34rem) {
   .ridge__label,
+  .ridge__tagline,
   .ridge__cluster {
     position: static;
     transform: none;
@@ -592,6 +605,12 @@ body {
     display: block;
     width: fit-content;
     margin: 0.6rem auto 0;
+    text-align: center;
+  }
+  .ridge__tagline {
+    display: block;
+    width: fit-content;
+    margin: 0.2rem auto 0;
     text-align: center;
   }
 }
