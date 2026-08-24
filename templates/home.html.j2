@@ -15,7 +15,6 @@
 <header class="masthead">
   <div class="masthead__inner">
     <p class="masthead__eyebrow">Official rulings &middot; {{ season }} season</p>
-    <h1 class="masthead__title">{{ site_title }}</h1>
     <p class="masthead__headline">Welcome Deerfoot Footballers</p>
   </div>
 </header>
@@ -23,62 +22,6 @@
 <div class="stripe" role="presentation"></div>
 
 <main class="page">
-
-  <section class="peaks" aria-labelledby="peaks-heading">
-    <h2 class="section-title" id="peaks-heading">The standing</h2>
-
-    <div class="summits">
-      <div>
-        <p class="summit-label" id="summit-champions-label">Champions Summit</p>
-        <div class="summit summit--champions" aria-labelledby="summit-champions-label">
-          <svg class="summit__art" viewBox="0 0 400 520" preserveAspectRatio="none" aria-hidden="true">
-            <polygon points="10,520 150,230 200,40 250,230 390,520"
-                      fill="var(--turf)" stroke="var(--turf-deep)" stroke-width="3"></polygon>
-            <polygon points="170,130 200,40 230,130 200,165"
-                      fill="#EAF2ED" stroke="var(--turf-deep)" stroke-width="2"></polygon>
-          </svg>
-          <div class="summit__body">
-            <div class="summit__climb">
-              {% for team in champions %}
-              <div class="summit__team">
-                <strong>{{ team.name }}</strong>
-                <span class="summit__years">{{ team.years|join(', ') }}</span>
-              </div>
-              {% else %}
-              <p class="summit__empty">Nobody's reached the top yet.</p>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <p class="summit-label" id="summit-peak-label">Beak Peak</p>
-        <div class="summit summit--peak" aria-labelledby="summit-peak-label">
-          <svg class="summit__art" viewBox="0 0 400 280" preserveAspectRatio="none" aria-hidden="true">
-            <polygon points="10,280 200,70 390,280"
-                      fill="var(--turf)" stroke="var(--turf-deep)" stroke-width="3"></polygon>
-          </svg>
-          <div class="summit__body">
-            <div class="summit__climb">
-              {% for team in non_champions %}
-              <div class="summit__team summit__team--plain">{{ team }}</div>
-              {% else %}
-              <p class="summit__empty">Everyone's won something. Suspicious.</p>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p class="foot__fine" style="margin-top: 1rem; color: var(--whistle);">
-      Championships are matched to teams by their current name, so a team that's
-      since renamed may be missing from its actual summit.
-    </p>
-  </section>
-
-  <div class="stripe stripe--inline" role="presentation"></div>
 
   <nav class="archive" aria-label="Site">
     <h2 class="section-title">Around the league</h2>
@@ -88,6 +31,53 @@
       <li><a class="archive__link" href="draft-history.html">Draft history</a></li>
     </ul>
   </nav>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+
+  <section class="peaks" aria-labelledby="peaks-heading">
+    <h2 class="section-title" id="peaks-heading">The standing</h2>
+
+    <div class="ridge">
+      <img class="ridge__art" src="img/mountains.png" alt="" aria-hidden="true">
+
+      <p class="ridge__label" style="left: 39%;" id="champions-summit-label">Champions Summit</p>
+      <div class="ridge__cluster" style="left: 39%;" aria-labelledby="champions-summit-label">
+        {% for team in champions %}
+        <div class="badge badge--champion" title="{{ team.name }} ({{ team.years|join(', ') }})">
+          {% if team.logo_url %}
+          <img src="{{ team.logo_url }}" alt="{{ team.name }}" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'badge__initial',textContent:'{{ team.name[0] }}'}))">
+          {% else %}
+          <span class="badge__initial">{{ team.name[0] }}</span>
+          {% endif %}
+        </div>
+        {% else %}
+        <p class="ridge__empty">Nobody's reached the top yet.</p>
+        {% endfor %}
+      </div>
+
+      <p class="ridge__label" style="left: 62%;" id="beak-peak-label">Beak Peak</p>
+      <div class="ridge__cluster" style="left: 62%;" aria-labelledby="beak-peak-label">
+        {% for team in non_champions %}
+        <div class="badge" title="{{ team.name }}">
+          {% if team.logo_url %}
+          <img src="{{ team.logo_url }}" alt="{{ team.name }}" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'badge__initial',textContent:'{{ team.name[0] }}'}))">
+          {% else %}
+          <span class="badge__initial">{{ team.name[0] }}</span>
+          {% endif %}
+        </div>
+        {% else %}
+        <p class="ridge__empty">Everyone's won something. Suspicious.</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <p class="foot__fine" style="margin-top: 1rem; color: var(--whistle);">
+      Championships are matched to teams by their current name, so a team that's
+      since renamed may be missing from its actual summit.
+    </p>
+  </section>
 
 </main>
 

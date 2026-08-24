@@ -59,13 +59,16 @@ def main():
     print(f"Fetching current ({args.current_year}) team list...")
     current = League(league_id=args.league_id, year=args.current_year,
                       espn_s2=espn_s2, swid=swid)
-    team_names = sorted(t.team_name for t in current.teams)
-    print(f"  {len(team_names)} teams")
+    current_teams = sorted(
+        ({"name": t.team_name, "logo_url": t.logo_url} for t in current.teams),
+        key=lambda t: t["name"],
+    )
+    print(f"  {len(current_teams)} teams")
 
     out = {
         "league_id": args.league_id,
         "years": years,
-        "current_teams": team_names,
+        "current_teams": current_teams,
     }
     with open(OUT, "w") as f:
         json.dump(out, f, indent=2)
