@@ -40,9 +40,9 @@
   <section class="standings" aria-labelledby="average-heading">
     <h2 class="section-title" id="average-heading">All-time average finish</h2>
     <p class="power__note">
-      Averages each of this year's teams' final and regular-season finish across
-      every year they've played under their current name, then ranks them best to
-      worst. A team with fewer years behind it (see "Yrs") has a noisier average.
+      Averages each manager's final and regular-season finish across every year
+      they've played, then ranks them best to worst. Matched by ESPN account, not
+      team name, so a renamed team still gets full credit for its history.
     </p>
 
     <div class="standingsboard" id="average-board" role="table" aria-label="All-time average finish">
@@ -57,8 +57,8 @@
     </div>
 
     <p class="foot__fine" style="margin-top: 1rem; color: var(--whistle);">
-      Matched by current team name, so a team that's since renamed only counts the
-      years it played under its current name.
+      Shown under each manager's current team name, even for years played under a
+      different name.
     </p>
   </section>
 
@@ -128,25 +128,28 @@
     renderYear();
 
     // ---- all-time average finish table ----
+    // Grouped by owner (a stable ESPN account), not team name, so a team
+    // that changed its name still gets full credit for every year its
+    // owner played, rather than looking like a 1-year-old team.
     var avgRowsEl = document.getElementById('average-rows');
-    var currentSet = {};
-    currentTeams.forEach(function (name) { currentSet[name] = true; });
+    var currentNameByOwner = {};
+    currentTeams.forEach(function (t) { currentNameByOwner[t.owner_id] = t.team; });
 
     var acc = {};
     years.forEach(function (year) {
       (data[year] || []).forEach(function (r) {
-        if (!r.team || !currentSet[r.team]) return;
-        var a = acc[r.team] || (acc[r.team] = { sumFinal: 0, sumReg: 0, count: 0 });
+        if (!r.owner_id || !currentNameByOwner[r.owner_id]) return;
+        var a = acc[r.owner_id] || (acc[r.owner_id] = { sumFinal: 0, sumReg: 0, count: 0 });
         if (r.rank != null) a.sumFinal += r.rank;
         if (r.regular_finish != null) a.sumReg += r.regular_finish;
         a.count += 1;
       });
     });
 
-    var averages = Object.keys(acc).map(function (name) {
-      var a = acc[name];
+    var averages = Object.keys(acc).map(function (ownerId) {
+      var a = acc[ownerId];
       return {
-        team: name,
+        team: currentNameByOwner[ownerId],
         avgFinal: a.sumFinal / a.count,
         avgReg: a.sumReg / a.count,
         years: a.count,
