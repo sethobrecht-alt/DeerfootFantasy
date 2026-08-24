@@ -57,8 +57,8 @@ body {
   margin: 0;
   font-family: var(--display);
   font-variation-settings: 'wdth' 118, 'wght' 850;
-  font-size: clamp(2.4rem, 11vw, 4.75rem);
-  line-height: 0.92;
+  font-size: clamp(1.6rem, 6vw, 2.75rem);
+  line-height: 0.95;
   letter-spacing: -0.02em;
   text-transform: uppercase;
 }
