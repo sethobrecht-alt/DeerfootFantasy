@@ -125,3 +125,35 @@ def build_keepers_page(config):
     with open(os.path.join(DOCS, "keepers.html"), "w") as f:
         f.write(html)
     print("Wrote docs/keepers.html")
+
+
+def build_draft_history_page(config):
+    """Render docs/draft-history.html from draft_history.json, if it exists.
+
+    All the search/sort happens client-side in vanilla JS against the data
+    embedded in the page, so this page works without a backend and stays
+    fast even across several years of picks.
+    """
+    history_path = os.path.join(HERE, "draft_history.json")
+    if not os.path.exists(history_path):
+        return
+
+    with open(history_path) as f:
+        data = json.load(f)
+
+    os.makedirs(DOCS, exist_ok=True)
+    shutil.copy(os.path.join(TEMPLATES, "style.css"), os.path.join(DOCS, "style.css"))
+
+    years = data.get("years", {})
+    env = _env()
+    template = env.get_template("draft-history.html.j2")
+    html = template.render(
+        site_title=config["site_title"],
+        season=config["year"],
+        years=sorted(years.keys(), reverse=True),
+        years_json=json.dumps(years),
+        updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
+    )
+    with open(os.path.join(DOCS, "draft-history.html"), "w") as f:
+        f.write(html)
+    print("Wrote docs/draft-history.html")
