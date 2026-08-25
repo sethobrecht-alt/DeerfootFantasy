@@ -1,7 +1,7 @@
 {
   "_note": "ESPN's read API does not expose keeper declarations (confirmed by probe_espn.py). This file is maintained by hand from the league's keepers page and used until the draft actually runs, at which point draftDetail.picks[].keeper becomes reliable.",
   "source": "https://fantasy.espn.com/football/league/keepers?leagueId=311243487",
-  "updated": "2026-08-24",
+  "updated": "2026-08-25",
   "teams": {
     "The Island Gudge": [
       {"player": "Tyler Warren", "pro_team": "IND", "position": "TE", "round": 8, "pick": 4},
@@ -11,7 +11,10 @@
       {"player": "Brock Bowers", "pro_team": "LV", "position": "TE", "round": 6, "pick": 9},
       {"player": "Jonathan Taylor", "pro_team": "IND", "position": "RB", "round": 1, "pick": 4}
     ],
-    "Chase Brown Had a Bad Scare": [],
+    "Chase Brown Had a Bad Scare": [
+      {"player": "Wan'Dale Robinson", "pro_team": "TEN", "position": "WR", "round": 11, "pick": 3},
+      {"player": "Chase Brown", "pro_team": "CIN", "position": "RB", "round": 6, "pick": 10}
+    ],
     "The Machine Knows": [],
     "Team Bradford": [
       {"player": "Bijan Robinson", "pro_team": "ATL", "position": "RB", "round": 1, "pick": 10},
