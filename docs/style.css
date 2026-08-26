@@ -441,6 +441,30 @@ body {
   font-size: 0.78rem;
 }
 
+.board__row--no-movement { grid-template-columns: 2.2rem 1fr 6rem; }
+
+.board__injuries {
+  display: block;
+  font-family: var(--data);
+  font-variation-settings: normal;
+  font-size: 0.66rem;
+  font-weight: 400;
+  color: var(--blood);
+  margin-top: 0.2rem;
+}
+
+.board__injuries--clean { color: var(--whistle); }
+
+.streak-badge {
+  font-family: var(--data);
+  font-size: 0.68rem;
+  padding: 0.05rem 0.35rem;
+  border-radius: 2px;
+}
+
+.streak-badge--win { background: rgba(11, 59, 46, 0.12); color: var(--turf); }
+.streak-badge--loss { background: rgba(158, 42, 43, 0.12); color: var(--blood); }
+
 .power__waste {
   margin: 1.75rem 0 0;
   font-size: 0.85rem;
@@ -792,6 +816,7 @@ a:focus-visible,
 
 @media (max-width: 30rem) {
   .board__row { grid-template-columns: 1.6rem 2rem 1fr 4rem; }
+  .board__row--no-movement { grid-template-columns: 1.6rem 1fr 3.6rem; gap: 0.4rem; }
   .flag { box-shadow: 6px 6px 0 var(--flag-deep); }
   .draftrow { grid-template-columns: 2.2rem 3.4rem 1fr; }
   .draftrow span:last-child { grid-column: 1 / -1; }
