@@ -42,15 +42,24 @@ def _flag_of_week(week, favourite, shield):
 
 def build_site(weeks, config):
     """weeks: list of week dicts, ascending. Writes one page per week."""
-    if not weeks:
-        print("No completed weeks yet — nothing to render.")
-        return
-
     os.makedirs(DOCS, exist_ok=True)
     shutil.copy(os.path.join(TEMPLATES, "style.css"), os.path.join(DOCS, "style.css"))
-
     env = _env()
     template = env.get_template("page.html.j2")
+
+    if not weeks:
+        html = template.render(
+            site_title=config["site_title"],
+            season=config["year"],
+            week=None,
+            updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
+        )
+        with open(os.path.join(DOCS, "recap.html"), "w") as f:
+            f.write(html)
+        open(os.path.join(DOCS, ".nojekyll"), "w").close()
+        print("No completed weeks yet — wrote a placeholder docs/recap.html.")
+        return
+
     favourite = config["favourite_team"]
     shield = config.get("shield_favourite", True)
     weights = config.get("power_ranking_weights", {"points": 0.6, "record": 0.4})

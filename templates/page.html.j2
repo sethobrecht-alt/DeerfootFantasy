@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ site_title }} — Week {{ week.week }}</title>
-<meta name="description" content="Week {{ week.week }} results, recaps and power rankings for {{ site_title }}.">
+<title>{{ site_title }} — {% if week %}Week {{ week.week }}{% else %}Weekly Recap{% endif %}</title>
+<meta name="description" content="{% if week %}Week {{ week.week }} results, recaps and power rankings{% else %}Weekly recaps{% endif %} for {{ site_title }}.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;500;600&display=swap" rel="stylesheet">
@@ -16,8 +16,8 @@
   <div class="masthead__inner">
     <p class="masthead__eyebrow">Official rulings &middot; {{ season }} season</p>
     <h1 class="masthead__title">{{ site_title }}</h1>
-    <p class="masthead__week">Week {{ week.week }}</p>
-    {% if week.headline %}<p class="masthead__headline">{{ week.headline }}</p>{% endif %}
+    <p class="masthead__week">{% if week %}Week {{ week.week }}{% else %}Weekly Recap{% endif %}</p>
+    {% if week and week.headline %}<p class="masthead__headline">{{ week.headline }}</p>{% endif %}
   </div>
 </header>
 
@@ -39,7 +39,13 @@
 
   <div class="stripe stripe--inline" role="presentation"></div>
 
-  {% if flag_of_week %}
+  {% if not week %}
+  <section class="games">
+    <p class="power__note">No weekly recaps yet &mdash; check back once the season's underway.</p>
+  </section>
+  {% endif %}
+
+  {% if week and flag_of_week %}
   <section class="flagwrap" aria-labelledby="flag-heading">
     <h2 class="flagwrap__label" id="flag-heading">Flag of the week</h2>
     <div class="flag">
@@ -60,6 +66,8 @@
     </div>
   </section>
   {% endif %}
+
+  {% if week %}
 
   <section class="games" aria-labelledby="games-heading">
     <h2 class="section-title" id="games-heading">The matchups</h2>
@@ -182,6 +190,7 @@
       {% endfor %}
     </ul>
   </nav>
+  {% endif %}
   {% endif %}
 
 </main>
