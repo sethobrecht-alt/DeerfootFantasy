@@ -30,7 +30,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("league_id", type=int)
     ap.add_argument("--year", type=int, required=True)
-    ap.add_argument("--weeks", type=int, nargs="+", required=True)
+    ap.add_argument("--weeks", type=int, nargs="+",
+                     help="fetch full box-score detail for these weeks")
+    ap.add_argument("--through-week", type=int,
+                     help="print each team's record/points/streak through this week, "
+                          "straight off team.outcomes/team.scores (no box scores)")
     args = ap.parse_args()
 
     espn_s2, swid = os.environ.get("ESPN_S2"), os.environ.get("SWID")
@@ -38,6 +42,33 @@ def main():
         sys.exit("Set ESPN_S2 and SWID first.")
 
     league = League(league_id=args.league_id, year=args.year, espn_s2=espn_s2, swid=swid)
+
+    if args.through_week:
+        n = args.through_week
+        for team in league.teams:
+            outcomes = team.outcomes[:n]
+            scores = team.scores[:n]
+            wins = outcomes.count("W")
+            losses = outcomes.count("L")
+            ties = outcomes.count("T")
+            points_for = round(sum(scores), 2)
+            streak_type, streak_len = None, 0
+            for o in reversed(outcomes):
+                if o not in ("W", "L"):
+                    break
+                if streak_type is None:
+                    streak_type = o
+                if o == streak_type:
+                    streak_len += 1
+                else:
+                    break
+            print(f"{team.team_name}: {wins}-{losses}" + (f"-{ties}" if ties else "")
+                  + f", {points_for} PF, streak {streak_type or '-'}{streak_len}"
+                  + f", outcomes so far: {''.join(outcomes)}")
+        return
+
+    if not args.weeks:
+        sys.exit("Pass --weeks or --through-week.")
 
     def side_digest(side):
         top = ", ".join(f"{p['name']} {p['points']}" for p in side["starters"][:3])
