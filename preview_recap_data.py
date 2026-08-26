@@ -39,6 +39,19 @@ def main():
 
     league = League(league_id=args.league_id, year=args.year, espn_s2=espn_s2, swid=swid)
 
+    def side_digest(side):
+        top = ", ".join(f"{p['name']} {p['points']}" for p in side["starters"][:3])
+        lines = [f"    {side['name']} {side['score']} — top: {top}"]
+        if side["blunders"]:
+            b = side["blunders"][0]
+            lines.append(
+                f"      benched {b['should_have_started']} ({b['bench_points']}) for "
+                f"{b['actually_started']} ({b['starter_points']}) at {b['slot']}, "
+                f"-{b['points_lost']} pts; total left on bench: "
+                f"{side['points_left_on_bench']}"
+            )
+        return "\n".join(lines)
+
     weeks = {}
     for w in args.weeks:
         print(f"Fetching week {w}...")
@@ -49,6 +62,8 @@ def main():
                 h, a = m["home"], m["away"]
                 print(f"  {h['name']} {h['score']} - {a['score']} {a['name']}"
                       f" (margin {m['margin']})")
+                print(side_digest(h))
+                print(side_digest(a))
         else:
             print(f"  week {w}: no data")
 
