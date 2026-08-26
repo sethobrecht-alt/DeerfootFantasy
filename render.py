@@ -210,6 +210,35 @@ def build_standings_page(config):
     print("Wrote docs/standings-history.html")
 
 
+def build_power_rankings_page(rankings, config):
+    """Render docs/power-rankings.html from an already-computed rankings list.
+
+    Unlike the other build_* functions, this one takes live data straight
+    from league.season_power_rankings() rather than a cached JSON file --
+    injuries are a right-now signal, not something that belongs in a
+    once-a-week snapshot file.
+    """
+    os.makedirs(DOCS, exist_ok=True)
+    shutil.copy(os.path.join(TEMPLATES, "style.css"), os.path.join(DOCS, "style.css"))
+
+    env = _env()
+    template = env.get_template("power-rankings.html.j2")
+    weights = config.get(
+        "season_power_ranking_weights", {"points": 0.5, "record": 0.35, "health": 0.15}
+    )
+    html = template.render(
+        site_title=config["site_title"],
+        season=config["year"],
+        rankings=rankings,
+        weights=weights,
+        favourite=config.get("favourite_team"),
+        updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
+    )
+    with open(os.path.join(DOCS, "power-rankings.html"), "w") as f:
+        f.write(html)
+    print("Wrote docs/power-rankings.html")
+
+
 def build_league_basics_page(config):
     """Render docs/league-basics.html from league_basics.json, if it exists."""
     path = os.path.join(HERE, "league_basics.json")

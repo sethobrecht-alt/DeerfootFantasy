@@ -90,6 +90,14 @@ def main():
             sys.exit("Set your league_id in config.json first.")
         refresh(config, args.week)
 
+        print("Fetching power rankings...")
+        weights = config.get(
+            "season_power_ranking_weights", {"points": 0.5, "record": 0.35, "health": 0.15}
+        )
+        connection = lg.connect(config)
+        rankings = lg.season_power_rankings(connection, weights)
+        render.build_power_rankings_page(rankings, config)
+
     render.build_site(load_cached(), config)
     render.build_keepers_page(config)
     render.build_draft_history_page(config)
