@@ -95,7 +95,8 @@ def main():
             "season_power_ranking_weights", {"points": 0.5, "record": 0.35, "health": 0.15}
         )
         connection = lg.connect(config)
-        rankings = lg.season_power_rankings(connection, weights)
+        played_any = any(t.wins + t.losses + t.ties for t in connection.teams)
+        rankings = lg.season_power_rankings(connection, weights) if played_any else []
         render.build_power_rankings_page(rankings, config)
 
     render.build_site(load_cached(), config)
