@@ -1,0 +1,28 @@
+{
+  "_note": "House vocabulary and per-team nicknames for the weekly recap voice. Used by recaps.py. Edit freely -- these are the league's inside jokes, not app config.",
+  "vocab": [
+    {"term": "Boss", "meaning": "good"},
+    {"term": "Beak", "meaning": "bad"},
+    {"term": "Stuck in the Sewards", "meaning": "in despair"},
+    {"term": "Bushwhacking without a compass", "meaning": "lost"},
+    {"term": "Ran a pig and back", "meaning": "hard work"},
+    {"term": "Dutch Oven", "meaning": "dead weight, useless"},
+    {"term": "Penis Eating Pike", "meaning": "destroyed the other team, scary"},
+    {"term": "like living on the Point", "meaning": "awkward, in the middle"},
+    {"term": "like a woodsman running to the camp store", "meaning": "scored a long rushing touchdown"}
+  ],
+  "nicknames": {
+    "55 Burgers": ["Paralegal", "Counsel"],
+    "Funk that Junk": ["Old balls", "Kinda Jo-Nurse"],
+    "Team Fox": ["Team No Creativity 2", "Babysitter of little children 2015", "Lone Eagle"],
+    "Harley Jarvis": ["Blue Ridge", "Zoomer 2", "Day Trader"],
+    "The Machine Knows": ["Boss G12 Member", "Fantasy Dues Donator"],
+    "Love Thy Naber": ["Little Brother", "Flame On", "Pike Dive Critic"],
+    "The Goose is Loose": ["His last name is Stefanowicz, misspell it every time in a different way", "Chef Boyardee"],
+    "Ricky Huns": ["Babysitter of little children 2018", "Other Nate"],
+    "The Island Gudge": ["46er", "Boss Section Chief"],
+    "Catalina Wine Mixon": ["Permanent Student", "Zoomer 1", "Chair Force"],
+    "Chase Brown Had a Bad Scare": ["Pill Pusher", "Babysitter of little children 2014"],
+    "Team Bradford": ["Team No Creativity 1", "Campcraft Enthusiast"]
+  }
+}

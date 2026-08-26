@@ -10,13 +10,17 @@ import os
 from anthropic import Anthropic
 
 MODEL = "claude-sonnet-5"
+LORE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "team_lore.json")
 
 VOICE = """You write recaps for a private fantasy football league of longtime \
 friends. House style:
 
 - Two short paragraphs, 90-140 words total. No headers, no bullet points.
 - Name actual players and actual point totals. Specifics are the whole joke.
-- Dry and needling, not mean. These people know each other.
+- This is a roast more than a report. Make fun of the teams and the decisions \
+their managers made — needling and a little mean is encouraged, these are \
+close friends who give each other a hard time. Never actually cruel: the \
+target is always the fantasy team and its lineup, never anyone's real life.
 - Never explain fantasy football. Never open with "In a thrilling matchup."
 - No emoji. No exclamation marks.
 
@@ -33,12 +37,51 @@ mention points they left on their bench, and never call them lucky. Be warm abou
 them and normal about the opponent. Keep it deadpan enough to be funny rather \
 than sycophantic."""
 
+LORE_RULE = """
+
+House vocabulary. Use zero to a few of these where they genuinely fit what \
+actually happened in this matchup — never force one in, and never use more \
+than a handful in one recap:
+{vocab_lines}
+
+Nicknames. Each team below has a short list of nicknames. Pick AT MOST ONE \
+nickname per team and use it in place of the team's real name (or introduce \
+it once alongside the real name, then keep using the nickname). Never use \
+more than one nickname for the same team in a single recap. It's fine to use \
+zero nicknames, or a nickname for only one of the two teams, if nothing fits.
+{home_team}: {home_nicknames}
+{away_team}: {away_nicknames}"""
+
 
 def _client():
     key = os.environ.get("ANTHROPIC_API_KEY")
     if not key:
         return None
     return Anthropic(api_key=key)
+
+
+def _lore():
+    if not os.path.exists(LORE_PATH):
+        return {"vocab": [], "nicknames": {}}
+    with open(LORE_PATH) as f:
+        return json.load(f)
+
+
+def _lore_rule(home_name, away_name):
+    lore = _lore()
+    vocab_lines = "\n".join(
+        f"- {v['term']} = {v['meaning']}" for v in lore.get("vocab", [])
+    )
+    nicknames = lore.get("nicknames", {})
+    home_nicknames = ", ".join(nicknames.get(home_name, [])) or "(none)"
+    away_nicknames = ", ".join(nicknames.get(away_name, [])) or "(none)"
+    return LORE_RULE.format(
+        vocab_lines=vocab_lines,
+        home_team=home_name,
+        home_nicknames=home_nicknames,
+        away_team=away_name,
+        away_nicknames=away_nicknames,
+    )
 
 
 def _side_brief(side):
@@ -122,8 +165,8 @@ def write_recaps(week_data, favourite_team, cache_path):
             m["recap"] = _fallback(m)
             continue
 
-        system = VOICE
         names = (m["home"]["name"], m["away"]["name"])
+        system = VOICE + _lore_rule(*names)
         if favourite_team in names:
             system += FAVOURITE_RULE.format(team=favourite_team)
         try:
