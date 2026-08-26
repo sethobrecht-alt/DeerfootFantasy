@@ -2,9 +2,8 @@ name: Weekly update
 
 on:
   schedule:
-    # 16:00 UTC Tuesday = 12pm ET in season. ESPN applies stat corrections
-    # Tuesday and Wednesday, so a midday run catches most of them.
-    - cron: "0 16 * * 2"
+    # 11:30 UTC Tuesday = 7:30am ET in season.
+    - cron: "30 11 * * 2"
   workflow_dispatch:
     inputs:
       week:
