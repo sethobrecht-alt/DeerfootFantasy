@@ -1,0 +1,45 @@
+name: Fetch recap preview data
+
+# One-off: pulls full box-score detail for a few past-season weeks so we can
+# sample the recap voice on real games. Prints scores to the log and uploads
+# the full JSON as a workflow artifact — nothing is committed to the repo.
+
+on:
+  workflow_dispatch:
+    inputs:
+      league_id:
+        description: "Your ESPN league ID"
+        required: true
+        type: string
+      year:
+        description: "Season to pull weeks from"
+        required: true
+        type: string
+      weeks:
+        description: "Space-separated week numbers"
+        required: true
+        type: string
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install espn-api
+
+      - name: Fetch weeks
+        env:
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          SWID: ${{ secrets.SWID }}
+        run: |
+          python preview_recap_data.py "${{ inputs.league_id }}" \
+            --year "${{ inputs.year }}" \
+            --weeks ${{ inputs.weeks }}
+
+      - name: Print preview data
+        run: cat preview_weeks.json
