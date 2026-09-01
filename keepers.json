@@ -1,7 +1,7 @@
 {
   "_note": "ESPN's read API does not expose keeper declarations (confirmed by probe_espn.py). This file is maintained by hand from the league's keepers page and used until the draft actually runs, at which point draftDetail.picks[].keeper becomes reliable.",
   "source": "https://fantasy.espn.com/football/league/keepers?leagueId=311243487",
-  "updated": "2026-08-26",
+  "updated": "2026-09-01",
   "teams": {
     "The Island Gudge": [
       {"player": "Tyler Warren", "pro_team": "IND", "position": "TE", "round": 8, "pick": 4},
@@ -31,7 +31,10 @@
       {"player": "Ja'Marr Chase", "pro_team": "CIN", "position": "WR", "round": 1, "pick": 8},
       {"player": "Rashee Rice", "pro_team": "KC", "position": "WR", "round": 7, "pick": 8}
     ],
-    "55 Burgers": [],
+    "55 Burgers": [
+      {"player": "Jahmyr Gibbs", "pro_team": "DET", "position": "RB", "round": 1, "pick": 6},
+      {"player": "Cam Skattebo", "pro_team": "NYG", "position": "RB", "round": 7, "pick": 6}
+    ],
     "Ricky Huns": [
       {"player": "Ladd McConkey", "pro_team": "LAC", "position": "WR", "round": 4, "pick": 8},
       {"player": "Jaxson Dart", "pro_team": "NYG", "position": "QB", "round": 13, "pick": 5}
