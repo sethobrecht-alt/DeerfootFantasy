@@ -43,7 +43,10 @@
       {"player": "James Cook III", "pro_team": "BUF", "position": "RB", "round": 2, "pick": 2},
       {"player": "Chris Olave", "pro_team": "NO", "position": "WR", "round": 5, "pick": 11}
     ],
-    "Funk that Junk": [],
+    "Funk that Junk": [
+      {"player": "Emeka Egbuka", "pro_team": "TB", "position": "WR", "round": 4, "pick": 12},
+      {"player": "Bucky Irving", "pro_team": "TB", "position": "RB", "round": 12, "pick": 12}
+    ],
     "Team Fox": [
       {"player": "Omarion Hampton", "pro_team": "LAC", "position": "RB", "round": 2, "pick": 1},
       {"player": "Jameson Williams", "pro_team": "DET", "position": "WR", "round": 7, "pick": 12}
