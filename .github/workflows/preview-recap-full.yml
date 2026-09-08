@@ -1,0 +1,120 @@
+name: Preview full recap page
+
+# Renders a complete recap page (real AI-written matchups, flag of the week,
+# power rankings) for one past-season week, using the live templates. For
+# previewing design changes against real games before they ship for real
+# weeks. Nothing lands on main -- results are pushed to a throwaway
+# preview/* branch instead.
+
+on:
+  workflow_dispatch:
+    inputs:
+      league_id:
+        description: "Your ESPN league ID"
+        required: true
+        type: string
+      year:
+        description: "Season to preview"
+        required: true
+        type: string
+      week:
+        description: "Week to render in full"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Render the preview page
+        env:
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          SWID: ${{ secrets.SWID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python - "${{ inputs.league_id }}" "${{ inputs.year }}" "${{ inputs.week }}" <<'PYEOF'
+          import json, os, sys
+          import league as lg
+          import recaps
+          import render
+
+          league_id, year, target_week = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3])
+          config = json.load(open("config.json"))
+
+          espn_s2, swid = os.environ.get("ESPN_S2"), os.environ.get("SWID")
+          espn_league = __import__("espn_api.football", fromlist=["League"]).League(
+              league_id=league_id, year=year, espn_s2=espn_s2, swid=swid
+          )
+
+          weeks = []
+          for w in range(1, target_week + 1):
+              data = lg.fetch_week(espn_league, w)
+              if data:
+                  weeks.append(data)
+          if not weeks or weeks[-1]["week"] != target_week:
+              sys.exit(f"Week {target_week} has no data (not played, or fetch failed).")
+
+          target = weeks[-1]
+          recaps.write_recaps(target, config["favourite_team"], "/tmp/preview_cache.json")
+
+          rows = lg.standings_through(weeks)
+          weights = config.get("power_ranking_weights", {"points": 0.6, "record": 0.4})
+          rankings = lg.power_rankings(rows, weights, None)
+          shield = config.get("shield_favourite", True)
+          favourite = config["favourite_team"]
+          wasted = sorted(
+              [r for r in rankings if r["bench_points_wasted"] > 0
+               and not (shield and r["name"] == favourite)],
+              key=lambda r: r["bench_points_wasted"], reverse=True,
+          )[:5]
+
+          top_scorer, low_scorer = render._week_extremes(target)
+          flag_of_week = render._flag_of_week(target, favourite, shield)
+
+          env = render._env()
+          template = env.get_template("page.html.j2")
+          html = template.render(
+              site_title=config["site_title"],
+              season=f"{year} (preview)",
+              week=target,
+              rankings=rankings,
+              wasted=wasted,
+              weights=weights,
+              favourite=favourite,
+              shield_favourite=shield,
+              flag_of_week=flag_of_week,
+              top_scorer=top_scorer,
+              low_scorer=low_scorer,
+              archive=[{"week": target_week, "href": "#"}],
+              updated=f"a preview build of week {target_week}, {year} -- not a live page",
+          )
+
+          os.makedirs("preview_output", exist_ok=True)
+          with open(f"preview_output/week-{target_week}-{year}-preview.html", "w") as f:
+              f.write(html)
+          import shutil
+          shutil.copy("templates/style.css", "preview_output/style.css")
+          print(f"Wrote preview_output/week-{target_week}-{year}-preview.html")
+          PYEOF
+
+      - name: Push the preview to a throwaway branch
+        run: |
+          git config user.name "preview-bot"
+          git config user.email "preview-bot@users.noreply.github.com"
+          BRANCH="preview/week-${{ inputs.week }}-${{ inputs.year }}"
+          git checkout -B "$BRANCH"
+          git add -f preview_output
+          git commit -m "Preview: week ${{ inputs.week }}, ${{ inputs.year }}"
+          git push origin "$BRANCH" --force
