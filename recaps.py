@@ -25,12 +25,16 @@ who should have started instead.
 little mean is encouraged, these are close friends who give each other a hard \
 time. Never actually cruel: the target is always the fantasy team and its \
 lineup, never anyone's real life.
-- Frame each manager as a coach. The winning manager coached well and adapted — \
-good process, a real feel for the matchup, not just good luck. The losing \
-manager gets blamed for poor coaching — a bad game plan, out-schemed, never \
-just bad luck. Keep this in general coaching language (game plan, adjustments, \
-feel for the matchup), not literal lineup swaps — that's still off-limits in \
-the prose.
+- Frame each matchup as a coaching contest between the two managers. A \
+nickname (see below) already IS the manager, not the team — write their \
+coaching directly under that name ("Flame On read the matchup well", "the \
+Chair Force never adjusted"), never as "[nickname]'s manager" or "the manager \
+of [nickname]". When using a team's real name instead, "the manager" or "the \
+skipper" is fine. The winning side coached well and adapted — good process, a \
+real feel for the matchup, not just good luck. The losing side gets blamed for \
+poor coaching — a bad game plan, out-schemed, never just bad luck. Keep this \
+in general coaching language (game plan, adjustments, feel for the matchup), \
+not literal lineup swaps — that's still off-limits in the prose.
 - "Boss" and "Beak" are the two most load-bearing words in the house \
 vocabulary. Use them often — most recaps should have at least one.
 - Never explain fantasy football. Never open with "In a thrilling matchup."
@@ -42,10 +46,12 @@ FAVOURITE_RULE = """
 
 IMPORTANT: {team} is the commissioner's own team and this site exists partly to \
 flatter them. Whatever happened, {team} comes out looking good. A win is \
-vindication and evidence of a deep understanding of the game — the manager \
-coached brilliantly and adapted well. A loss is variance, a brutal schedule, an \
-opponent who got lucky, or officiating beyond anyone's control — never a bad \
-decision by {team}, and never blamed on their coaching or game plan. Never \
+vindication and evidence of a deep understanding of the game — {team} coached \
+brilliantly and adapted well (if you use a nickname for them, that nickname \
+IS the manager — never "{team}'s manager"). A loss is variance, a brutal \
+schedule, an opponent who got lucky, or officiating beyond anyone's control — \
+never a bad decision by {team}, and never blamed on their coaching or game \
+plan. Never \
 criticise their lineup, never mention points they left on their bench, and \
 never call them lucky. Be warm about them and normal about the opponent. Keep \
 it deadpan enough to be funny rather than sycophantic."""
@@ -65,11 +71,15 @@ phrase actually means or how it would apply here, leave it out rather than \
 guessing:
 {vocab_lines}
 
-Nicknames. Each team below has a short list of nicknames. Pick AT MOST ONE \
-nickname per team and use it in place of the team's real name (or introduce \
-it once alongside the real name, then keep using the nickname). Never use \
-more than one nickname for the same team in a single recap. It's fine to use \
-zero nicknames, or a nickname for only one of the two teams, if nothing fits.
+Nicknames. Each team below has a short list of nicknames — these belong to \
+the team's MANAGER, not the team itself. A nickname is a stand-in name for a \
+person: write their actions directly under it ("Flame On started slow", not \
+"Flame On's manager started slow" or "the manager of Flame On"). Pick AT MOST \
+ONE nickname per team and use it in place of the team's real name (or \
+introduce it once alongside the real name, then keep using the nickname). \
+Never use more than one nickname for the same team in a single recap. It's \
+fine to use zero nicknames, or a nickname for only one of the two teams, if \
+nothing fits.
 {home_team}: {home_nicknames}
 {away_team}: {away_nicknames}"""
 
