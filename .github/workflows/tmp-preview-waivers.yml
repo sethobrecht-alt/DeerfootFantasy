@@ -1,0 +1,45 @@
+name: Temp preview waiver recap
+
+on:
+  workflow_dispatch:
+    inputs:
+      league_id:
+        required: true
+        type: string
+      year:
+        required: true
+        type: string
+      week:
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Render
+        env:
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          SWID: ${{ secrets.SWID }}
+        run: |
+          python waiver_recap.py --league-id "${{ inputs.league_id }}" --year "${{ inputs.year }}" --week "${{ inputs.week }}"
+          mkdir -p preview_output
+          cp docs/waiver-recap.html "preview_output/waiver-recap-week-${{ inputs.week }}-${{ inputs.year }}.html"
+          cp docs/style.css preview_output/style.css
+      - name: Push the preview to a throwaway branch
+        run: |
+          git config user.name "preview-bot"
+          git config user.email "preview-bot@users.noreply.github.com"
+          BRANCH="preview/waiver-week-${{ inputs.week }}-${{ inputs.year }}"
+          git checkout -B "$BRANCH"
+          git add -f preview_output
+          git commit -m "Preview: waiver recap week ${{ inputs.week }}, ${{ inputs.year }}"
+          git push origin "$BRANCH" --force
