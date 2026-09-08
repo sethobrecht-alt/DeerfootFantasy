@@ -176,6 +176,70 @@ body {
   color: #3A2E05;
 }
 
+/* ---------- weekly high/low score ---------- */
+
+.peaks {
+  padding-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.peak {
+  padding: 1.75rem 1.5rem;
+  transform: skewX(-4deg);
+  color: var(--chalk);
+}
+
+.peak__body { transform: skewX(4deg); }
+
+.peak--summit { background: var(--turf); box-shadow: 10px 10px 0 var(--turf-deep); }
+.peak--valley { background: var(--blood); box-shadow: 10px 10px 0 #5C1811; }
+
+.peak__call {
+  margin: 0;
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 112, 'wght' 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.peak--summit .peak__call { color: #BFD2C6; }
+.peak--valley .peak__call { color: #F0C6C1; }
+
+.peak__team {
+  margin: 0.35rem 0 0.75rem;
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 120, 'wght' 880;
+  font-size: clamp(1.75rem, 8vw, 3rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.peak__line {
+  margin: 1.25rem 0 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  padding-top: 0.9rem;
+}
+
+.peak__number {
+  font-family: var(--data);
+  font-weight: 500;
+  font-size: clamp(2rem, 9vw, 3.25rem);
+  line-height: 1;
+}
+
+.peak__unit {
+  font-family: var(--data);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 /* ---------- matchups ---------- */
 
 .games { padding-top: 3.5rem; }
@@ -818,6 +882,8 @@ a:focus-visible,
   .board__row { grid-template-columns: 1.6rem 2rem 1fr 4rem; }
   .board__row--no-movement { grid-template-columns: 1.6rem 1fr 3.6rem; gap: 0.4rem; }
   .flag { box-shadow: 6px 6px 0 var(--flag-deep); }
+  .peak--summit { box-shadow: 6px 6px 0 var(--turf-deep); }
+  .peak--valley { box-shadow: 6px 6px 0 #5C1811; }
   .draftrow { grid-template-columns: 2.2rem 3.4rem 1fr; }
   .draftrow span:last-child { grid-column: 1 / -1; }
 }
