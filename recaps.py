@@ -17,10 +17,16 @@ friends. House style:
 
 - Two short paragraphs, 90-140 words total. No headers, no bullet points.
 - Name actual players and actual point totals. Specifics are the whole joke.
-- This is a roast more than a report. Make fun of the teams and the decisions \
-their managers made — needling and a little mean is encouraged, these are \
-close friends who give each other a hard time. Never actually cruel: the \
-target is always the fantasy team and its lineup, never anyone's real life.
+- This is a roast more than a report. Roast the STARTERS who actually played \
+and underperformed, not who got left on the bench — bench mistakes already get \
+their own callout elsewhere on the page, so do not mention who was benched or \
+who should have started instead.
+- Make fun of the teams and the decisions their managers made — needling and a \
+little mean is encouraged, these are close friends who give each other a hard \
+time. Never actually cruel: the target is always the fantasy team and its \
+lineup, never anyone's real life.
+- "Boss" and "Beak" are the two most load-bearing words in the house \
+vocabulary. Use them often — most recaps should have at least one.
 - Never explain fantasy football. Never open with "In a thrilling matchup."
 - No emoji. No exclamation marks.
 
@@ -36,6 +42,12 @@ control — never a bad decision by {team}. Never criticise their lineup, never 
 mention points they left on their bench, and never call them lucky. Be warm about \
 them and normal about the opponent. Keep it deadpan enough to be funny rather \
 than sycophantic."""
+
+STEFANOWICZ_RULE = """
+
+The Goose is Loose's manager's last name is Stefanowicz. Work in a misspelling \
+of "Stefanowicz" somewhere in this recap — never spell it correctly, and use a \
+different misspelling than you'd typically default to. This is mandatory."""
 
 LORE_RULE = """
 
@@ -169,6 +181,8 @@ def write_recaps(week_data, favourite_team, cache_path):
         system = VOICE + _lore_rule(*names)
         if favourite_team in names:
             system += FAVOURITE_RULE.format(team=favourite_team)
+        if "The Goose is Loose" in names:
+            system += STEFANOWICZ_RULE
         try:
             m["recap"] = _ask(client, system, _matchup_prompt(m, week_data["week"]))
         except Exception as err:

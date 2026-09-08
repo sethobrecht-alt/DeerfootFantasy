@@ -10,29 +10,29 @@
     {"term": "Penis Eating Pike", "meaning": "destroyed the other team, scary"},
     {"term": "like living on the Point", "meaning": "awkward, in the middle"},
     {"term": "like a woodsman running to the camp store", "meaning": "scored a long rushing touchdown"},
-    {"term": "Stuck on the Point and Back", "meaning": "impossible challenge"},
+    {"term": "is stuck on the Point and Back", "meaning": "impossible challenge"},
     {"term": "Got his swimming basic", "meaning": "very easy win"},
-    {"term": "Canoe Hike", "meaning": "didn't even try"},
-    {"term": "Bust Hike", "meaning": "chose the hard route"},
+    {"term": "chose the Canoe Hike", "meaning": "didn't even try"},
+    {"term": "went on a Bust Hike", "meaning": "hard fought win"},
     {"term": "Chief Ron Voice: \"I'm disappointed in you\"", "meaning": "reserve for a particularly bad performance"},
     {"term": "caught the smurf ball", "meaning": "an epic comeback win"},
     {"term": "stunned naval battle queen", "meaning": "useless and looks dumb"},
     {"term": "stick buns on Sunday Morning", "meaning": "paradise"},
     {"term": "ate his trail cheese and salami", "meaning": "a running back that got blocked up and scored minimal points"},
-    {"term": "Tuna Casserole", "meaning": "reward for good performance"}
+    {"term": "well-earned Tuna Casserole", "meaning": "reward for good performance"}
   ],
   "nicknames": {
     "55 Burgers": ["Paralegal", "Counsel"],
     "Funk that Junk": ["Old balls", "Sir Jo-Nurse"],
-    "Team Fox": ["Team No Creativity 2", "Babysitter of little children 2015", "Lone Eagle"],
+    "Team Fox": ["Babysitter of little children 2015", "Lone Eagle"],
     "Harley Jarvis": ["Blue Ridge", "Zoomer 2", "Day Trader"],
     "The Machine Knows": ["Boss G12 Member", "Fantasy Dues Donator", "Preseason Power Rankings #1"],
     "Love Thy Naber": ["Little Brother", "Flame On", "Pike Dive Critic"],
-    "The Goose is Loose": ["His last name is Stefanowicz, misspell it every time in a different way", "Chef Boyardee"],
+    "The Goose is Loose": ["Chef Boyardee"],
     "Ricky Huns": ["Babysitter of little children 2018", "Other Nate"],
     "The Island Gudge": ["46er", "Boss Section Chief"],
     "Catalina Wine Mixon": ["Permanent Student", "Zoomer 1", "Chair Force"],
     "Chase Brown Had a Bad Scare": ["Pill Pusher", "Babysitter of little children 2014"],
-    "Team Bradford": ["Team No Creativity 1", "Campcraft Enthusiast"]
+    "Team Bradford": ["Team No Creativity", "Campcraft Enthusiast"]
   }
 }

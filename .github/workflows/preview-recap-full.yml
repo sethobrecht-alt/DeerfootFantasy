@@ -106,6 +106,8 @@ jobs:
               f.write(html)
           import shutil
           shutil.copy("templates/style.css", "preview_output/style.css")
+          with open(f"preview_output/week-{target_week}-{year}-data.json", "w") as f:
+              json.dump(target, f, indent=2)
           print(f"Wrote preview_output/week-{target_week}-{year}-preview.html")
           PYEOF
 
