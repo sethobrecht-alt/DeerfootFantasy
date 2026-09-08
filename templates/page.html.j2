@@ -25,33 +25,6 @@
 
 <main class="page">
 
-  {% if week and top_scorer and low_scorer %}
-  <section class="peaks" aria-label="This week's high and low score">
-    <div class="peak peak--summit">
-      <div class="peak__body">
-        <p class="peak__call">Enjoying Virginia Pastries on Whiteface</p>
-        <p class="peak__team">&ldquo;{{ top_scorer.name }}&rdquo;</p>
-        <p class="peak__line">
-          <span class="peak__number">{{ '%.2f'|format(top_scorer.score) }}</span>
-          <span class="peak__unit">points</span>
-        </p>
-      </div>
-    </div>
-    <div class="peak peak--valley">
-      <div class="peak__body">
-        <p class="peak__call">Eating Wazi Tac in the Rain on Couchsachraga</p>
-        <p class="peak__team">&ldquo;{{ low_scorer.name }}&rdquo;</p>
-        <p class="peak__line">
-          <span class="peak__number">{{ '%.2f'|format(low_scorer.score) }}</span>
-          <span class="peak__unit">points</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <div class="stripe stripe--inline" role="presentation"></div>
-  {% endif %}
-
   <nav class="archive" aria-label="Site">
     <h2 class="section-title">Around the league</h2>
     <ul class="archive__list">
@@ -65,6 +38,33 @@
   </nav>
 
   <div class="stripe stripe--inline" role="presentation"></div>
+
+  {% if week and top_scorer and low_scorer %}
+  <section class="peaks" aria-label="This week's high and low score">
+    <div class="peak peak--summit">
+      <div class="peak__body">
+        <p class="peak__call">Enjoying Virginia Pastries on Whiteface</p>
+        <p class="peak__team">{{ top_scorer.name }}</p>
+        <p class="peak__line">
+          <span class="peak__number">{{ '%.2f'|format(top_scorer.score) }}</span>
+          <span class="peak__unit">points</span>
+        </p>
+      </div>
+    </div>
+    <div class="peak peak--valley">
+      <div class="peak__body">
+        <p class="peak__call">Eating Wazi Tac in the Rain on Couchsachraga</p>
+        <p class="peak__team">{{ low_scorer.name }}</p>
+        <p class="peak__line">
+          <span class="peak__number">{{ '%.2f'|format(low_scorer.score) }}</span>
+          <span class="peak__unit">points</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+  {% endif %}
 
   {% if not week %}
   <section class="games">
