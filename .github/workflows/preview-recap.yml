@@ -1,0 +1,55 @@
+name: Preview recap data
+
+# Runs preview_recap_data.py on GitHub instead of your own machine, for
+# sampling real past-season box scores (e.g. to preview a new recap-page
+# design) without needing ESPN cookies locally. Nothing is written back to
+# the repo — the results come out as a downloadable file.
+
+on:
+  workflow_dispatch:
+    inputs:
+      league_id:
+        description: "Your ESPN league ID"
+        required: true
+        type: string
+      year:
+        description: "Season to pull box scores from"
+        required: true
+        type: string
+      weeks:
+        description: "Space-separated weeks to fetch"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install espn-api
+
+      - name: Fetch preview data
+        env:
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          SWID: ${{ secrets.SWID }}
+        run: |
+          python preview_recap_data.py "${{ inputs.league_id }}" \
+            --year "${{ inputs.year }}" \
+            --weeks ${{ inputs.weeks }}
+
+      - name: Package the results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-weeks
+          path: preview_weeks.json
+          if-no-files-found: warn
+          retention-days: 7

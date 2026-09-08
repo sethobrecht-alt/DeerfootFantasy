@@ -40,6 +40,16 @@ def _flag_of_week(week, favourite, shield):
     return worst
 
 
+def _week_extremes(week):
+    """The week's highest- and lowest-scoring team, across both sides of every matchup."""
+    sides = [side for m in week["matchups"] for side in (m["home"], m["away"])]
+    if not sides:
+        return None, None
+    top = max(sides, key=lambda s: s["score"])
+    low = min(sides, key=lambda s: s["score"])
+    return top, low
+
+
 def build_site(weeks, config):
     """weeks: list of week dicts, ascending. Writes one page per week."""
     os.makedirs(DOCS, exist_ok=True)
@@ -83,6 +93,8 @@ def build_site(weeks, config):
             reverse=True,
         )[:5]
 
+        top_scorer, low_scorer = _week_extremes(week)
+
         html = template.render(
             site_title=config["site_title"],
             season=config["year"],
@@ -93,6 +105,8 @@ def build_site(weeks, config):
             favourite=favourite,
             shield_favourite=shield,
             flag_of_week=_flag_of_week(week, favourite, shield),
+            top_scorer=top_scorer,
+            low_scorer=low_scorer,
             archive=archive,
             updated=updated,
         )
