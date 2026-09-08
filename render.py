@@ -288,6 +288,24 @@ def build_league_basics_page(config):
     print("Wrote docs/league-basics.html")
 
 
+def build_waiver_recap_page(data, config):
+    """Render docs/waiver-recap.html from a waivers.fetch_week_waivers() result."""
+    os.makedirs(DOCS, exist_ok=True)
+    shutil.copy(os.path.join(TEMPLATES, "style.css"), os.path.join(DOCS, "style.css"))
+
+    env = _env()
+    template = env.get_template("waiver-recap.html.j2")
+    html = template.render(
+        site_title=config["site_title"],
+        season=config["year"],
+        data=data,
+        updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
+    )
+    with open(os.path.join(DOCS, "waiver-recap.html"), "w") as f:
+        f.write(html)
+    print("Wrote docs/waiver-recap.html")
+
+
 def build_home_page(config):
     """Render docs/index.html — the site's front door — from champions.json.
 

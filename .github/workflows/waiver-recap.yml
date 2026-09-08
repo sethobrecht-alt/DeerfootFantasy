@@ -1,0 +1,55 @@
+name: Waiver Recap
+
+on:
+  schedule:
+    # 10:00 UTC Wednesday = 6am ET in season, after FAAB waivers clear.
+    - cron: "0 10 * * 3"
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "Week to fetch (defaults to the league's current week)"
+        required: false
+        type: string
+
+concurrency:
+  group: league-site
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Build the waiver recap
+        env:
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          SWID: ${{ secrets.SWID }}
+        run: |
+          if [ -n "${{ inputs.week }}" ]; then
+            python waiver_recap.py --week "${{ inputs.week }}"
+          else
+            python waiver_recap.py
+          fi
+
+      - name: Commit the results
+        run: |
+          git config user.name "league-bot"
+          git config user.email "league-bot@users.noreply.github.com"
+          git add docs
+          if git diff --staged --quiet; then
+            echo "Nothing new this week."
+          else
+            git commit -m "Update waiver recap: $(date -u +%Y-%m-%d)"
+            git push
+          fi
