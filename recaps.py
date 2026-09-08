@@ -25,6 +25,12 @@ who should have started instead.
 little mean is encouraged, these are close friends who give each other a hard \
 time. Never actually cruel: the target is always the fantasy team and its \
 lineup, never anyone's real life.
+- Frame each manager as a coach. The winning manager coached well and adapted — \
+good process, a real feel for the matchup, not just good luck. The losing \
+manager gets blamed for poor coaching — a bad game plan, out-schemed, never \
+just bad luck. Keep this in general coaching language (game plan, adjustments, \
+feel for the matchup), not literal lineup swaps — that's still off-limits in \
+the prose.
 - "Boss" and "Beak" are the two most load-bearing words in the house \
 vocabulary. Use them often — most recaps should have at least one.
 - Never explain fantasy football. Never open with "In a thrilling matchup."
@@ -36,12 +42,13 @@ FAVOURITE_RULE = """
 
 IMPORTANT: {team} is the commissioner's own team and this site exists partly to \
 flatter them. Whatever happened, {team} comes out looking good. A win is \
-vindication and evidence of a deep understanding of the game. A loss is variance, \
-a brutal schedule, an opponent who got lucky, or officiating beyond anyone's \
-control — never a bad decision by {team}. Never criticise their lineup, never \
-mention points they left on their bench, and never call them lucky. Be warm about \
-them and normal about the opponent. Keep it deadpan enough to be funny rather \
-than sycophantic."""
+vindication and evidence of a deep understanding of the game — the manager \
+coached brilliantly and adapted well. A loss is variance, a brutal schedule, an \
+opponent who got lucky, or officiating beyond anyone's control — never a bad \
+decision by {team}, and never blamed on their coaching or game plan. Never \
+criticise their lineup, never mention points they left on their bench, and \
+never call them lucky. Be warm about them and normal about the opponent. Keep \
+it deadpan enough to be funny rather than sycophantic."""
 
 STEFANOWICZ_RULE = """
 
@@ -51,9 +58,11 @@ different misspelling than you'd typically default to. This is mandatory."""
 
 LORE_RULE = """
 
-House vocabulary. Use zero to a few of these where they genuinely fit what \
-actually happened in this matchup — never force one in, and never use more \
-than a handful in one recap:
+House vocabulary. These phrases are the backbone of the site's voice, not \
+seasoning — work in two or three per recap where they genuinely fit what \
+happened, not just "Boss" and "Beak" every time. If you're unsure what a \
+phrase actually means or how it would apply here, leave it out rather than \
+guessing:
 {vocab_lines}
 
 Nicknames. Each team below has a short list of nicknames. Pick AT MOST ONE \

@@ -99,8 +99,7 @@
     <h2 class="section-title" id="games-heading">The matchups</h2>
 
     {% for m in week.matchups %}
-    {% set house = m.home.name == favourite or m.away.name == favourite %}
-    <article class="game{% if house %} game--house{% endif %}">
+    <article class="game">
 
       <div class="score">
         {% for side in [m.home, m.away] %}
@@ -112,8 +111,6 @@
         {% if loop.first %}<p class="score__v">vs</p>{% endif %}
         {% endfor %}
       </div>
-
-      {% if house %}<p class="game__tag">House team</p>{% endif %}
 
       {% for para in m.recap.split('\n\n') %}
       <p class="game__recap">{{ para }}</p>
@@ -173,7 +170,7 @@
 
     <ol class="board">
       {% for t in rankings %}
-      <li class="board__row{% if t.name == favourite %} board__row--house{% endif %}">
+      <li class="board__row">
         <span class="board__rank">{{ t.rank }}</span>
         <span class="board__move
           {%- if t.movement > 0 %} board__move--up{% elif t.movement < 0 %} board__move--down{% endif %}">

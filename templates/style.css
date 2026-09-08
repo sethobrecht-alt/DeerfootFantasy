@@ -251,8 +251,6 @@ body {
   margin-bottom: 1.25rem;
 }
 
-.game--house { border-left: 5px solid var(--turf); }
-
 .keepers-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -298,18 +296,6 @@ body {
 
 @media (max-width: 34rem) {
   .keepers-grid { grid-template-columns: 1fr; }
-}
-
-.game__tag {
-  margin: 0 0 1rem;
-  display: inline-block;
-  background: var(--turf);
-  color: var(--chalk);
-  font-family: var(--data);
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  padding: 0.25rem 0.55rem;
 }
 
 .score {
@@ -447,8 +433,6 @@ body {
   padding: 0.85rem 0.5rem;
   border-bottom: 1px solid var(--rule);
 }
-
-.board__row--house { background: rgba(11, 59, 46, 0.06); }
 
 .board__rank {
   font-family: var(--data);

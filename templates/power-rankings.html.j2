@@ -53,7 +53,7 @@
 
     <ol class="board">
       {% for t in rankings %}
-      <li class="board__row board__row--no-movement{% if t.name == favourite %} board__row--house{% endif %}">
+      <li class="board__row board__row--no-movement">
         <span class="board__rank">{{ t.rank }}</span>
         <span class="board__team">
           {{ t.name }}
