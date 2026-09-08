@@ -1,4 +1,4 @@
-name: Temp preview waiver recap
+name: Preview waiver recap
 
 on:
   workflow_dispatch:
