@@ -195,6 +195,19 @@ body {
 
 .peak--summit { background: var(--turf); box-shadow: 10px 10px 0 var(--turf-deep); }
 .peak--valley { background: var(--blood); box-shadow: 10px 10px 0 #5C1811; }
+.peak--gold { background: var(--flag); box-shadow: 10px 10px 0 var(--flag-deep); }
+.peak--mediocre { background: var(--whistle); box-shadow: 10px 10px 0 #4A5450; }
+
+.trophies {
+  padding-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.5rem;
+}
+
+.trophies .peak { padding: 1.5rem 1.35rem; }
+.trophies .peak__team { font-size: clamp(1.4rem, 5vw, 1.9rem); }
+.trophies .peak__number { font-size: clamp(1.6rem, 6vw, 2.25rem); }
 
 .peak__call {
   margin: 0;
@@ -207,6 +220,10 @@ body {
 
 .peak--summit .peak__call { color: #BFD2C6; }
 .peak--valley .peak__call { color: #F0C6C1; }
+.peak--gold .peak__call { color: var(--turf-deep); }
+.peak--mediocre .peak__call { color: #E4E7E3; }
+
+.peak--gold, .peak--gold .peak__team { color: var(--turf-deep); }
 
 .peak__team {
   margin: 0.35rem 0 0.75rem;
@@ -781,6 +798,51 @@ body {
   vertical-align: middle;
 }
 
+/* ---------- waiver recap ---------- */
+
+.waiverboard {
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  overflow-x: auto;
+}
+
+.waiverrow {
+  display: grid;
+  grid-template-columns: 1.4fr 1.4fr 1.3fr 3.5rem 4.5rem 4.5rem;
+  gap: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.waiverrow--fa { grid-template-columns: 1.4fr 1.4fr 1.3fr; }
+
+.waiverrow:last-child { border-bottom: none; }
+
+.waiverrow--head {
+  font-family: var(--data);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--whistle);
+  background: var(--chalk);
+}
+
+.waiverrow span:nth-child(4),
+.waiverrow span:nth-child(5),
+.waiverrow span:nth-child(6) {
+  font-family: var(--data);
+  color: var(--whistle);
+  text-align: right;
+}
+
+.waiverrow--head span:nth-child(4),
+.waiverrow--head span:nth-child(5),
+.waiverrow--head span:nth-child(6) {
+  color: var(--whistle);
+}
+
 /* ---------- standings history ---------- */
 
 .standingsboard {
@@ -868,6 +930,13 @@ a:focus-visible,
   .flag { box-shadow: 6px 6px 0 var(--flag-deep); }
   .peak--summit { box-shadow: 6px 6px 0 var(--turf-deep); }
   .peak--valley { box-shadow: 6px 6px 0 #5C1811; }
+  .peak--gold { box-shadow: 6px 6px 0 var(--flag-deep); }
+  .peak--mediocre { box-shadow: 6px 6px 0 #4A5450; }
   .draftrow { grid-template-columns: 2.2rem 3.4rem 1fr; }
   .draftrow span:last-child { grid-column: 1 / -1; }
+  .waiverrow { grid-template-columns: 1fr 1fr 3.2rem 3.6rem; }
+  .waiverrow span:nth-child(3),
+  .waiverrow span:nth-child(6) { display: none; }
+  .waiverrow--fa { grid-template-columns: 1fr 1fr 1fr; }
+  .waiverrow--fa span:nth-child(3) { display: block; }
 }
