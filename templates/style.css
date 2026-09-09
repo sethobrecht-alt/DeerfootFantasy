@@ -207,6 +207,7 @@ body {
 }
 
 .trophies .peak { padding: 1.5rem 1.35rem; }
+.trophies .peak__call { font-size: clamp(1.15rem, 4.2vw, 1.5rem); font-variation-settings: 'wdth' 112, 'wght' 900; }
 .trophies .peak__team { font-size: clamp(1.4rem, 5vw, 1.9rem); }
 .trophies .peak__number { font-size: clamp(1.6rem, 6vw, 2.25rem); }
 
