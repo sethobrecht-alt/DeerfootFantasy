@@ -11,8 +11,6 @@ except Exception:  # no tzdata available
     EASTERN = timezone(timedelta(hours=-5))
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-import league as lg
-
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATES = os.path.join(HERE, "templates")
 DOCS = os.path.join(HERE, "docs")
@@ -72,7 +70,6 @@ def build_site(weeks, config):
 
     favourite = config["favourite_team"]
     shield = config.get("shield_favourite", True)
-    weights = config.get("power_ranking_weights", {"points": 0.6, "record": 0.4})
 
     archive = [{"week": w["week"], "href": f"week-{w['week']}.html"} for w in weeks]
     archive[-1]["href"] = "recap.html"
@@ -80,28 +77,13 @@ def build_site(weeks, config):
 
     updated = datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET")
 
-    previous_ranks = None
     for i, week in enumerate(weeks):
-        rows = lg.standings_through(weeks[: i + 1])
-        rankings = lg.power_rankings(rows, weights, previous_ranks)
-        previous_ranks = [{"name": r["name"], "rank": r["rank"]} for r in rankings]
-
-        wasted = sorted(
-            [r for r in rankings if r["bench_points_wasted"] > 0
-             and not (shield and r["name"] == favourite)],
-            key=lambda r: r["bench_points_wasted"],
-            reverse=True,
-        )[:5]
-
         top_scorer, low_scorer = _week_extremes(week)
 
         html = template.render(
             site_title=config["site_title"],
             season=config["year"],
             week=week,
-            rankings=rankings,
-            wasted=wasted,
-            weights=weights,
             favourite=favourite,
             shield_favourite=shield,
             flag_of_week=_flag_of_week(week, favourite, shield),
