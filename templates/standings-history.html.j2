@@ -46,7 +46,7 @@
     <div class="draft-pills" id="standings-year-pills" role="group" aria-label="Select a year or the all-time average" style="margin-bottom: 1.25rem;">
       <button type="button" class="draft-pill" data-view="average">Average</button>
       {% for y in years %}
-      <button type="button" class="draft-pill{% if loop.first %} draft-pill--active{% endif %}" data-view="{{ y }}">{{ y }}</button>
+      <button type="button" class="draft-pill{% if loop.first %} draft-pill--active{% endif %}" data-view="{{ y }}">{{ y }}{% if live_year and y == live_year %} (in progress){% endif %}</button>
       {% endfor %}
     </div>
 
@@ -54,6 +54,10 @@
       Averages each manager's final and regular-season finish across every year
       they've played, then ranks them best to worst. Matched by ESPN account, not
       team name, so a renamed team still gets full credit for its history.
+    </p>
+    <p class="power__note" id="live-note" style="display:none;">
+      The {{ live_year }} season is still in progress &mdash; these are the current
+      standings, not a final result, and this year isn't counted in the all-time average yet.
     </p>
 
     <div class="standingsboard" id="average-board" role="table" aria-label="All-time average finish" style="display:none;">
@@ -87,10 +91,12 @@
 
   <script type="application/json" id="standings-data">{{ years_json|safe }}</script>
   <script type="application/json" id="current-teams-data">{{ current_teams_json|safe }}</script>
+  <script type="application/json" id="live-year-data">{{ live_year|tojson }}</script>
   <script>
   (function () {
     var data = JSON.parse(document.getElementById('standings-data').textContent);
     var currentTeams = JSON.parse(document.getElementById('current-teams-data').textContent);
+    var liveYear = JSON.parse(document.getElementById('live-year-data').textContent);
 
     var pillsEl = document.getElementById('standings-year-pills');
     var years = Object.keys(data).sort().reverse();
@@ -100,6 +106,7 @@
     var averageBoard = document.getElementById('average-board');
     var averageNote = document.getElementById('average-note');
     var averageDisclaimer = document.getElementById('average-disclaimer');
+    var liveNote = document.getElementById('live-note');
     var rowsEl = document.getElementById('standings-rows');
     var avgRowsEl = document.getElementById('average-rows');
 
@@ -127,6 +134,7 @@
 
     var acc = {};
     years.forEach(function (year) {
+      if (year === liveYear) return;
       (data[year] || []).forEach(function (r) {
         if (!r.owner_id || !currentNameByOwner[r.owner_id]) return;
         var a = acc[r.owner_id] || (acc[r.owner_id] = { sumFinal: 0, sumReg: 0, count: 0 });
@@ -163,6 +171,7 @@
       averageNote.style.display = showAverage ? '' : 'none';
       averageDisclaimer.style.display = showAverage ? '' : 'none';
       standingsBoard.style.display = showAverage ? 'none' : '';
+      liveNote.style.display = (!showAverage && activeView === liveYear) ? '' : 'none';
       if (!showAverage) renderYear(activeView);
     }
 

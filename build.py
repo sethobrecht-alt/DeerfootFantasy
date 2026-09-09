@@ -99,12 +99,18 @@ def main():
         rankings = lg.season_power_rankings(connection, weights) if played_any else []
         render.build_power_rankings_page(rankings, config)
 
+        print("Updating current-season standings...")
+        standings_path = os.path.join(HERE, "standings_history.json")
+        standings_data = {"league_id": config["league_id"], "years": {}, "current_teams": []}
+        if os.path.exists(standings_path):
+            with open(standings_path) as f:
+                standings_data = json.load(f)
+        standings_data["years"][str(config["year"])] = lg.current_year_standings(connection)
+        with open(standings_path, "w") as f:
+            json.dump(standings_data, f, indent=2)
+
     render.build_site(load_cached(), config)
-    render.build_keepers_page(config)
-    render.build_draft_history_page(config)
     render.build_standings_page(config)
-    render.build_league_basics_page(config)
-    render.build_home_page(config)
     print("Done. Open docs/index.html")
 
 

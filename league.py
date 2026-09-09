@@ -266,3 +266,34 @@ def season_power_rankings(league, weights):
     for i, row in enumerate(ranked, start=1):
         row["rank"] = i
     return ranked
+
+
+def _owner_id(team):
+    """The stable identity behind a team, independent of whatever it's named."""
+    if team.owners:
+        oid = team.owners[0].get("id")
+        if oid:
+            return oid
+    return "name:" + team.team_name
+
+
+def current_year_standings(league):
+    """This season's standings so far, in the same shape as a completed
+    year in standings_history.json -- but ranked by the live playoff seed,
+    since final_standing stays unset until the season (and playoffs) end.
+    Meant to be re-fetched every week; last year's rows are untouched."""
+    rows = []
+    for team in league.teams:
+        rows.append({
+            "rank": team.standing,
+            "regular_finish": team.standing,
+            "team": team.team_name,
+            "owner_id": _owner_id(team),
+            "wins": team.wins,
+            "losses": team.losses,
+            "ties": team.ties,
+            "points_for": round(team.points_for, 2),
+            "points_against": round(team.points_against, 2),
+        })
+    rows.sort(key=lambda r: r["rank"] if r["rank"] else 99)
+    return rows
