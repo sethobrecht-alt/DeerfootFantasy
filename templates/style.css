@@ -197,6 +197,7 @@ body {
 .peak--valley { background: var(--blood); box-shadow: 10px 10px 0 #5C1811; }
 .peak--gold { background: var(--flag); box-shadow: 10px 10px 0 var(--flag-deep); }
 .peak--mediocre { background: var(--whistle); box-shadow: 10px 10px 0 #4A5450; }
+.peak--fudjo { background: var(--ink); box-shadow: 10px 10px 0 #000; }
 
 .trophies {
   padding-top: 2.5rem;
@@ -222,8 +223,17 @@ body {
 .peak--valley .peak__call { color: #F0C6C1; }
 .peak--gold .peak__call { color: var(--turf-deep); }
 .peak--mediocre .peak__call { color: #E4E7E3; }
+.peak--fudjo .peak__call { color: #8A8F8C; }
 
 .peak--gold, .peak--gold .peak__team { color: var(--turf-deep); }
+
+.peak__subtitle {
+  margin: 0.15rem 0 0;
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
 
 .peak__team {
   margin: 0.35rem 0 0.75rem;
@@ -932,6 +942,7 @@ a:focus-visible,
   .peak--valley { box-shadow: 6px 6px 0 #5C1811; }
   .peak--gold { box-shadow: 6px 6px 0 var(--flag-deep); }
   .peak--mediocre { box-shadow: 6px 6px 0 #4A5450; }
+  .peak--fudjo { box-shadow: 6px 6px 0 #000; }
   .draftrow { grid-template-columns: 2.2rem 3.4rem 1fr; }
   .draftrow span:last-child { grid-column: 1 / -1; }
   .waiverrow { grid-template-columns: 1fr 1fr 3.2rem 3.6rem; }

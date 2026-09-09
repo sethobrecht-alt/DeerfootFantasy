@@ -93,6 +93,9 @@ def fetch_week_waivers(league, week):
         moves, key=lambda m: (m["bid"], m["bidder_count"], m["player"]), default=None
     )
 
+    fudjo_candidates = [m for m in moves if m["dropped_fudjo"]]
+    fudjo = max(fudjo_candidates, key=lambda m: m["overpay"], default=None)
+
     return {
         "week": week,
         "budget": league.settings.acquisition_budget,
@@ -101,4 +104,5 @@ def fetch_week_waivers(league, week):
         "chipwich": chipwich,
         "camp_chair": camp_chair,
         "bag_of_chips": bag_of_chips,
+        "fudjo": fudjo,
     }

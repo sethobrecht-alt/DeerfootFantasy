@@ -46,12 +46,13 @@
   </section>
   {% else %}
 
-  {% if data.chipwich or data.camp_chair or data.bag_of_chips %}
+  {% if data.chipwich or data.camp_chair or data.bag_of_chips or data.fudjo %}
   <section class="trophies" aria-label="This week's waiver awards">
     {% if data.chipwich %}
     <div class="peak peak--gold">
       <div class="peak__body">
         <p class="peak__call">The Chipwich</p>
+        <p class="peak__subtitle">The Real Prize</p>
         <p class="peak__team">{{ data.chipwich.player }}</p>
         <p class="peak__line">
           <span class="peak__number">{{ data.chipwich.bidder_count }}</span>
@@ -64,6 +65,7 @@
     <div class="peak peak--valley">
       <div class="peak__body">
         <p class="peak__call">The Camp Chair</p>
+        <p class="peak__subtitle">Biggest Overpay</p>
         <p class="peak__team">{{ data.camp_chair.player }}</p>
         <p class="peak__line">
           <span class="peak__number">${{ data.camp_chair.overpay }}</span>
@@ -76,10 +78,24 @@
     <div class="peak peak--mediocre">
       <div class="peak__body">
         <p class="peak__call">The Bag of Chips</p>
+        <p class="peak__subtitle">Who even cares</p>
         <p class="peak__team">{{ data.bag_of_chips.player }}</p>
         <p class="peak__line">
           <span class="peak__number">${{ data.bag_of_chips.bid }}</span>
           <span class="peak__unit">{{ data.bag_of_chips.team }}, nobody else wanted him</span>
+        </p>
+      </div>
+    </div>
+    {% endif %}
+    {% if data.fudjo %}
+    <div class="peak peak--fudjo">
+      <div class="peak__body">
+        <p class="peak__call">Dropped His Fudjo in the Dirt</p>
+        <p class="peak__subtitle">Wasted money and dreams</p>
+        <p class="peak__team">{{ data.fudjo.player }}</p>
+        <p class="peak__line">
+          <span class="peak__number">+${{ data.fudjo.overpay }}</span>
+          <span class="peak__unit">{{ data.fudjo.team }} paid ${{ data.fudjo.bid }} for it</span>
         </p>
       </div>
     </div>
@@ -90,8 +106,7 @@
   {% endif %}
 
   {% set blown = data.moves | selectattr("blew_the_account") | list %}
-  {% set fudjo = data.moves | selectattr("dropped_fudjo") | list %}
-  {% if blown or fudjo %}
+  {% if blown %}
   <section class="flagwrap" aria-label="Manager callouts">
     <ul class="penalties">
       {% for m in blown %}
@@ -101,15 +116,6 @@
           <strong>{{ m.team }}</strong> blew the whole camp store account on {{ m.player }}.
         </span>
         <span class="penalty__cost">${{ m.bid }}</span>
-      </li>
-      {% endfor %}
-      {% for m in fudjo %}
-      <li class="penalty">
-        <span class="penalty__mark" aria-hidden="true"></span>
-        <span class="penalty__text">
-          <strong>{{ m.team }}</strong> dropped his fudjo in the dirt for {{ m.player }}.
-        </span>
-        <span class="penalty__cost">+${{ m.overpay }}</span>
       </li>
       {% endfor %}
     </ul>
