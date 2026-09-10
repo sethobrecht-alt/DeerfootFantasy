@@ -330,11 +330,6 @@ def build_home_page(config):
         os.makedirs(os.path.join(DOCS, "img"), exist_ok=True)
         shutil.copy(mountains_src, os.path.join(DOCS, "img", "mountains.png"))
 
-    # Waiver data is fetched fresh each week rather than cached to a JSON
-    # file, so the page's own existence is the only signal that a waiver
-    # recap has ever actually run.
-    has_waiver_recap = os.path.exists(os.path.join(DOCS, "waiver-recap.html"))
-
     env = _env()
     template = env.get_template("home.html.j2")
     html = template.render(
@@ -342,7 +337,6 @@ def build_home_page(config):
         season=config["year"],
         champions=champions,
         non_champions=non_champions,
-        has_waiver_recap=has_waiver_recap,
         updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
     )
     with open(os.path.join(DOCS, "index.html"), "w") as f:
