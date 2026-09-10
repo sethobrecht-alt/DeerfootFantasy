@@ -37,9 +37,19 @@
     </ul>
   </nav>
 
-  <p style="text-align: center; margin: 1.75rem 0;">
-    <a class="draft-pill draft-pill--active" href="waiver-recap.html">See this week's Waiver Recap</a>
-  </p>
+  <script type="application/json" id="nav-updates">{{ updated_times_json|safe }}</script>
+  <script>
+    (function () {
+      var updates = {};
+      try { updates = JSON.parse(document.getElementById('nav-updates').textContent); } catch (e) {}
+      var now = Date.now();
+      var windowMs = 48 * 60 * 60 * 1000;
+      document.querySelectorAll('nav[aria-label="Site"] .archive__list a.archive__link').forEach(function (a) {
+        var when = new Date(updates[a.getAttribute('href')] || 0).getTime();
+        if (!isNaN(when) && now - when < windowMs) a.classList.add('archive__link--new');
+      });
+    })();
+  </script>
 
   <div class="stripe stripe--inline" role="presentation"></div>
 

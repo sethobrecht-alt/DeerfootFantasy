@@ -581,6 +581,14 @@ body {
   color: var(--chalk);
 }
 
+.archive__link--new {
+  border-color: var(--blood);
+  background: var(--blood);
+  color: var(--chalk);
+}
+
+.archive__link--new:hover { background: var(--blood); }
+
 /* ---------- footer ---------- */
 
 .foot {

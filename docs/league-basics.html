@@ -29,12 +29,27 @@
     <ul class="archive__list">
       <li><a class="archive__link" href="index.html">Home</a></li>
       <li><a class="archive__link" href="recap.html">Weekly Recap</a></li>
+      <li><a class="archive__link" href="waiver-recap.html">Waiver Recap</a></li>
       <li><a class="archive__link" href="keepers.html">Keepers</a></li>
       <li><a class="archive__link" href="draft-history.html">Draft history</a></li>
       <li><a class="archive__link" href="standings-history.html">Standings history</a></li>
       <li><a class="archive__link" href="power-rankings.html">Power rankings</a></li>
     </ul>
   </nav>
+
+  <script type="application/json" id="nav-updates">{"standings-history.html": "2026-09-10T13:01:59.980653+00:00"}</script>
+  <script>
+    (function () {
+      var updates = {};
+      try { updates = JSON.parse(document.getElementById('nav-updates').textContent); } catch (e) {}
+      var now = Date.now();
+      var windowMs = 48 * 60 * 60 * 1000;
+      document.querySelectorAll('nav[aria-label="Site"] .archive__list a.archive__link').forEach(function (a) {
+        var when = new Date(updates[a.getAttribute('href')] || 0).getTime();
+        if (!isNaN(when) && now - when < windowMs) a.classList.add('archive__link--new');
+      });
+    })();
+  </script>
 
   <div class="stripe stripe--inline" role="presentation"></div>
 
@@ -123,7 +138,7 @@
 </main>
 
 <footer class="foot">
-  <p>Updated September 8, 2026 at 7:40 AM ET.</p>
+  <p>Updated September 10, 2026 at 9:01 AM ET.</p>
 </footer>
 
 </body>

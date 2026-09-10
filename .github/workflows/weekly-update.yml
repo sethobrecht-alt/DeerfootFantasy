@@ -47,7 +47,7 @@ jobs:
         run: |
           git config user.name "league-bot"
           git config user.email "league-bot@users.noreply.github.com"
-          git add data docs standings_history.json
+          git add data docs standings_history.json updated.json
           if git diff --staged --quiet; then
             echo "Nothing new this week."
           else
