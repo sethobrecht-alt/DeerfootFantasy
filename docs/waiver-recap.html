@@ -38,16 +38,18 @@
     </ul>
   </nav>
 
-  <script type="application/json" id="nav-updates">{"standings-history.html": "2026-09-10T13:01:59.980653+00:00", "waiver-recap.html": "2026-09-10T13:12:39.517167+00:00"}</script>
   <script>
     (function () {
-      var updates = {};
-      try { updates = JSON.parse(document.getElementById('nav-updates').textContent); } catch (e) {}
-      var now = Date.now();
-      var windowMs = 48 * 60 * 60 * 1000;
+      var schedule = {
+        'recap.html': ['Tue', 'Wed'],
+        'power-rankings.html': ['Tue', 'Wed'],
+        'standings-history.html': ['Tue', 'Wed'],
+        'waiver-recap.html': ['Wed', 'Thu'],
+      };
+      var today = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short' }).format(new Date());
       document.querySelectorAll('nav[aria-label="Site"] .archive__list a.archive__link').forEach(function (a) {
-        var when = new Date(updates[a.getAttribute('href')] || 0).getTime();
-        if (!isNaN(when) && now - when < windowMs) a.classList.add('archive__link--new');
+        var days = schedule[a.getAttribute('href')];
+        if (days && days.indexOf(today) !== -1) a.classList.add('archive__link--new');
       });
     })();
   </script>
@@ -198,7 +200,7 @@
 </main>
 
 <footer class="foot">
-  <p>Updated September 10, 2026 at 9:12 AM ET. Rebuilt every Wednesday morning after FAAB waivers clear.</p>
+  <p>Updated September 10, 2026 at 9:20 AM ET. Rebuilt every Wednesday morning after FAAB waivers clear.</p>
   <p class="foot__fine">"Overpay" is the winning bid minus one dollar more than the next-best
   losing bid on the same player (or minus $1 if nobody else bid). ESPN doesn't expose losing
   bids directly, so this is reconstructed from failed competing claims and may miss a bid or
