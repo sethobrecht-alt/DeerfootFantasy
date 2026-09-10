@@ -38,6 +38,20 @@
     </ul>
   </nav>
 
+  <script type="application/json" id="nav-updates">{"standings-history.html": "2026-09-10T13:01:59.980653+00:00", "waiver-recap.html": "2026-09-10T13:06:02.435671+00:00"}</script>
+  <script>
+    (function () {
+      var updates = {};
+      try { updates = JSON.parse(document.getElementById('nav-updates').textContent); } catch (e) {}
+      var now = Date.now();
+      var windowMs = 48 * 60 * 60 * 1000;
+      document.querySelectorAll('nav[aria-label="Site"] .archive__list a.archive__link').forEach(function (a) {
+        var when = new Date(updates[a.getAttribute('href')] || 0).getTime();
+        if (!isNaN(when) && now - when < windowMs) a.classList.add('archive__link--new');
+      });
+    })();
+  </script>
+
   <div class="stripe stripe--inline" role="presentation"></div>
 
 
@@ -45,6 +59,7 @@
     <div class="peak peak--gold">
       <div class="peak__body">
         <p class="peak__call">The Chipwich</p>
+        <p class="peak__subtitle">The Real Prize</p>
         <p class="peak__team">Keaton Mitchell</p>
         <p class="peak__line">
           <span class="peak__number">2</span>
@@ -55,6 +70,7 @@
     <div class="peak peak--valley">
       <div class="peak__body">
         <p class="peak__call">The Camp Chair</p>
+        <p class="peak__subtitle">Biggest Overpay</p>
         <p class="peak__team">Jacob Saylors</p>
         <p class="peak__line">
           <span class="peak__number">$7</span>
@@ -65,6 +81,7 @@
     <div class="peak peak--mediocre">
       <div class="peak__body">
         <p class="peak__call">The Bag of Chips</p>
+        <p class="peak__subtitle">Who even cares</p>
         <p class="peak__team">Cyrus Allen</p>
         <p class="peak__line">
           <span class="peak__number">$0</span>
@@ -159,6 +176,11 @@
         <span>Dropped</span>
       </div>
       <div class="waiverrow waiverrow--fa" role="row">
+        <span>55 Burgers</span>
+        <span>Ja'Kobi Lane</span>
+        <span>Caleb Douglas</span>
+      </div>
+      <div class="waiverrow waiverrow--fa" role="row">
         <span>The Machine Knows</span>
         <span>Tre Tucker</span>
         <span>Troy Franklin</span>
@@ -175,7 +197,7 @@
 </main>
 
 <footer class="foot">
-  <p>Updated September 9, 2026 at 6:03 AM ET. Rebuilt every Wednesday morning after FAAB waivers clear.</p>
+  <p>Updated September 10, 2026 at 9:06 AM ET. Rebuilt every Wednesday morning after FAAB waivers clear.</p>
   <p class="foot__fine">"Overpay" is the winning bid minus one dollar more than the next-best
   losing bid on the same player (or minus $1 if nobody else bid). ESPN doesn't expose losing
   bids directly, so this is reconstructed from failed competing claims and may miss a bid or
