@@ -85,8 +85,8 @@ def fetch_week_waivers(league, week):
     if chipwich and chipwich["bidder_count"] <= 1:
         chipwich = None
 
-    camp_chair = max(moves, key=lambda m: m["overpay"], default=None)
-    if camp_chair and camp_chair["overpay"] <= 0:
+    camp_chair = max(moves, key=lambda m: m["bid"], default=None)
+    if camp_chair and camp_chair["bid"] <= 0:
         camp_chair = None
 
     bag_of_chips = min(
