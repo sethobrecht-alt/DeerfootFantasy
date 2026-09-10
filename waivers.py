@@ -10,6 +10,13 @@ available for "how many teams wanted this guy" and "how much did the winner
 pay over the next-best offer" -- there's no direct bid-history endpoint.
 """
 
+from datetime import datetime, timezone, timedelta
+try:
+    from zoneinfo import ZoneInfo
+    EASTERN = ZoneInfo("America/New_York")
+except Exception:  # no tzdata available
+    EASTERN = timezone(timedelta(hours=-5))
+
 WON_STATUS = "EXECUTED"
 LOSING_STATUS = "FAILED_INVALIDPLAYERSOURCE"
 
@@ -45,6 +52,7 @@ def fetch_week_waivers(league, week):
                 "team": t.team.team_name,
                 "bid": t.bid_amount,
                 "dropped": drop_item.player if drop_item else None,
+                "date": t.date,
             })
 
     moves = []
@@ -65,6 +73,10 @@ def fetch_week_waivers(league, week):
     for m in moves:
         m["blew_the_account"] = m["bid"] > BLOWN_ACCOUNT_THRESHOLD
         m["dropped_fudjo"] = m["overpay"] > FUDJO_OVERPAY_THRESHOLD
+        m["date_display"] = (
+            datetime.fromtimestamp(m["date"] / 1000, EASTERN).strftime("%b %-d")
+            if m["date"] else None
+        )
 
     # Free-agent adds are zero-cost and uncontested by definition -- no
     # bidding process, so they're listed but never eligible for a callout.
@@ -99,7 +111,7 @@ def fetch_week_waivers(league, week):
     return {
         "week": week,
         "budget": league.settings.acquisition_budget,
-        "moves": sorted(moves, key=lambda m: m["bid"], reverse=True),
+        "moves": sorted(moves, key=lambda m: m["date"] or 0, reverse=True),
         "fa_moves": fa_moves,
         "chipwich": chipwich,
         "camp_chair": camp_chair,

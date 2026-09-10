@@ -147,6 +147,7 @@
     {% if data.moves %}
     <div class="waiverboard">
       <div class="waiverrow waiverrow--head" role="row">
+        <span>Date</span>
         <span>Team</span>
         <span>Added</span>
         <span>Dropped</span>
@@ -156,6 +157,7 @@
       </div>
       {% for m in data.moves %}
       <div class="waiverrow" role="row">
+        <span>{{ m.date_display or '—' }}</span>
         <span>{{ m.team }}</span>
         <span>{{ m.player }}</span>
         <span>{{ m.dropped or '—' }}</span>
