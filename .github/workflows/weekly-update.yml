@@ -2,8 +2,8 @@ name: Weekly update
 
 on:
   schedule:
-    # 11:30 UTC Tuesday = 7:30am ET in season.
-    - cron: "30 11 * * 2"
+    # 10:00 UTC Tuesday = 6am ET in season, after Monday Night Football wraps.
+    - cron: "0 10 * * 2"
   workflow_dispatch:
     inputs:
       week:
