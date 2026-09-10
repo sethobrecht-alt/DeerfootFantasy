@@ -37,6 +37,22 @@
     </ul>
   </nav>
 
+  <script>
+    (function () {
+      var schedule = {
+        'recap.html': ['Tue', 'Wed'],
+        'power-rankings.html': ['Tue', 'Wed'],
+        'standings-history.html': ['Tue', 'Wed'],
+        'waiver-recap.html': ['Wed', 'Thu'],
+      };
+      var today = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short' }).format(new Date());
+      document.querySelectorAll('nav[aria-label="Site"] .archive__list a.archive__link').forEach(function (a) {
+        var days = schedule[a.getAttribute('href')];
+        if (days && days.indexOf(today) !== -1) a.classList.add('archive__link--new');
+      });
+    })();
+  </script>
+
   <div class="stripe stripe--inline" role="presentation"></div>
 
   <section class="power">
@@ -46,7 +62,7 @@
 </main>
 
 <footer class="foot">
-  <p>Updated September 9, 2026 at 8:28 AM ET.</p>
+  <p>Updated September 10, 2026 at 9:18 AM ET.</p>
 </footer>
 
 </body>

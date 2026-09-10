@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Deerfoot Lodge Fantasy — Weekly Recap</title>
-<meta name="description" content="Weekly recaps for Deerfoot Lodge Fantasy.">
+<title>Deerfoot Lodge Fantasy — Week 1</title>
+<meta name="description" content="Week 1 results and recaps for Deerfoot Lodge Fantasy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;500;600&display=swap" rel="stylesheet">
@@ -16,8 +16,8 @@
   <div class="masthead__inner">
     <p class="masthead__eyebrow">Official rulings &middot; 2026 season</p>
     <h1 class="masthead__title">Deerfoot Lodge Fantasy</h1>
-    <p class="masthead__week">Weekly Recap</p>
-  </div>
+    <p class="masthead__week">Week 1</p>
+<p class="masthead__headline">Week 1 in the books</p>  </div>
 </header>
 
 <div class="stripe" role="presentation"></div>
@@ -37,19 +37,365 @@
     </ul>
   </nav>
 
+  <script>
+    (function () {
+      var schedule = {
+        'recap.html': ['Tue', 'Wed'],
+        'power-rankings.html': ['Tue', 'Wed'],
+        'standings-history.html': ['Tue', 'Wed'],
+        'waiver-recap.html': ['Wed', 'Thu'],
+      };
+      var today = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short' }).format(new Date());
+      document.querySelectorAll('nav[aria-label="Site"] .archive__list a.archive__link').forEach(function (a) {
+        var days = schedule[a.getAttribute('href')];
+        if (days && days.indexOf(today) !== -1) a.classList.add('archive__link--new');
+      });
+    })();
+  </script>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+
+  <section class="peaks" aria-label="This week's high and low score">
+    <div class="peak peak--summit">
+      <div class="peak__body">
+        <p class="peak__call">Enjoying Virginia Pastries on Whiteface</p>
+        <p class="peak__team">Funk that Junk</p>
+        <p class="peak__line">
+          <span class="peak__number">32.02</span>
+          <span class="peak__unit">points</span>
+        </p>
+      </div>
+    </div>
+    <div class="peak peak--valley">
+      <div class="peak__body">
+        <p class="peak__call">Eating Wazi Tac in the Rain on Couchsachraga</p>
+        <p class="peak__team">Rome-ans 10:9-10</p>
+        <p class="peak__line">
+          <span class="peak__number">0.00</span>
+          <span class="peak__unit">points</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
   <div class="stripe stripe--inline" role="presentation"></div>
 
 
-  <section class="games">
-    <p class="power__note">No weekly recaps yet &mdash; check back once the season's underway.</p>
+  <section class="flagwrap" aria-label="Forgot the Gudge Roll">
+    <div class="flag">
+      <div class="flag__body">
+        <p class="flag__call">Forgot the Gudge Roll</p>
+        <p class="flag__team">The Goose is Loose</p>
+        <p class="flag__detail">
+          Started <strong>Terry McLaurin</strong> at RB/WR/TE
+          for 0.
+          <strong>Hunter Henry</strong> sat on the bench
+          and scored 4.1.
+        </p>
+        <p class="flag__penalty">
+          <span class="flag__number">4.1</span>
+          <span class="flag__unit">points, declined</span>
+        </p>
+      </div>
+    </div>
   </section>
 
+
+  <section class="games" aria-labelledby="games-heading">
+    <h2 class="section-title" id="games-heading">The matchups</h2>
+
+    <article class="game">
+
+      <div class="score">
+        <div class="score__side score__side--won">
+          <p class="score__team">Catalina Wine Mixon</p>
+          <p class="score__points">12.00</p>
+        </div>
+<p class="score__v">vs</p>        <div class="score__side">
+          <p class="score__team">Rome-ans 10:9-10</p>
+          <p class="score__points">0.00</p>
+        </div>
+      </div>
+
+      <p class="game__recap">Catalina Wine Mixon beat Rome-ans 10:9-10 12.0-0.0. Top scorer: Rhamondre Stevenson with 12.0.</p>
+
+      <div class="game__stats">
+        <div class="statblock">
+          <p class="statblock__who">CWU</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Rhamondre Stevenson &middot; 12.0</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>12.00</span>
+          </p>
+        </div>
+        <div class="statblock">
+          <p class="statblock__who">FOX</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Justin Jefferson &middot; 0</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>0.00</span>
+          </p>
+        </div>
+      </div>
+
+
+    </article>
+    <article class="game">
+
+      <div class="score">
+        <div class="score__side">
+          <p class="score__team">Harley Jarvis</p>
+          <p class="score__points">0.00</p>
+        </div>
+<p class="score__v">vs</p>        <div class="score__side">
+          <p class="score__team">Chase Brown Had a Bad Scare</p>
+          <p class="score__points">0.00</p>
+        </div>
+      </div>
+
+      <p class="game__recap">Harley Jarvis and Chase Brown Had a Bad Scare tied at 0.0.</p>
+
+      <div class="game__stats">
+        <div class="statblock">
+          <p class="statblock__who">NG</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Ja'Marr Chase &middot; 0</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>0.90</span>
+          </p>
+        </div>
+        <div class="statblock">
+          <p class="statblock__who">CB</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Christian McCaffrey &middot; 0</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>0.00</span>
+          </p>
+        </div>
+      </div>
+
+      <ul class="penalties">
+        <li class="penalty">
+          <span class="penalty__mark" aria-hidden="true"></span>
+          <span class="penalty__text">
+            <strong>Harley Jarvis</strong> benched Rashid Shaheed
+            (0.9) and started Ja'Marr Chase
+            (0) at WR.
+          </span>
+          <span class="penalty__cost">&minus;0.9</span>
+        </li>
+      </ul>
+
+    </article>
+    <article class="game">
+
+      <div class="score">
+        <div class="score__side score__side--won">
+          <p class="score__team">Funk that Junk</p>
+          <p class="score__points">32.02</p>
+        </div>
+<p class="score__v">vs</p>        <div class="score__side">
+          <p class="score__team">The Machine Knows</p>
+          <p class="score__points">0.00</p>
+        </div>
+      </div>
+
+      <p class="game__recap">Funk that Junk beat The Machine Knows 32.02-0.0. Top scorer: Jaxon Smith-Njigba with 22.2.</p>
+
+      <div class="game__stats">
+        <div class="statblock">
+          <p class="statblock__who">FTj</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Jaxon Smith-Njigba &middot; 22.2</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>32.02</span>
+          </p>
+        </div>
+        <div class="statblock">
+          <p class="statblock__who">MK</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Puka Nacua &middot; 0</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>0.00</span>
+          </p>
+        </div>
+      </div>
+
+
+    </article>
+    <article class="game">
+
+      <div class="score">
+        <div class="score__side">
+          <p class="score__team">55 Burgers</p>
+          <p class="score__points">11.10</p>
+        </div>
+<p class="score__v">vs</p>        <div class="score__side score__side--won">
+          <p class="score__team">The Goose is Loose</p>
+          <p class="score__points">14.00</p>
+        </div>
+      </div>
+
+      <p class="game__recap">The Goose is Loose beat 55 Burgers 14.0-11.1. Top scorer: Seahawks D/ST with 14.0.</p>
+
+      <div class="game__stats">
+        <div class="statblock">
+          <p class="statblock__who">SCUD</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Patriots D/ST &middot; 7.0</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>11.10</span>
+          </p>
+        </div>
+        <div class="statblock">
+          <p class="statblock__who">GOOS</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Seahawks D/ST &middot; 14.0</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>18.62</span>
+          </p>
+        </div>
+      </div>
+
+      <ul class="penalties">
+        <li class="penalty">
+          <span class="penalty__mark" aria-hidden="true"></span>
+          <span class="penalty__text">
+            <strong>The Goose is Loose</strong> benched Hunter Henry
+            (4.1) and started Terry McLaurin
+            (0) at RB/WR/TE.
+          </span>
+          <span class="penalty__cost">&minus;4.62</span>
+        </li>
+      </ul>
+
+    </article>
+    <article class="game">
+
+      <div class="score">
+        <div class="score__side">
+          <p class="score__team">Team Bradford</p>
+          <p class="score__points">0.00</p>
+        </div>
+<p class="score__v">vs</p>        <div class="score__side score__side--won">
+          <p class="score__team">Love Thy Naber</p>
+          <p class="score__points">6.80</p>
+        </div>
+      </div>
+
+      <p class="game__recap">Love Thy Naber beat Team Bradford 6.8-0.0. Top scorer: Jadarian Price with 6.8.</p>
+
+      <div class="game__stats">
+        <div class="statblock">
+          <p class="statblock__who">BRAD</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Bijan Robinson &middot; 0</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>0.00</span>
+          </p>
+        </div>
+        <div class="statblock">
+          <p class="statblock__who">Love</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Jadarian Price &middot; 6.8</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>6.80</span>
+          </p>
+        </div>
+      </div>
+
+
+    </article>
+    <article class="game">
+
+      <div class="score">
+        <div class="score__side">
+          <p class="score__team">Ricky Huns</p>
+          <p class="score__points">0.00</p>
+        </div>
+<p class="score__v">vs</p>        <div class="score__side">
+          <p class="score__team">The Island Gudge</p>
+          <p class="score__points">0.00</p>
+        </div>
+      </div>
+
+      <p class="game__recap">Ricky Huns and The Island Gudge tied at 0.0.</p>
+
+      <div class="game__stats">
+        <div class="statblock">
+          <p class="statblock__who">BAUM</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Saquon Barkley &middot; 0</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>2.90</span>
+          </p>
+        </div>
+        <div class="statblock">
+          <p class="statblock__who">OBRE</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Amon-Ra St. Brown &middot; 0</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>0.00</span>
+          </p>
+        </div>
+      </div>
+
+      <ul class="penalties">
+        <li class="penalty">
+          <span class="penalty__mark" aria-hidden="true"></span>
+          <span class="penalty__text">
+            <strong>Ricky Huns</strong> benched George Holani
+            (2.9) and started Saquon Barkley
+            (0) at RB.
+          </span>
+          <span class="penalty__cost">&minus;2.9</span>
+        </li>
+      </ul>
+
+    </article>
+  </section>
 
 
 </main>
 
 <footer class="foot">
-  <p>Updated September 9, 2026 at 8:28 AM ET. Rebuilt every Tuesday from ESPN.</p>
+  <p>Updated September 10, 2026 at 9:18 AM ET. Rebuilt every Tuesday from ESPN.</p>
   <p class="foot__fine">Recaps are written by a language model and are not a reliable
   source of truth about anything, including whose fault it was.</p>
 </footer>
