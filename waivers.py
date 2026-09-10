@@ -105,4 +105,5 @@ def fetch_week_waivers(league, week):
         "camp_chair": camp_chair,
         "bag_of_chips": bag_of_chips,
         "fudjo": fudjo,
+        "total_spent": sum(m["bid"] for m in moves),
     }
