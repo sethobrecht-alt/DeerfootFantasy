@@ -25,31 +25,6 @@ def _env():
     )
 
 
-UPDATED_PATH = os.path.join(HERE, "updated.json")
-
-
-def _updated_times():
-    """Last-real-update timestamp per page, for the nav's 48-hour highlight.
-
-    Read by every page (so any page's nav can highlight any other page),
-    written only by the pages that actually get rebuilt on a schedule --
-    see _touch_updated().
-    """
-    if not os.path.exists(UPDATED_PATH):
-        return {}
-    with open(UPDATED_PATH) as f:
-        return json.load(f)
-
-
-def _touch_updated(page):
-    """Record that `page` was just rebuilt with real content, right now."""
-    times = _updated_times()
-    times[page] = datetime.now(timezone.utc).isoformat()
-    with open(UPDATED_PATH, "w") as f:
-        json.dump(times, f, indent=2)
-    return times
-
-
 def _flag_of_week(week, favourite, shield):
     """The single worst bench decision of the week."""
     worst = None
@@ -86,7 +61,6 @@ def build_site(weeks, config):
             season=config["year"],
             week=None,
             updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
-            updated_times_json=json.dumps(_updated_times()),
         )
         with open(os.path.join(DOCS, "recap.html"), "w") as f:
             f.write(html)
@@ -102,7 +76,6 @@ def build_site(weeks, config):
     archive = list(reversed(archive))
 
     updated = datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET")
-    updated_times_json = json.dumps(_touch_updated("recap.html"))
 
     for i, week in enumerate(weeks):
         top_scorer, low_scorer = _week_extremes(week)
@@ -118,7 +91,6 @@ def build_site(weeks, config):
             low_scorer=low_scorer,
             archive=archive,
             updated=updated,
-            updated_times_json=updated_times_json,
         )
 
         is_latest = i == len(weeks) - 1
@@ -176,7 +148,6 @@ def build_keepers_page(config):
         calc_year=calc_year,
         calc_data_json=json.dumps(calc_data),
         updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
-        updated_times_json=json.dumps(_updated_times()),
     )
     with open(os.path.join(DOCS, "keepers.html"), "w") as f:
         f.write(html)
@@ -209,7 +180,6 @@ def build_draft_history_page(config):
         years=sorted(years.keys(), reverse=True),
         years_json=json.dumps(years),
         updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
-        updated_times_json=json.dumps(_updated_times()),
     )
     with open(os.path.join(DOCS, "draft-history.html"), "w") as f:
         f.write(html)
@@ -241,7 +211,6 @@ def build_standings_page(config):
         current_teams_json=json.dumps(current_teams),
         live_year=live_year,
         updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
-        updated_times_json=json.dumps(_touch_updated("standings-history.html")),
     )
     with open(os.path.join(DOCS, "standings-history.html"), "w") as f:
         f.write(html)
@@ -271,7 +240,6 @@ def build_power_rankings_page(rankings, config):
         weights=weights,
         favourite=config.get("favourite_team"),
         updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
-        updated_times_json=json.dumps(_touch_updated("power-rankings.html")),
     )
     with open(os.path.join(DOCS, "power-rankings.html"), "w") as f:
         f.write(html)
@@ -298,7 +266,6 @@ def build_league_basics_page(config):
         settings=data.get("settings", []),
         buy_in=data.get("buy_in", {}),
         updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
-        updated_times_json=json.dumps(_updated_times()),
     )
     with open(os.path.join(DOCS, "league-basics.html"), "w") as f:
         f.write(html)
@@ -317,7 +284,6 @@ def build_waiver_recap_page(data, config):
         season=config["year"],
         data=data,
         updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
-        updated_times_json=json.dumps(_touch_updated("waiver-recap.html")),
     )
     with open(os.path.join(DOCS, "waiver-recap.html"), "w") as f:
         f.write(html)
@@ -372,7 +338,6 @@ def build_home_page(config):
         champions=champions,
         non_champions=non_champions,
         updated=datetime.now(EASTERN).strftime("%B %-d, %Y at %-I:%M %p ET"),
-        updated_times_json=json.dumps(_updated_times()),
     )
     with open(os.path.join(DOCS, "index.html"), "w") as f:
         f.write(html)
