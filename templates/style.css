@@ -747,6 +747,7 @@ body {
 }
 
 .draft-pill {
+  display: inline-block;
   border: 1px solid var(--ink);
   background: var(--paper);
   color: var(--ink);
@@ -754,6 +755,7 @@ body {
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   padding: 0.4rem 0.7rem;
+  text-decoration: none;
   cursor: pointer;
 }
 
