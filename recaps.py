@@ -135,6 +135,11 @@ before this recap was even written: {terms}. That's a hard rule, not a \
 suggestion — rewrite the recap without it (or them), using different \
 vocabulary for that beat instead."""
 
+FORCED_CALLOUT_RULE = """
+
+Mandatory: work in the exact phrase "{phrase}" for {player} somewhere in \
+this recap. This specific callout has been requested for this matchup."""
+
 BAD_GENERAL_ASSIGNED = """
 
 Mandatory: work in the exact phrase "{term}" somewhere in this recap, for \
@@ -303,8 +308,15 @@ def _losing_streaks(prior_weeks):
     return streaks
 
 
-def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None):
-    """Fill in recap text for every matchup, using the cache where possible."""
+def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced_callouts=None):
+    """Fill in recap text for every matchup, using the cache where possible.
+
+    forced_callouts: optional {player_name: phrase} -- for a matchup that
+    includes that player as a starter, mandate that exact phrase appear
+    for them. Meant for "make sure this specific thing gets called out"
+    requests, not for standing house vocabulary (that belongs in
+    team_lore.json instead).
+    """
     cached = {}
     if os.path.exists(cache_path):
         with open(cache_path) as f:
@@ -391,6 +403,13 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None):
         assigned_term = assigned_bad_general.get(id(m))
         if assigned_term:
             system += BAD_GENERAL_ASSIGNED.format(term=assigned_term)
+
+        if forced_callouts:
+            starters = m["home"]["starters"] + m["away"]["starters"]
+            starter_names = {p["name"] for p in starters}
+            for player, phrase in forced_callouts.items():
+                if player in starter_names:
+                    system += FORCED_CALLOUT_RULE.format(phrase=phrase, player=player)
 
         maxed_out = [t for t in vocab_terms if phrase_counts[t] >= 2]
         if maxed_out:
