@@ -405,6 +405,8 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None):
             # cousin") while still tripping the same substring check, so
             # this loops rather than trusting the first rewrite.
             for _ in range(2):
+                if not m["recap"]:
+                    break
                 violated = [t for t in maxed_out if t.lower() in m["recap"].lower()]
                 if not violated:
                     break
@@ -414,6 +416,11 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None):
                 except Exception as err:
                     print(f"Phrase-limit retry failed for {m['key']}: {err}")
                     break
+            if not m["recap"]:
+                # _ask() can legitimately return "" (a response with no text
+                # content) without raising -- that's still a failure, not a
+                # valid recap, and needs the same fallback as an exception.
+                raise ValueError("model returned an empty recap")
             record_usage(m["recap"])
         except Exception as err:
             print(f"Recap failed for {m['key']}: {err}")
