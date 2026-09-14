@@ -339,14 +339,20 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None):
             m["recap"] = _ask(client, system, _matchup_prompt(m, week_data["week"]))
             # The live reminder above isn't airtight -- verify the draft
             # didn't reuse a phrase that was already at cap, and if it did,
-            # give it one shot at a rewrite with an unambiguous ban.
-            violated = [t for t in maxed_out if t.lower() in m["recap"].lower()]
-            if violated:
+            # give it a couple of shots at a rewrite with an unambiguous ban.
+            # A retry can dodge the letter of the ban ("a Dutch Oven's
+            # cousin") while still tripping the same substring check, so
+            # this loops rather than trusting the first rewrite.
+            for _ in range(2):
+                violated = [t for t in maxed_out if t.lower() in m["recap"].lower()]
+                if not violated:
+                    break
                 retry_system = system + PHRASE_LIMIT_RETRY.format(terms="; ".join(violated))
                 try:
                     m["recap"] = _ask(client, retry_system, _matchup_prompt(m, week_data["week"]))
                 except Exception as err:
                     print(f"Phrase-limit retry failed for {m['key']}: {err}")
+                    break
             record_usage(m["recap"])
         except Exception as err:
             print(f"Recap failed for {m['key']}: {err}")
