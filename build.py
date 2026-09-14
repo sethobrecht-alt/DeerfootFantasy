@@ -46,6 +46,16 @@ def save(week_data):
         json.dump(week_data, f, indent=2)
 
 
+def load_forced_callouts(week):
+    """Per-week mandatory callouts from forced_callouts.json, if any."""
+    path = os.path.join(HERE, "forced_callouts.json")
+    if not os.path.exists(path):
+        return None
+    with open(path) as f:
+        all_weeks = json.load(f)
+    return all_weeks.get(str(week)) or None
+
+
 def refresh(config, force_week=None):
     """Fetch any played week that is not cached yet."""
     connection = lg.connect(config)
@@ -64,7 +74,8 @@ def refresh(config, force_week=None):
             break
         prior_weeks = [w for w in load_cached() if w["week"] < week]
         data = recaps.write_recaps(
-            data, config["favourite_team"], cache_path(week), prior_weeks=prior_weeks
+            data, config["favourite_team"], cache_path(week), prior_weeks=prior_weeks,
+            forced_callouts=load_forced_callouts(week),
         )
         save(data)
         print(f"  Saved week {week} ({len(data['matchups'])} matchups)")

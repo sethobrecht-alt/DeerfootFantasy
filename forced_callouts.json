@@ -1,0 +1,6 @@
+{
+  "_note": "Per-week mandatory callouts for recaps.write_recaps(). Keyed by week number (as a string). Each value is {player_name: phrase} -- if that player started in a matchup that week, the phrase is mandated in that recap. Self-scoping: once a week's recap is generated and cached, its entry here has no further effect. Remove entries once you no longer need them.",
+  "1": {
+    "Derrick Henry": "like a woodsman running to the camp store"
+  }
+}
