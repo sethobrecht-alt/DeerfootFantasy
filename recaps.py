@@ -75,6 +75,30 @@ any softened, partial, or joking allusion to it (no "almost got some work," \
 no "Chief Ron Voice territory," nothing). It only ever appears in a recap \
 where the losing team scored under 70 points, and that's not this matchup."""
 
+STICK_BUNS_ON = """
+
+Mandatory: work in the phrase "stick buns on Sunday Morning" somewhere in \
+this recap — it's a reward-for-winning line, and this matchup has been \
+chosen to use it this week."""
+
+STICK_BUNS_OFF = """
+
+Do not use the phrase "stick buns on Sunday Morning" anywhere in this recap, \
+in full or in any softened or partial allusion to it. It's reserved for a \
+different matchup this week."""
+
+TUNA_CASSEROLE_ON = """
+
+Mandatory: work in the phrase "well-earned Tuna Casserole" somewhere in \
+this recap — it's a reward-for-winning line, and this matchup has been \
+chosen to use it this week."""
+
+TUNA_CASSEROLE_OFF = """
+
+Do not use the phrase "well-earned Tuna Casserole" anywhere in this recap, \
+in full or in any softened or partial allusion to it. It's reserved for a \
+different matchup this week."""
+
 LORE_RULE = """
 
 House vocabulary. These phrases are the backbone of the site's voice, not \
@@ -199,6 +223,14 @@ def write_recaps(week_data, favourite_team, cache_path):
         cached = {m.get("key"): m.get("recap") for m in old.get("matchups", [])}
         week_data["headline"] = old.get("headline", "")
 
+    # "stick buns" and "Tuna Casserole" are both reward-for-winning lines, but
+    # each is only allowed once across the whole week -- pick one winning
+    # matchup per phrase up front, since each recap is written in its own
+    # API call with no visibility into what the others wrote.
+    winning_matchups = [m for m in week_data["matchups"] if m["winner"]]
+    stick_buns_match = winning_matchups[0] if winning_matchups else None
+    tuna_casserole_match = winning_matchups[1] if len(winning_matchups) > 1 else None
+
     client = _client()
     for m in week_data["matchups"]:
         m["key"] = f"{m['home']['team_id']}v{m['away']['team_id']}"
@@ -217,6 +249,8 @@ def write_recaps(week_data, favourite_team, cache_path):
             system += STEFANOWICZ_RULE
         loser_score = min(m["home"]["score"], m["away"]["score"])
         system += CHIEF_RON_VOICE_ON if loser_score < 70 else CHIEF_RON_VOICE_OFF
+        system += STICK_BUNS_ON if m is stick_buns_match else STICK_BUNS_OFF
+        system += TUNA_CASSEROLE_ON if m is tuna_casserole_match else TUNA_CASSEROLE_OFF
         try:
             m["recap"] = _ask(client, system, _matchup_prompt(m, week_data["week"]))
         except Exception as err:
