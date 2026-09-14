@@ -127,6 +127,13 @@ No single phrase from that list should appear more than twice across the \
 whole week's recaps. These have already hit that cap this week — do not \
 use them again, pick something else that fits instead: {maxed_out}"""
 
+PHRASE_LIMIT_RETRY = """
+
+Your last draft used a phrase that had already hit its twice-a-week cap \
+before this recap was even written: {terms}. That's a hard rule, not a \
+suggestion — rewrite the recap without it (or them), using different \
+vocabulary for that beat instead."""
+
 LORE_RULE = """
 
 House vocabulary. These phrases are the backbone of the site's voice, not \
@@ -330,6 +337,16 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None):
 
         try:
             m["recap"] = _ask(client, system, _matchup_prompt(m, week_data["week"]))
+            # The live reminder above isn't airtight -- verify the draft
+            # didn't reuse a phrase that was already at cap, and if it did,
+            # give it one shot at a rewrite with an unambiguous ban.
+            violated = [t for t in maxed_out if t.lower() in m["recap"].lower()]
+            if violated:
+                retry_system = system + PHRASE_LIMIT_RETRY.format(terms="; ".join(violated))
+                try:
+                    m["recap"] = _ask(client, retry_system, _matchup_prompt(m, week_data["week"]))
+                except Exception as err:
+                    print(f"Phrase-limit retry failed for {m['key']}: {err}")
             record_usage(m["recap"])
         except Exception as err:
             print(f"Recap failed for {m['key']}: {err}")
