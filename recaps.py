@@ -36,7 +36,11 @@ poor coaching — a bad game plan, out-schemed, never just bad luck. Keep this \
 in general coaching language (game plan, adjustments, feel for the matchup), \
 not literal lineup swaps — that's still off-limits in the prose.
 - "Boss" and "Beak" are the two most load-bearing words in the house \
-vocabulary. Use them often — most recaps should have at least one.
+vocabulary — they mean good/positive and bad/negative. Use them a lot, most \
+recaps should have several. Never use plain words like "good," "bad," \
+"great," "terrible," "strong," "weak," or other synonyms for positive/ \
+negative in the recap text itself — use "Boss" or "Beak" (or a phrase built \
+around one of them) in their place instead.
 - Never explain fantasy football. Never open with "In a thrilling matchup."
 - No emoji. No exclamation marks.
 
@@ -77,13 +81,13 @@ where the losing team scored under 70 points, and that's not this matchup."""
 
 STICK_BUNS_ON = """
 
-Mandatory: work in the phrase "stick buns on Sunday Morning" somewhere in \
+Mandatory: work in the phrase "sticky buns on Sunday Morning" somewhere in \
 this recap — it's a reward-for-winning line, and this matchup has been \
 chosen to use it this week."""
 
 STICK_BUNS_OFF = """
 
-Do not use the phrase "stick buns on Sunday Morning" anywhere in this recap, \
+Do not use the phrase "sticky buns on Sunday Morning" anywhere in this recap, \
 in full or in any softened or partial allusion to it. It's reserved for a \
 different matchup this week."""
 
@@ -223,7 +227,7 @@ def write_recaps(week_data, favourite_team, cache_path):
         cached = {m.get("key"): m.get("recap") for m in old.get("matchups", [])}
         week_data["headline"] = old.get("headline", "")
 
-    # "stick buns" and "Tuna Casserole" are both reward-for-winning lines, but
+    # "sticky buns" and "Tuna Casserole" are both reward-for-winning lines, but
     # each is only allowed once across the whole week -- pick one winning
     # matchup per phrase up front, since each recap is written in its own
     # API call with no visibility into what the others wrote.
