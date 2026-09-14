@@ -7,6 +7,7 @@ you after people have read it.
 
 import json
 import os
+import random
 from collections import Counter
 from anthropic import Anthropic
 
@@ -133,6 +134,15 @@ Your last draft used a phrase that had already hit its twice-a-week cap \
 before this recap was even written: {terms}. That's a hard rule, not a \
 suggestion — rewrite the recap without it (or them), using different \
 vocabulary for that beat instead."""
+
+BAD_GENERAL_ASSIGNED = """
+
+Mandatory: work in the exact phrase "{term}" somewhere in this recap, for \
+the losing side. It's from the "Terms for Bad Performance (General)" \
+family, and this specific matchup has been assigned that specific phrase \
+this week (a few other bad-performance matchups each got a different one, \
+so the week doesn't lean on the same one or two every time) — use this one \
+here, not a different phrase from that same family."""
 
 LORE_RULE = """
 
@@ -272,6 +282,11 @@ def _fallback(matchup):
     )
 
 
+def _loser(m):
+    """The losing team's name. Only meaningful when m["winner"] is set."""
+    return m["away"]["name"] if m["winner"] == m["home"]["name"] else m["home"]["name"]
+
+
 def _losing_streaks(prior_weeks):
     """team name -> consecutive losses through the most recent prior week."""
     streaks = {}
@@ -321,6 +336,28 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None):
             if n:
                 phrase_counts[term] += n
 
+    # The twice-a-week cap stops any one phrase from dominating, but on its
+    # own it still lets the model settle into the same one or two "general
+    # bad performance" favorites and ignore the rest of that family. Force
+    # the issue: assign a handful of losing matchups each a different
+    # phrase from that family up front, so the week is guaranteed real
+    # spread rather than just staying under the cap.
+    bad_general_terms = [
+        v["term"] for v in _lore().get("vocab", []) if v.get("category") == "bad-general"
+    ]
+
+    # The shielded favourite is never framed as having played badly, so a
+    # matchup they lost isn't eligible to carry one of these phrases.
+    bad_general_eligible = [
+        m for m in week_data["matchups"] if m["winner"] and _loser(m) != favourite_team
+    ]
+    random.shuffle(bad_general_eligible)
+    target_n = min(4, len(bad_general_eligible), len(bad_general_terms))
+    assigned_bad_general = dict(zip(
+        (id(m) for m in bad_general_eligible[:target_n]),
+        random.sample(bad_general_terms, target_n),
+    ))
+
     client = _client()
     for m in week_data["matchups"]:
         m["key"] = f"{m['home']['team_id']}v{m['away']['team_id']}"
@@ -344,14 +381,16 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None):
         system += TUNA_CASSEROLE_ON if m is tuna_casserole_match else TUNA_CASSEROLE_OFF
 
         point_and_back_team = None
-        if m["winner"]:
-            loser_name = m["away"]["name"] if m["winner"] == m["home"]["name"] else m["home"]["name"]
-            if prior_streaks.get(loser_name, 0) + 1 >= 2:
-                point_and_back_team = loser_name
+        if m["winner"] and prior_streaks.get(_loser(m), 0) + 1 >= 2:
+            point_and_back_team = _loser(m)
         system += (
             POINT_AND_BACK_ON.format(team=point_and_back_team)
             if point_and_back_team else POINT_AND_BACK_OFF
         )
+
+        assigned_term = assigned_bad_general.get(id(m))
+        if assigned_term:
+            system += BAD_GENERAL_ASSIGNED.format(term=assigned_term)
 
         maxed_out = [t for t in vocab_terms if phrase_counts[t] >= 2]
         if maxed_out:
