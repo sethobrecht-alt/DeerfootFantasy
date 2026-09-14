@@ -138,10 +138,16 @@ LORE_RULE = """
 
 House vocabulary. These phrases are the backbone of the site's voice, not \
 seasoning — work in two or three per recap where they genuinely fit what \
-happened, not just "Boss" and "Beak" every time. Don't fall back on the \
-same handful of phrases recap after recap — there's a long list below, use \
-its range. If you're unsure what a phrase actually means or how it would \
-apply here, leave it out rather than guessing:
+happened, not just "Boss" and "Beak" every time. Several phrases below mean \
+close to the same thing on purpose (several ways to say a team looked lost, \
+several ways to say a win was easy) — that's real range, not filler, so \
+rotate through the alternatives instead of defaulting to the same one or \
+two every week. Use each phrase EXACTLY as written below — don't shorten, \
+paraphrase, or lightly reword it. A phrase like "is stuck on the Point and \
+Back" stops working as a callback the moment it becomes "stuck on the \
+Point" — small changes break the reference for people who already know \
+these phrases. If you're unsure what a phrase actually means or how it \
+would apply here, leave it out rather than guessing:
 {vocab_lines}
 
 Nicknames. Each team below has a short list of nicknames — these belong to \
@@ -171,11 +177,27 @@ def _lore():
         return json.load(f)
 
 
+CATEGORY_LABELS = {
+    "good": "Terms for Good Performance",
+    "bad-general": "Terms for Bad Performance (General)",
+    "bad-player": "Terms for Bad Performance (Player Specific)",
+}
+
+
 def _lore_rule(home_name, away_name):
     lore = _lore()
-    vocab_lines = "\n".join(
-        f"- {v['term']} = {v['meaning']}" for v in lore.get("vocab", [])
-    )
+    vocab = lore.get("vocab", [])
+    # Grouping by category (rather than one flat list) makes the "these
+    # several phrases are interchangeable, rotate through them" instruction
+    # above concrete -- the model can see the alternatives sitting together.
+    lines = [f"- {v['term']} = {v['meaning']}" for v in vocab if "category" not in v]
+    for category, label in CATEGORY_LABELS.items():
+        group = [v for v in vocab if v.get("category") == category]
+        if not group:
+            continue
+        lines.append(f"\n{label}:")
+        lines.extend(f"- {v['term']} = {v['meaning']}" for v in group)
+    vocab_lines = "\n".join(lines)
     nicknames = lore.get("nicknames", {})
     home_nicknames = ", ".join(nicknames.get(home_name, [])) or "(none)"
     away_nicknames = ", ".join(nicknames.get(away_name, [])) or "(none)"
