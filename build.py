@@ -62,7 +62,10 @@ def refresh(config, force_week=None):
         if data is None:
             print(f"  Week {week} has not been played. Stopping here.")
             break
-        data = recaps.write_recaps(data, config["favourite_team"], cache_path(week))
+        prior_weeks = [w for w in load_cached() if w["week"] < week]
+        data = recaps.write_recaps(
+            data, config["favourite_team"], cache_path(week), prior_weeks=prior_weeks
+        )
         save(data)
         print(f"  Saved week {week} ({len(data['matchups'])} matchups)")
 

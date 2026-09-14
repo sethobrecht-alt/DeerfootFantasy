@@ -7,6 +7,7 @@ you after people have read it.
 
 import json
 import os
+from collections import Counter
 from anthropic import Anthropic
 
 MODEL = "claude-sonnet-5"
@@ -103,13 +104,37 @@ Do not use the phrase "well-earned Tuna Casserole" anywhere in this recap, \
 in full or in any softened or partial allusion to it. It's reserved for a \
 different matchup this week."""
 
+POINT_AND_BACK_ON = """
+
+{team} just extended a losing streak to 2 games or more. Work in the exact \
+phrase "is stuck on the Point and Back" for {team} somewhere in this recap \
+— always the full phrase, never shortened to "stuck on the Point" or \
+similar (that's a different reference and shortening it ruins this one). \
+This is mandatory."""
+
+POINT_AND_BACK_OFF = """
+
+Do not use the phrase "is stuck on the Point and Back," or any shortened \
+version of it like "stuck on the Point," anywhere in this recap. It only \
+applies to a team on a losing streak of 2 games or more, and neither team \
+in this matchup qualifies this week."""
+
+PHRASE_LIMIT_RULE = """
+
+Phrase variety: there's a full house vocabulary below specifically so you \
+don't have to lean on the same two or three phrases every week — use it. \
+No single phrase from that list should appear more than twice across the \
+whole week's recaps. These have already hit that cap this week — do not \
+use them again, pick something else that fits instead: {maxed_out}"""
+
 LORE_RULE = """
 
 House vocabulary. These phrases are the backbone of the site's voice, not \
 seasoning — work in two or three per recap where they genuinely fit what \
-happened, not just "Boss" and "Beak" every time. If you're unsure what a \
-phrase actually means or how it would apply here, leave it out rather than \
-guessing:
+happened, not just "Boss" and "Beak" every time. Don't fall back on the \
+same handful of phrases recap after recap — there's a long list below, use \
+its range. If you're unsure what a phrase actually means or how it would \
+apply here, leave it out rather than guessing:
 {vocab_lines}
 
 Nicknames. Each team below has a short list of nicknames — these belong to \
@@ -218,7 +243,23 @@ def _fallback(matchup):
     )
 
 
-def write_recaps(week_data, favourite_team, cache_path):
+def _losing_streaks(prior_weeks):
+    """team name -> consecutive losses through the most recent prior week."""
+    streaks = {}
+    for week in prior_weeks:
+        for m in week["matchups"]:
+            h, a = m["home"]["name"], m["away"]["name"]
+            if not m["winner"]:
+                streaks[h] = 0
+                streaks[a] = 0
+                continue
+            loser = a if m["winner"] == h else h
+            for team in (h, a):
+                streaks[team] = streaks.get(team, 0) + 1 if team == loser else 0
+    return streaks
+
+
+def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None):
     """Fill in recap text for every matchup, using the cache where possible."""
     cached = {}
     if os.path.exists(cache_path):
@@ -235,11 +276,28 @@ def write_recaps(week_data, favourite_team, cache_path):
     stick_buns_match = winning_matchups[0] if winning_matchups else None
     tuna_casserole_match = winning_matchups[1] if len(winning_matchups) > 1 else None
 
+    prior_streaks = _losing_streaks(prior_weeks or [])
+
+    # General vocab phrases (everything except Boss/Beak, which are meant to
+    # appear constantly) are capped at twice across the week -- same problem
+    # as the dedicated phrases above: no recap can see what another already
+    # said, so the running count has to be tracked here and fed forward.
+    vocab_terms = [v["term"] for v in _lore().get("vocab", []) if v["term"] not in ("Boss", "Beak")]
+    phrase_counts = Counter()
+
+    def record_usage(text):
+        lower = text.lower()
+        for term in vocab_terms:
+            n = lower.count(term.lower())
+            if n:
+                phrase_counts[term] += n
+
     client = _client()
     for m in week_data["matchups"]:
         m["key"] = f"{m['home']['team_id']}v{m['away']['team_id']}"
         if cached.get(m["key"]):
             m["recap"] = cached[m["key"]]
+            record_usage(m["recap"])
             continue
         if not client:
             m["recap"] = _fallback(m)
@@ -255,8 +313,24 @@ def write_recaps(week_data, favourite_team, cache_path):
         system += CHIEF_RON_VOICE_ON if loser_score < 70 else CHIEF_RON_VOICE_OFF
         system += STICK_BUNS_ON if m is stick_buns_match else STICK_BUNS_OFF
         system += TUNA_CASSEROLE_ON if m is tuna_casserole_match else TUNA_CASSEROLE_OFF
+
+        point_and_back_team = None
+        if m["winner"]:
+            loser_name = m["away"]["name"] if m["winner"] == m["home"]["name"] else m["home"]["name"]
+            if prior_streaks.get(loser_name, 0) + 1 >= 2:
+                point_and_back_team = loser_name
+        system += (
+            POINT_AND_BACK_ON.format(team=point_and_back_team)
+            if point_and_back_team else POINT_AND_BACK_OFF
+        )
+
+        maxed_out = [t for t in vocab_terms if phrase_counts[t] >= 2]
+        if maxed_out:
+            system += PHRASE_LIMIT_RULE.format(maxed_out="; ".join(maxed_out))
+
         try:
             m["recap"] = _ask(client, system, _matchup_prompt(m, week_data["week"]))
+            record_usage(m["recap"])
         except Exception as err:
             print(f"Recap failed for {m['key']}: {err}")
             m["recap"] = _fallback(m)

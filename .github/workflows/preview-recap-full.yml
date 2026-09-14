@@ -67,7 +67,10 @@ jobs:
               sys.exit(f"Week {target_week} has no data (not played, or fetch failed).")
 
           target = weeks[-1]
-          recaps.write_recaps(target, config["favourite_team"], "/tmp/preview_cache.json")
+          recaps.write_recaps(
+              target, config["favourite_team"], "/tmp/preview_cache.json",
+              prior_weeks=weeks[:-1],
+          )
 
           rows = lg.standings_through(weeks)
           weights = config.get("power_ranking_weights", {"points": 0.6, "record": 0.4})
