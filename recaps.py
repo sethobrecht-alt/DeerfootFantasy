@@ -62,6 +62,19 @@ The Goose is Loose's manager's last name is Stefanowicz. Work in a misspelling \
 of "Stefanowicz" somewhere in this recap — never spell it correctly, and use a \
 different misspelling than you'd typically default to. This is mandatory."""
 
+CHIEF_RON_VOICE_ON = """
+
+The losing team scored under 70 points this week — that's the one and only \
+trigger for "Chief Ron Voice." Work in the phrase Chief Ron Voice: "I'm \
+disappointed in you" somewhere in this recap. This is mandatory."""
+
+CHIEF_RON_VOICE_OFF = """
+
+Do not use the phrase "Chief Ron Voice" anywhere in this recap, in full or in \
+any softened, partial, or joking allusion to it (no "almost got some work," \
+no "Chief Ron Voice territory," nothing). It only ever appears in a recap \
+where the losing team scored under 70 points, and that's not this matchup."""
+
 LORE_RULE = """
 
 House vocabulary. These phrases are the backbone of the site's voice, not \
@@ -202,6 +215,8 @@ def write_recaps(week_data, favourite_team, cache_path):
             system += FAVOURITE_RULE.format(team=favourite_team)
         if "The Goose is Loose" in names:
             system += STEFANOWICZ_RULE
+        loser_score = min(m["home"]["score"], m["away"]["score"])
+        system += CHIEF_RON_VOICE_ON if loser_score < 70 else CHIEF_RON_VOICE_OFF
         try:
             m["recap"] = _ask(client, system, _matchup_prompt(m, week_data["week"]))
         except Exception as err:
