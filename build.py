@@ -72,6 +72,11 @@ def refresh(config, force_week=None):
         if data is None:
             print(f"  Week {week} has not been played. Stopping here.")
             break
+        if week == force_week and os.path.exists(cache_path(week)):
+            # write_recaps() reuses any recap already in this file as its
+            # own cache -- remove it so a forced week actually gets fresh
+            # text instead of the old cached recaps coming right back.
+            os.remove(cache_path(week))
         prior_weeks = [w for w in load_cached() if w["week"] < week]
         data = recaps.write_recaps(
             data, config["favourite_team"], cache_path(week), prior_weeks=prior_weeks,
