@@ -440,6 +440,7 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
             system += BAD_GENERAL_ASSIGNED.format(term=assigned_term)
 
         has_forced_callout = False
+        forced_phrases = set()
         if forced_callouts:
             starters = m["home"]["starters"] + m["away"]["starters"]
             starter_names = {p["name"] for p in starters}
@@ -447,13 +448,21 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
                 if player in starter_names:
                     system += FORCED_CALLOUT_RULE.format(phrase=phrase, player=player)
                     has_forced_callout = True
+                    forced_phrases.add(phrase.lower())
 
-        # Exclude the term just mandated above (if any) -- with a one-use
-        # cap, a term can go from unused to maxed the instant an earlier
-        # matchup happens to use it, and this matchup's own mandate would
-        # otherwise contradict the "don't use it" instruction below.
+        # Exclude the term just mandated above (if any), and any term that
+        # happens to match a forced-callout phrase word-for-word (a forced
+        # callout can be an explicit request to use a phrase that's also a
+        # normal vocab entry -- e.g. "like a woodsman running to the camp
+        # store" -- and if an earlier matchup already used it organically,
+        # the cap would otherwise forbid the very phrase just mandated
+        # above). With a one-use cap, a term can go from unused to maxed
+        # the instant an earlier matchup happens to use it, and a mandate
+        # from this matchup would otherwise contradict the "don't use it"
+        # instruction below.
         maxed_out = [
-            t for t in vocab_terms if phrase_counts[t] >= 1 and t != assigned_term
+            t for t in vocab_terms
+            if phrase_counts[t] >= 1 and t != assigned_term and t.lower() not in forced_phrases
         ]
         if maxed_out:
             system += PHRASE_LIMIT_RULE.format(maxed_out="; ".join(maxed_out))
