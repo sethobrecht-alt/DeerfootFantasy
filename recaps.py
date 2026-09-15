@@ -416,11 +416,11 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
             m["recap"] = _ask(client, system, _matchup_prompt(m, week_data["week"]))
             # The live reminder above isn't airtight -- verify the draft
             # didn't reuse a phrase that was already at cap, and if it did,
-            # give it a couple of shots at a rewrite with an unambiguous ban.
+            # give it a few shots at a rewrite with an unambiguous ban.
             # A retry can dodge the letter of the ban ("a Dutch Oven's
             # cousin") while still tripping the same substring check, so
             # this loops rather than trusting the first rewrite.
-            for _ in range(2):
+            for _ in range(3):
                 if not m["recap"]:
                     break
                 violated = [t for t in maxed_out if t.lower() in m["recap"].lower()]
@@ -431,12 +431,20 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
                     m["recap"] = _ask(client, retry_system, _matchup_prompt(m, week_data["week"]))
                 except Exception as err:
                     print(f"Phrase-limit retry failed for {m['key']}: {err}")
+                    m["recap"] = ""
                     break
             if not m["recap"]:
                 # _ask() can legitimately return "" (a response with no text
                 # content) without raising -- that's still a failure, not a
                 # valid recap, and needs the same fallback as an exception.
                 raise ValueError("model returned an empty recap")
+            still_violating = [t for t in maxed_out if t.lower() in m["recap"].lower()]
+            if still_violating:
+                # The cap is a hard rule now (once a week, not twice) -- if
+                # the model still can't shake a maxed-out phrase after every
+                # retry, a plain fallback recap beats publishing the
+                # violation.
+                raise ValueError(f"recap still used a maxed-out phrase: {still_violating}")
             record_usage(m["recap"])
         except Exception as err:
             print(f"Recap failed for {m['key']}: {err}")
