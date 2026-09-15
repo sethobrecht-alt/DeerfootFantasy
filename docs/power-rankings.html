@@ -55,14 +55,215 @@
 
   <div class="stripe stripe--inline" role="presentation"></div>
 
-  <section class="power">
-    <p class="power__note">No power rankings yet &mdash; check back once the season's underway.</p>
+  <section class="power" aria-labelledby="power-heading">
+    <h2 class="section-title" id="power-heading">Power rankings</h2>
+    <p class="power__note">
+      Season-to-date, recomputed every week. Blends points for
+      (50%), record
+      (35%), and roster health
+      (15%) &mdash; a team loses health for
+      each player currently OUT, on IR, or Doubtful, weighted by that
+      player's season scoring average. Win/loss streak is shown but not
+      scored; it's noise more often than signal.
+    </p>
+
+    <ol class="board">
+      <li class="board__row board__row--no-movement">
+        <span class="board__rank">1</span>
+        <span class="board__team">
+          The Island Gudge
+          <span class="board__record">
+            1-0 &middot; 149.2 PF
+            &middot; <span class="streak-badge streak-badge--win">W1</span>
+          </span>
+          <span class="board__injuries">
+Jordyn Tyson (Injury Reserve)          </span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: 100.0%"></span>
+          <span class="board__value">100.0</span>
+        </span>
+      </li>
+      <li class="board__row board__row--no-movement">
+        <span class="board__rank">2</span>
+        <span class="board__team">
+          Harley Jarvis
+          <span class="board__record">
+            1-0 &middot; 143.0 PF
+            &middot; <span class="streak-badge streak-badge--win">W1</span>
+          </span>
+          <span class="board__injuries">
+Jalen McMillan (Out)          </span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: 96.6%"></span>
+          <span class="board__value">96.6</span>
+        </span>
+      </li>
+      <li class="board__row board__row--no-movement">
+        <span class="board__rank">3</span>
+        <span class="board__team">
+          Funk that Junk
+          <span class="board__record">
+            1-0 &middot; 120.4 PF
+            &middot; <span class="streak-badge streak-badge--win">W1</span>
+          </span>
+          <span class="board__injuries board__injuries--clean">Fully healthy</span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: 84.2%"></span>
+          <span class="board__value">84.2</span>
+        </span>
+      </li>
+      <li class="board__row board__row--no-movement">
+        <span class="board__rank">4</span>
+        <span class="board__team">
+          Team Bradford
+          <span class="board__record">
+            1-0 &middot; 108.8 PF
+            &middot; <span class="streak-badge streak-badge--win">W1</span>
+          </span>
+          <span class="board__injuries board__injuries--clean">Fully healthy</span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: 77.8%"></span>
+          <span class="board__value">77.8</span>
+        </span>
+      </li>
+      <li class="board__row board__row--no-movement">
+        <span class="board__rank">5</span>
+        <span class="board__team">
+          55 Burgers
+          <span class="board__record">
+            1-0 &middot; 129.3 PF
+            &middot; <span class="streak-badge streak-badge--win">W1</span>
+          </span>
+          <span class="board__injuries">
+A.J. Brown (Injury Reserve), Ja'Kobi Lane (Doubtful)          </span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: 74.0%"></span>
+          <span class="board__value">74.0</span>
+        </span>
+      </li>
+      <li class="board__row board__row--no-movement">
+        <span class="board__rank">6</span>
+        <span class="board__team">
+          Rome-ans 10:9-10
+          <span class="board__record">
+            1-0 &middot; 98.6 PF
+            &middot; <span class="streak-badge streak-badge--win">W1</span>
+          </span>
+          <span class="board__injuries">
+Tank Dell (Injury Reserve)          </span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: 72.1%"></span>
+          <span class="board__value">72.1</span>
+        </span>
+      </li>
+      <li class="board__row board__row--no-movement">
+        <span class="board__rank">7</span>
+        <span class="board__team">
+          The Machine Knows
+          <span class="board__record">
+            0-1 &middot; 116.4 PF
+            &middot; <span class="streak-badge streak-badge--loss">L1</span>
+          </span>
+          <span class="board__injuries">
+Alvin Kamara (Out)          </span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: 46.9%"></span>
+          <span class="board__value">46.9</span>
+        </span>
+      </li>
+      <li class="board__row board__row--no-movement">
+        <span class="board__rank">8</span>
+        <span class="board__team">
+          The Goose is Loose
+          <span class="board__record">
+            0-1 &middot; 96.6 PF
+            &middot; <span class="streak-badge streak-badge--loss">L1</span>
+          </span>
+          <span class="board__injuries">
+Sam Darnold (Doubtful), TreVeyon Henderson (Out), Brock Bowers (Out)          </span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: 35.2%"></span>
+          <span class="board__value">35.2</span>
+        </span>
+      </li>
+      <li class="board__row board__row--no-movement">
+        <span class="board__rank">9</span>
+        <span class="board__team">
+          Ricky Huns
+          <span class="board__record">
+            0-1 &middot; 94.9 PF
+            &middot; <span class="streak-badge streak-badge--loss">L1</span>
+          </span>
+          <span class="board__injuries">
+Isiah Pacheco (Injury Reserve)          </span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: 35.1%"></span>
+          <span class="board__value">35.1</span>
+        </span>
+      </li>
+      <li class="board__row board__row--no-movement">
+        <span class="board__rank">10</span>
+        <span class="board__team">
+          Catalina Wine Mixon
+          <span class="board__record">
+            0-1 &middot; 92.6 PF
+            &middot; <span class="streak-badge streak-badge--loss">L1</span>
+          </span>
+          <span class="board__injuries">
+Zach Charbonnet (Out)          </span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: 33.8%"></span>
+          <span class="board__value">33.8</span>
+        </span>
+      </li>
+      <li class="board__row board__row--no-movement">
+        <span class="board__rank">11</span>
+        <span class="board__team">
+          Chase Brown Had a Bad Scare
+          <span class="board__record">
+            0-1 &middot; 85.3 PF
+            &middot; <span class="streak-badge streak-badge--loss">L1</span>
+          </span>
+          <span class="board__injuries board__injuries--clean">Fully healthy</span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: 29.8%"></span>
+          <span class="board__value">29.8</span>
+        </span>
+      </li>
+      <li class="board__row board__row--no-movement">
+        <span class="board__rank">12</span>
+        <span class="board__team">
+          Love Thy Naber
+          <span class="board__record">
+            0-1 &middot; 58.4 PF
+            &middot; <span class="streak-badge streak-badge--loss">L1</span>
+          </span>
+          <span class="board__injuries">
+De'Zhaun Stribling (Doubtful)          </span>
+        </span>
+        <span class="board__rating">
+          <span class="board__bar" style="--fill: 15.0%"></span>
+          <span class="board__value">15.0</span>
+        </span>
+      </li>
+    </ol>
   </section>
 
 </main>
 
 <footer class="foot">
-  <p>Updated September 10, 2026 at 9:18 AM ET.</p>
+  <p>Updated September 15, 2026 at 6:12 AM ET.</p>
 </footer>
 
 </body>
