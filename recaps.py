@@ -81,29 +81,33 @@ any softened, partial, or joking allusion to it (no "almost got some work," \
 no "Chief Ron Voice territory," nothing). It only ever appears in a recap \
 where the losing team scored under 70 points, and that's not this matchup."""
 
-STICK_BUNS_ON = """
+BLOWOUT_ON = """
 
-Mandatory: work in the phrase "sticky buns on Sunday Morning" somewhere in \
-this recap — it's a reward-for-winning line, and this matchup has been \
-chosen to use it this week."""
+This matchup was decided by 30 points or more — that's the one and only \
+trigger for the Tetherball line. Work in the exact phrase "looked like a \
+Woodsman playing Chief Tyler Hallenbeck in Tetherball" for the losing side \
+somewhere in this recap. This is mandatory."""
 
-STICK_BUNS_OFF = """
+BLOWOUT_OFF = """
 
-Do not use the phrase "sticky buns on Sunday Morning" anywhere in this recap, \
-in full or in any softened or partial allusion to it. It's reserved for a \
-different matchup this week."""
+Do not use the phrase "looked like a Woodsman playing Chief Tyler \
+Hallenbeck in Tetherball" anywhere in this recap, in full or in any \
+softened or partial allusion to it. It only applies to a matchup decided \
+by 30 points or more, and this matchup doesn't qualify."""
 
-TUNA_CASSEROLE_ON = """
+BRING_DOWN_THE_ROOF_ON = """
 
-Mandatory: work in the phrase "well-earned Tuna Casserole" somewhere in \
-this recap — it's a reward-for-winning line, and this matchup has been \
-chosen to use it this week."""
+{team} had the single largest margin of victory across the entire week — \
+that's the one and only trigger for this line. Work in the exact phrase \
+"I want you to BRING DOWN THE ROOF" for {team} somewhere in this recap. \
+This is mandatory."""
 
-TUNA_CASSEROLE_OFF = """
+BRING_DOWN_THE_ROOF_OFF = """
 
-Do not use the phrase "well-earned Tuna Casserole" anywhere in this recap, \
-in full or in any softened or partial allusion to it. It's reserved for a \
-different matchup this week."""
+Do not use the phrase "I want you to BRING DOWN THE ROOF" anywhere in this \
+recap, in full or in any softened or partial allusion to it. It's reserved \
+for whichever matchup has the single largest margin of victory across the \
+entire week, and this matchup doesn't qualify."""
 
 POINT_AND_BACK_ON = """
 
@@ -124,15 +128,15 @@ PHRASE_LIMIT_RULE = """
 
 Phrase variety: there's a full house vocabulary below specifically so you \
 don't have to lean on the same two or three phrases every week — use it. \
-No single phrase from that list should appear more than twice across the \
-whole week's recaps. These have already hit that cap this week — do not \
+No single phrase from that list should appear more than once across the \
+whole week's recaps. These have already been used this week — do not \
 use them again, pick something else that fits instead: {maxed_out}"""
 
 PHRASE_LIMIT_RETRY = """
 
-Your last draft used a phrase that had already hit its twice-a-week cap \
-before this recap was even written: {terms}. That's a hard rule, not a \
-suggestion — rewrite the recap without it (or them), using different \
+Your last draft used a phrase that had already been used elsewhere this \
+week, before this recap was even written: {terms}. That's a hard rule, not \
+a suggestion — rewrite the recap without it (or them), using different \
 vocabulary for that beat instead."""
 
 FORCED_CALLOUT_RULE = """
@@ -324,18 +328,17 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
         cached = {m.get("key"): m.get("recap") for m in old.get("matchups", [])}
         week_data["headline"] = old.get("headline", "")
 
-    # "sticky buns" and "Tuna Casserole" are both reward-for-winning lines, but
-    # each is only allowed once across the whole week -- pick one winning
-    # matchup per phrase up front, since each recap is written in its own
-    # API call with no visibility into what the others wrote.
+    # "BRING DOWN THE ROOF" belongs to whichever matchup has the single
+    # largest margin of victory across the whole week -- that's a
+    # whole-week superlative no individual recap call can determine on its
+    # own, so it has to be picked up front.
     winning_matchups = [m for m in week_data["matchups"] if m["winner"]]
-    stick_buns_match = winning_matchups[0] if winning_matchups else None
-    tuna_casserole_match = winning_matchups[1] if len(winning_matchups) > 1 else None
+    roof_match = max(winning_matchups, key=lambda m: m["margin"], default=None)
 
     prior_streaks = _losing_streaks(prior_weeks or [])
 
     # General vocab phrases (everything except Boss/Beak, which are meant to
-    # appear constantly) are capped at twice across the week -- same problem
+    # appear constantly) are capped at once across the week -- same problem
     # as the dedicated phrases above: no recap can see what another already
     # said, so the running count has to be tracked here and fed forward.
     vocab_terms = [v["term"] for v in _lore().get("vocab", []) if v["term"] not in ("Boss", "Beak")]
@@ -348,7 +351,7 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
             if n:
                 phrase_counts[term] += n
 
-    # The twice-a-week cap stops any one phrase from dominating, but on its
+    # The once-a-week cap stops any one phrase from dominating, but on its
     # own it still lets the model settle into the same one or two "general
     # bad performance" favorites and ignore the rest of that family. Force
     # the issue: assign a handful of losing matchups each a different
@@ -389,8 +392,11 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
             system += STEFANOWICZ_RULE
         loser_score = min(m["home"]["score"], m["away"]["score"])
         system += CHIEF_RON_VOICE_ON if loser_score < 70 else CHIEF_RON_VOICE_OFF
-        system += STICK_BUNS_ON if m is stick_buns_match else STICK_BUNS_OFF
-        system += TUNA_CASSEROLE_ON if m is tuna_casserole_match else TUNA_CASSEROLE_OFF
+        system += BLOWOUT_ON if m["winner"] and m["margin"] >= 30 else BLOWOUT_OFF
+        system += (
+            BRING_DOWN_THE_ROOF_ON.format(team=m["winner"])
+            if m is roof_match else BRING_DOWN_THE_ROOF_OFF
+        )
 
         point_and_back_team = None
         if m["winner"] and prior_streaks.get(_loser(m), 0) + 1 >= 2:
@@ -411,7 +417,13 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
                 if player in starter_names:
                     system += FORCED_CALLOUT_RULE.format(phrase=phrase, player=player)
 
-        maxed_out = [t for t in vocab_terms if phrase_counts[t] >= 2]
+        # Exclude the term just mandated above (if any) -- with a one-use
+        # cap, a term can go from unused to maxed the instant an earlier
+        # matchup happens to use it, and this matchup's own mandate would
+        # otherwise contradict the "don't use it" instruction below.
+        maxed_out = [
+            t for t in vocab_terms if phrase_counts[t] >= 1 and t != assigned_term
+        ]
         if maxed_out:
             system += PHRASE_LIMIT_RULE.format(maxed_out="; ".join(maxed_out))
 
