@@ -273,7 +273,12 @@ def build_league_basics_page(config):
 
 
 def build_waiver_recap_page(data, config):
-    """Render docs/waiver-recap.html from a waivers.fetch_week_waivers() result."""
+    """Render docs/waiver-recap.html from a waivers.fetch_week_waivers() result.
+
+    data=None renders a "check back tomorrow" placeholder instead -- for
+    publishing the page/nav link before that week's waiver window has
+    actually processed yet.
+    """
     os.makedirs(DOCS, exist_ok=True)
     shutil.copy(os.path.join(TEMPLATES, "style.css"), os.path.join(DOCS, "style.css"))
 
