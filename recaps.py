@@ -68,6 +68,15 @@ The Goose is Loose's manager's last name is Stefanowicz. Work in a misspelling \
 of "Stefanowicz" somewhere in this recap — never spell it correctly, and use a \
 different misspelling than you'd typically default to. This is mandatory."""
 
+DART_RULE = """
+
+IMPORTANT: Jaxson Dart is a starter in this matchup and is never criticized, \
+no matter his stat line. Don't call him a bust, don't blame a loss on him, \
+don't use "Beak" or any negative framing around his performance specifically \
+— if his numbers were bad, either leave him out of the recap or frame it \
+neutrally (a quiet week, tough matchup) rather than as him underperforming. \
+Every other player in this recap is still fair game as normal."""
+
 CHIEF_RON_VOICE_ON = """
 
 The losing team scored under 70 points this week — that's the one and only \
@@ -428,6 +437,9 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
             system += FAVOURITE_RULE.format(team=favourite_team)
         if "The Goose is Loose" in names:
             system += STEFANOWICZ_RULE
+        all_starters = m["home"]["starters"] + m["away"]["starters"]
+        if any(p["name"] == "Jaxson Dart" for p in all_starters):
+            system += DART_RULE
         loser_score = min(m["home"]["score"], m["away"]["score"])
         system += CHIEF_RON_VOICE_ON if loser_score < 70 else CHIEF_RON_VOICE_OFF
         system += (
