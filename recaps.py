@@ -81,20 +81,6 @@ any softened, partial, or joking allusion to it (no "almost got some work," \
 no "Chief Ron Voice territory," nothing). It only ever appears in a recap \
 where the losing team scored under 70 points, and that's not this matchup."""
 
-BLOWOUT_ON = """
-
-This matchup was decided by 30 points or more — that's the one and only \
-trigger for the Tetherball line. Work in the exact phrase "looked like a \
-Woodsman playing Chief Tyler Hallenbeck in Tetherball" for the losing side \
-somewhere in this recap. This is mandatory."""
-
-BLOWOUT_OFF = """
-
-Do not use the phrase "looked like a Woodsman playing Chief Tyler \
-Hallenbeck in Tetherball" anywhere in this recap, in full or in any \
-softened or partial allusion to it. It only applies to a matchup decided \
-by 30 points or more, and this matchup doesn't qualify."""
-
 BRING_DOWN_THE_ROOF_ON = """
 
 {team} had the single largest margin of victory across the entire week — \
@@ -392,7 +378,6 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
             system += STEFANOWICZ_RULE
         loser_score = min(m["home"]["score"], m["away"]["score"])
         system += CHIEF_RON_VOICE_ON if loser_score < 70 else CHIEF_RON_VOICE_OFF
-        system += BLOWOUT_ON if m["winner"] and m["margin"] >= 30 else BLOWOUT_OFF
         system += (
             BRING_DOWN_THE_ROOF_ON.format(team=m["winner"])
             if m is roof_match else BRING_DOWN_THE_ROOF_OFF

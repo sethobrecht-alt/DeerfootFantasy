@@ -1,5 +1,5 @@
 {
-  "_note": "House vocabulary and per-team nicknames for the weekly recap voice. Used by recaps.py. Edit freely -- these are the league's inside jokes, not app config. A few phrases (Chief Ron Voice, \"is stuck on the Point and Back,\" the Tetherball blowout line, and \"BRING DOWN THE ROOF\") aren't listed here because their trigger is an objective, whole-week or numeric condition handled in code (recaps.py) instead of left to the model's judgment.",
+  "_note": "House vocabulary and per-team nicknames for the weekly recap voice. Used by recaps.py. Edit freely -- these are the league's inside jokes, not app config. Chief Ron Voice, \"is stuck on the Point and Back,\" and \"BRING DOWN THE ROOF\" aren't listed here because their trigger is a whole-week superlative or an exact numeric threshold handled in code (recaps.py) instead of left to the model's judgment. The Tetherball line below is different: many matchups can independently qualify (blown out by 30+) in the same week, so it stays a normal vocab entry subject to the once-a-week cap like everything else, rather than firing on every qualifying matchup.",
   "vocab": [
     {"term": "Boss", "meaning": "good"},
     {"term": "Beak", "meaning": "bad"},
@@ -28,7 +28,8 @@
     {"term": "Dutch Oven", "meaning": "dead weight, useless player who scored 0 points", "category": "bad-player"},
     {"term": "gonna need to patch those holes with more leaves, because this team got soaking wet", "meaning": "more than 1 player scored less than 5 points", "category": "bad-player"},
     {"term": "stunned naval battle queen", "meaning": "useless and looks dumb", "category": "bad-player"},
-    {"term": "ate his trail cheese and salami", "meaning": "a running back that got blocked up and scored minimal points; only use once a week", "category": "bad-player"}
+    {"term": "ate his trail cheese and salami", "meaning": "a running back that got blocked up and scored minimal points; only use once a week", "category": "bad-player"},
+    {"term": "looked like a Woodsman playing Chief Tyler Hallenbeck in Tetherball", "meaning": "got blown out by 30 or more points", "category": "bad-general"}
   ],
   "nicknames": {
     "55 Burgers": ["Paralegal", "Counsel"],
