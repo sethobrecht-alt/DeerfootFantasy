@@ -354,6 +354,22 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
     winning_matchups = [m for m in week_data["matchups"] if m["winner"]]
     roof_match = max(winning_matchups, key=lambda m: m["margin"], default=None)
 
+    # A forced-callout phrase can also be an ordinary vocab entry (e.g.
+    # "like a woodsman running to the camp store"). If some other matchup
+    # is free to reach for it first, the week ends up with it used twice
+    # (the earlier organic use, plus the mandated one) -- reserve it for
+    # its owning matchup up front, the same way sticky buns/Tuna Casserole
+    # used to be reserved, so every other matchup is forbidden from it
+    # from the very first recap onward, not just after the fact.
+    forced_callout_owner = {}
+    if forced_callouts:
+        for player, phrase in forced_callouts.items():
+            for m in week_data["matchups"]:
+                names = {p["name"] for p in m["home"]["starters"] + m["away"]["starters"]}
+                if player in names:
+                    forced_callout_owner[phrase.lower()] = id(m)
+                    break
+
     prior_streaks = _losing_streaks(prior_weeks or [])
 
     # General vocab phrases (everything except Boss/Beak, which are meant to
@@ -462,7 +478,10 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
         # instruction below.
         maxed_out = [
             t for t in vocab_terms
-            if phrase_counts[t] >= 1 and t != assigned_term and t.lower() not in forced_phrases
+            if (
+                (phrase_counts[t] >= 1 and t != assigned_term and t.lower() not in forced_phrases)
+                or (t.lower() in forced_callout_owner and forced_callout_owner[t.lower()] != id(m))
+            )
         ]
         if maxed_out:
             system += PHRASE_LIMIT_RULE.format(maxed_out="; ".join(maxed_out))
