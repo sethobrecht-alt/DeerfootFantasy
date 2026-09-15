@@ -392,15 +392,25 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
         )
 
         assigned_term = assigned_bad_general.get(id(m))
+        if assigned_term and phrase_counts[assigned_term] >= 1:
+            # The bad-general assignments are all picked up front, before
+            # any matchup has actually run -- so it's possible for an
+            # earlier matchup to organically reach for the very term this
+            # one was assigned (the vocab pool isn't exclusive to its
+            # assignment). Once that's happened, the once-a-week cap wins:
+            # don't mandate a reuse just because it was assigned here.
+            assigned_term = None
         if assigned_term:
             system += BAD_GENERAL_ASSIGNED.format(term=assigned_term)
 
+        has_forced_callout = False
         if forced_callouts:
             starters = m["home"]["starters"] + m["away"]["starters"]
             starter_names = {p["name"] for p in starters}
             for player, phrase in forced_callouts.items():
                 if player in starter_names:
                     system += FORCED_CALLOUT_RULE.format(phrase=phrase, player=player)
+                    has_forced_callout = True
 
         # Exclude the term just mandated above (if any) -- with a one-use
         # cap, a term can go from unused to maxed the instant an earlier
@@ -439,12 +449,20 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
                 # valid recap, and needs the same fallback as an exception.
                 raise ValueError("model returned an empty recap")
             still_violating = [t for t in maxed_out if t.lower() in m["recap"].lower()]
-            if still_violating:
+            if still_violating and not has_forced_callout:
                 # The cap is a hard rule now (once a week, not twice) -- if
                 # the model still can't shake a maxed-out phrase after every
                 # retry, a plain fallback recap beats publishing the
-                # violation.
+                # violation. Exception: a matchup carrying a forced_callouts
+                # mandate is a deliberate, explicit ask (e.g. "make sure
+                # this exact callout is in tomorrow's recap") -- the generic
+                # _fallback() doesn't know about forced callouts at all, so
+                # falling back here would silently drop it. A rare leftover
+                # cap violation is the lesser problem.
                 raise ValueError(f"recap still used a maxed-out phrase: {still_violating}")
+            if still_violating:
+                print(f"Keeping {m['key']} despite a cap violation ({still_violating}) "
+                      f"-- it carries a forced callout that a fallback would drop.")
             record_usage(m["recap"])
         except Exception as err:
             print(f"Recap failed for {m['key']}: {err}")
