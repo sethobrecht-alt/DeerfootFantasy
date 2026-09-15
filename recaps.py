@@ -115,15 +115,20 @@ PHRASE_LIMIT_RULE = """
 Phrase variety: there's a full house vocabulary below specifically so you \
 don't have to lean on the same two or three phrases every week — use it. \
 No single phrase from that list should appear more than once across the \
-whole week's recaps. These have already been used this week — do not \
-use them again, pick something else that fits instead: {maxed_out}"""
+whole week's recaps, and shortening or rewording a phrase to dodge that \
+("went on a Bust Hike" trimmed down to just "a Bust Hike win" elsewhere) \
+still counts as reusing it — the distinctive core of the phrase is what's \
+capped, not the exact wording around it. These have already been used \
+this week — do not use them, or their core idea reworded, again; pick \
+something else that fits instead: {maxed_out}"""
 
 PHRASE_LIMIT_RETRY = """
 
-Your last draft used a phrase that had already been used elsewhere this \
-week, before this recap was even written: {terms}. That's a hard rule, not \
-a suggestion — rewrite the recap without it (or them), using different \
-vocabulary for that beat instead."""
+Your last draft used a phrase (or a reworded version of one) that had \
+already been used elsewhere this week, before this recap was even \
+written: {terms}. That's a hard rule, not a suggestion, and rewording it \
+doesn't get around the cap — rewrite the recap without it in any form, \
+using different vocabulary for that beat instead."""
 
 FORCED_CALLOUT_RULE = """
 
@@ -180,6 +185,34 @@ def _lore():
         return {"vocab": [], "nicknames": {}}
     with open(LORE_PATH) as f:
         return json.load(f)
+
+
+# Words that stand in for the same idea across many phrases ("went on a",
+# "got his", "carried the load like a") -- interchangeable filler the model
+# can freely drop or reword without breaking the reference. Stripping them
+# from a term's edges leaves its actual invented core (e.g. "went on a Bust
+# Hike" -> "Bust Hike"), which is what a repeat-use check needs to catch --
+# a full-phrase check misses "squeaked out a Bust Hike" entirely, even
+# though it's the same callback reworded.
+_SIGNATURE_STOPWORDS = {
+    "a", "an", "the", "his", "her", "on", "in", "like", "with", "for", "of", "to",
+    "went", "got", "was", "chose", "caught", "carried", "won", "ran", "had", "ate",
+    "walked", "stole", "looked", "earned", "all", "load", "stunned", "session",
+    "this", "i", "want", "you", "gonna", "need", "more",
+}
+
+
+def _term_signature(term):
+    """The distinctive core of a vocab term -- what must not repeat, even
+    reworded. Strips filler words from both edges (not the middle, where a
+    connector like "in the" is part of what makes the phrase recognizable)."""
+    words = term.split()
+    start, end = 0, len(words)
+    while start < end - 1 and words[start].strip(",.").lower() in _SIGNATURE_STOPWORDS:
+        start += 1
+    while end > start + 1 and words[end - 1].strip(",.").lower() in _SIGNATURE_STOPWORDS:
+        end -= 1
+    return " ".join(words[start:end])
 
 
 CATEGORY_LABELS = {
@@ -328,12 +361,15 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
     # as the dedicated phrases above: no recap can see what another already
     # said, so the running count has to be tracked here and fed forward.
     vocab_terms = [v["term"] for v in _lore().get("vocab", []) if v["term"] not in ("Boss", "Beak")]
+    term_signatures = {t: _term_signature(t).lower() for t in vocab_terms}
     phrase_counts = Counter()
 
     def record_usage(text):
+        # Matched on each term's signature (its distinctive core), not the
+        # full phrase -- a shortened or reworded reuse still counts.
         lower = text.lower()
         for term in vocab_terms:
-            n = lower.count(term.lower())
+            n = lower.count(term_signatures[term])
             if n:
                 phrase_counts[term] += n
 
@@ -433,7 +469,9 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
             for _ in range(3):
                 if not m["recap"]:
                     break
-                violated = [t for t in maxed_out if t.lower() in m["recap"].lower()]
+                violated = [
+                    t for t in maxed_out if term_signatures[t] in m["recap"].lower()
+                ]
                 if not violated:
                     break
                 retry_system = system + PHRASE_LIMIT_RETRY.format(terms="; ".join(violated))
@@ -448,7 +486,9 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
                 # content) without raising -- that's still a failure, not a
                 # valid recap, and needs the same fallback as an exception.
                 raise ValueError("model returned an empty recap")
-            still_violating = [t for t in maxed_out if t.lower() in m["recap"].lower()]
+            still_violating = [
+                t for t in maxed_out if term_signatures[t] in m["recap"].lower()
+            ]
             if still_violating and not has_forced_callout:
                 # The cap is a hard rule now (once a week, not twice) -- if
                 # the model still can't shake a maxed-out phrase after every
