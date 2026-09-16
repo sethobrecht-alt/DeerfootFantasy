@@ -160,6 +160,7 @@
         <span>Bid</span>
         <span>Bidders</span>
         <span>Overpay</span>
+        <span></span>
       </div>
       {% for m in data.moves %}
       {% if m.bidder_count > 1 %}
@@ -172,6 +173,7 @@
           <span>${{ m.bid }}</span>
           <span>{{ m.bidder_count }}</span>
           <span>{{ ('$' ~ m.overpay) if m.overpay else '—' }}</span>
+          <span class="waivertoggle" aria-hidden="true"></span>
         </summary>
         <div class="waiverdrop__bids">
           <p class="waiverdrop__label">All bids on {{ m.player }}</p>
@@ -194,6 +196,7 @@
         <span>${{ m.bid }}</span>
         <span>{{ m.bidder_count }}</span>
         <span>{{ ('$' ~ m.overpay) if m.overpay else '—' }}</span>
+        <span></span>
       </div>
       {% endif %}
       {% endfor %}
