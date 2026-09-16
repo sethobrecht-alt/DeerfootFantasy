@@ -122,7 +122,7 @@ def fetch_week_waivers(league, week):
     return {
         "week": week,
         "budget": league.settings.acquisition_budget,
-        "moves": sorted(moves, key=lambda m: m["date"] or 0, reverse=True),
+        "moves": sorted(moves, key=lambda m: (m["bid"], m["date"] or 0), reverse=True),
         "fa_moves": fa_moves,
         "chipwich": chipwich,
         "camp_chair": camp_chair,
