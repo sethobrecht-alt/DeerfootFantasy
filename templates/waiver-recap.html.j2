@@ -162,6 +162,30 @@
         <span>Overpay</span>
       </div>
       {% for m in data.moves %}
+      {% if m.bidder_count > 1 %}
+      <details class="waiverdrop">
+        <summary class="waiverrow" role="row">
+          <span>{{ m.date_display or '—' }}</span>
+          <span>{{ m.team }}</span>
+          <span>{{ m.player }}</span>
+          <span>{{ m.dropped or '—' }}</span>
+          <span>${{ m.bid }}</span>
+          <span>{{ m.bidder_count }}</span>
+          <span>{{ ('$' ~ m.overpay) if m.overpay else '—' }}</span>
+        </summary>
+        <div class="waiverdrop__bids">
+          <p class="waiverdrop__label">All bids on {{ m.player }}</p>
+          <ul class="waiverdrop__list">
+            {% for b in m.all_bids %}
+            <li class="waiverdrop__bid{{ ' waiverdrop__bid--won' if b.won else '' }}">
+              <span>{{ b.team }}</span>
+              <span>${{ b.bid }}{% if b.won %} &middot; won{% endif %}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </details>
+      {% else %}
       <div class="waiverrow" role="row">
         <span>{{ m.date_display or '—' }}</span>
         <span>{{ m.team }}</span>
@@ -171,6 +195,7 @@
         <span>{{ m.bidder_count }}</span>
         <span>{{ ('$' ~ m.overpay) if m.overpay else '—' }}</span>
       </div>
+      {% endif %}
       {% endfor %}
     </div>
     {% else %}

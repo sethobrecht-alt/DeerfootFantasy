@@ -869,6 +869,90 @@ body {
   color: var(--whistle);
 }
 
+.waiverdrop {
+  border-bottom: 1px solid var(--rule);
+}
+
+.waiverdrop:last-child {
+  border-bottom: none;
+}
+
+.waiverdrop > summary.waiverrow {
+  border-bottom: none;
+  cursor: pointer;
+  list-style: none;
+  padding-right: 2.6rem;
+  position: relative;
+}
+
+.waiverdrop > summary.waiverrow::-webkit-details-marker {
+  display: none;
+}
+
+.waiverdrop > summary.waiverrow::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 0.85rem;
+  transform: translateY(-50%);
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--data);
+  font-size: 0.85rem;
+  line-height: 1;
+  color: var(--whistle);
+}
+
+.waiverdrop[open] > summary.waiverrow::after {
+  content: "\2212";
+}
+
+.waiverdrop > summary.waiverrow:hover,
+.waiverdrop > summary.waiverrow:focus-visible {
+  background: var(--chalk);
+}
+
+.waiverdrop__bids {
+  padding: 0.5rem 0.85rem 0.75rem;
+  background: var(--chalk);
+  border-top: 1px solid var(--rule);
+}
+
+.waiverdrop__label {
+  font-family: var(--data);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--whistle);
+  margin: 0 0 0.4rem;
+}
+
+.waiverdrop__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.waiverdrop__bid {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+}
+
+.waiverdrop__bid--won {
+  font-weight: 600;
+  color: var(--turf);
+}
+
 /* ---------- standings history ---------- */
 
 .standingsboard {
@@ -961,10 +1045,22 @@ a:focus-visible,
   .peak--fudjo { box-shadow: 6px 6px 0 #000; }
   .draftrow { grid-template-columns: 2.2rem 3.4rem 1fr; }
   .draftrow span:last-child { grid-column: 1 / -1; }
-  .waiverrow { grid-template-columns: 1fr 1fr 3.2rem 3.6rem; }
+  .waiverrow {
+    grid-template-columns: 1fr 1fr 3rem 3.4rem;
+    gap: 0.5rem;
+    white-space: normal;
+    align-items: start;
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
   .waiverrow:not(.waiverrow--fa) span:nth-child(1),
   .waiverrow:not(.waiverrow--fa) span:nth-child(4),
   .waiverrow:not(.waiverrow--fa) span:nth-child(7) { display: none; }
-  .waiverrow--fa { grid-template-columns: 1fr 1fr 1fr; }
+  .waiverrow--fa { grid-template-columns: 1fr 1fr 1fr; white-space: normal; }
   .waiverrow--fa span:nth-child(3) { display: block; }
+  .waiverrow--head { white-space: nowrap; }
+  .waiverdrop > summary.waiverrow { padding-right: 2.3rem; }
+  .waiverdrop > summary.waiverrow::after { right: 0.6rem; }
+  .waiverdrop__bids { padding: 0.5rem 0.6rem 0.65rem; }
+  .waiverdrop__bid { font-size: 0.78rem; }
 }

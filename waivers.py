@@ -64,11 +64,22 @@ def fetch_week_waivers(league, week):
         ]
         next_best = max(other_losing_bids) if other_losing_bids else None
         floor = (next_best + 1) if next_best is not None else 1
+        # Every team's bid on this player, winner included -- lets the page
+        # show the full bidding picture for a contested claim, not just who
+        # won it. Winner first on a tie, then highest bid to lowest.
+        all_bids = sorted(
+            (
+                {"team": team, "bid": bid, "won": team == w["team"]}
+                for team, (status, bid) in bucket.items()
+            ),
+            key=lambda b: (-b["bid"], not b["won"]),
+        )
         moves.append({
             **w,
             "bidder_count": len(bucket),
             "next_best_bid": next_best,
             "overpay": max(0, w["bid"] - floor) if w["bid"] > 0 else 0,
+            "all_bids": all_bids,
         })
     for m in moves:
         m["blew_the_account"] = m["bid"] > BLOWN_ACCOUNT_THRESHOLD
