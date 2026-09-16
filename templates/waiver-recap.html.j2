@@ -168,7 +168,7 @@
         <summary class="waiverrow" role="row">
           <span>{{ m.date_display or '—' }}</span>
           <span>{{ m.team }}</span>
-          <span>{{ m.player }}</span>
+          <span>{{ m.player }}{% if m.dropped %}<span class="waiverrow__dropped">dropped {{ m.dropped }}</span>{% endif %}</span>
           <span>{{ m.dropped or '—' }}</span>
           <span>${{ m.bid }}</span>
           <span>{{ m.bidder_count }}</span>
@@ -191,7 +191,7 @@
       <div class="waiverrow" role="row">
         <span>{{ m.date_display or '—' }}</span>
         <span>{{ m.team }}</span>
-        <span>{{ m.player }}</span>
+        <span>{{ m.player }}{% if m.dropped %}<span class="waiverrow__dropped">dropped {{ m.dropped }}</span>{% endif %}</span>
         <span>{{ m.dropped or '—' }}</span>
         <span>${{ m.bid }}</span>
         <span>{{ m.bidder_count }}</span>

@@ -851,23 +851,31 @@ body {
   background: var(--chalk);
 }
 
-.waiverrow:not(.waiverrow--fa) span:nth-child(1) {
+.waiverrow:not(.waiverrow--fa) > span:nth-child(1) {
   font-family: var(--data);
   color: var(--whistle);
 }
 
-.waiverrow span:nth-child(5),
-.waiverrow span:nth-child(6),
-.waiverrow span:nth-child(7) {
+.waiverrow > span:nth-child(5),
+.waiverrow > span:nth-child(6),
+.waiverrow > span:nth-child(7) {
   font-family: var(--data);
   color: var(--whistle);
   text-align: right;
 }
 
-.waiverrow--head span:nth-child(5),
-.waiverrow--head span:nth-child(6),
-.waiverrow--head span:nth-child(7) {
+.waiverrow--head > span:nth-child(5),
+.waiverrow--head > span:nth-child(6),
+.waiverrow--head > span:nth-child(7) {
   color: var(--whistle);
+}
+
+/* Desktop already shows the dropped player in its own column, so this
+   stays hidden there -- it only surfaces on narrow screens (see the
+   media query below), where that column is hidden for space and this
+   is otherwise the only place that info would be visible at all. */
+.waiverrow__dropped {
+  display: none;
 }
 
 .waiverdrop {
@@ -1058,12 +1066,19 @@ a:focus-visible,
     font-size: 0.8rem;
     line-height: 1.3;
   }
-  .waiverrow:not(.waiverrow--fa) span:nth-child(1),
-  .waiverrow:not(.waiverrow--fa) span:nth-child(4),
-  .waiverrow:not(.waiverrow--fa) span:nth-child(7) { display: none; }
+  .waiverrow:not(.waiverrow--fa) > span:nth-child(1),
+  .waiverrow:not(.waiverrow--fa) > span:nth-child(4),
+  .waiverrow:not(.waiverrow--fa) > span:nth-child(7) { display: none; }
   .waiverrow--fa { grid-template-columns: 1fr 1fr 1fr; white-space: normal; }
   .waiverrow--fa span:nth-child(3) { display: block; }
   .waiverrow--head { white-space: nowrap; }
+  .waiverrow__dropped {
+    display: block;
+    font-size: 0.7rem;
+    font-style: italic;
+    color: var(--whistle);
+    margin-top: 0.1rem;
+  }
   .waiverdrop__bids { padding: 0.5rem 0.6rem 0.65rem; }
   .waiverdrop__bid { font-size: 0.78rem; }
 }
