@@ -398,6 +398,17 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
             if n:
                 phrase_counts[term] += n
 
+    # Keep the vocabulary feeling fresh week to week, not just within a
+    # single week: anything used last week starts this week already at
+    # the once-a-week cap, so the exact same maxed_out/retry/fallback
+    # machinery below transparently also blocks a same-phrase repeat
+    # across the boundary. Only the single most recent week counts --
+    # this is a one-week rolling window, not a cumulative ban, so the
+    # pool replenishes every week rather than shrinking forever.
+    last_week = max(prior_weeks, key=lambda w: w["week"], default=None) if prior_weeks else None
+    if last_week:
+        record_usage(" ".join(m.get("recap", "") for m in last_week["matchups"]))
+
     # The once-a-week cap stops any one phrase from dominating, but on its
     # own it still lets the model settle into the same one or two "general
     # bad performance" favorites and ignore the rest of that family. Force
@@ -406,6 +417,7 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
     # spread rather than just staying under the cap.
     bad_general_terms = [
         v["term"] for v in _lore().get("vocab", []) if v.get("category") == "bad-general"
+        and phrase_counts[v["term"]] == 0
     ]
 
     # The shielded favourite is never framed as having played badly, so a
