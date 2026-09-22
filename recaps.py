@@ -8,7 +8,6 @@ you after people have read it.
 import json
 import os
 import random
-from collections import Counter
 from anthropic import Anthropic
 
 MODEL = "claude-sonnet-5"
@@ -119,35 +118,17 @@ version of it like "stuck on the Point," anywhere in this recap. It only \
 applies to a team on a losing streak of 2 games or more, and neither team \
 in this matchup qualifies this week."""
 
-PHRASE_LIMIT_RULE = """
+RESERVED_PHRASE_RULE = """
 
-Phrase variety: there's a full house vocabulary below specifically so you \
-don't have to lean on the same two or three phrases every week — use it. \
-No single phrase from that list should appear more than once across the \
-whole week's recaps, and shortening or rewording a phrase to dodge that \
-("went on a Bust Hike" trimmed down to just "a Bust Hike win" elsewhere) \
-still counts as reusing it — the distinctive core of the phrase is what's \
-capped, not the exact wording around it. These are off-limits for this \
-recap — already used elsewhere this week, or this week's limit on \
-carrying a phrase over from last week has already been spent — do not \
-use them, or their core idea reworded; pick something else that fits \
-instead: {maxed_out}"""
+Do not use this phrase, or a reworded version of it, anywhere in this recap \
+— it's reserved as a mandatory callout for a different matchup this week: \
+{reserved}"""
 
-PHRASE_LIMIT_RETRY = """
+RESERVED_PHRASE_RETRY = """
 
-Your last draft used a phrase (or a reworded version of one) that was \
-off-limits for this recap: {terms}. That's a hard rule, not a suggestion, \
-and rewording it doesn't get around it — rewrite the recap without it in \
+Your last draft used a phrase (or a reworded version of one) that's reserved \
+for a different matchup this week: {terms}. Rewrite the recap without it in \
 any form, using different vocabulary for that beat instead."""
-
-PHRASE_CARRYOVER_RULE = """
-
-These phrases were used last week. Prefer something you haven't used \
-either week whenever it genuinely fits just as well — don't reach for one \
-of these as your first choice. A limited number of repeats from last week \
-are fine if nothing fresher really works for a beat: this week has {remaining} \
-more of them to spend before the rest of last week's list is fully \
-off-limits too. Last week's phrases: {terms}"""
 
 FORCED_CALLOUT_RULE = """
 
@@ -391,51 +372,19 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
 
     prior_streaks = _losing_streaks(prior_weeks or [])
 
-    # General vocab phrases (everything except Boss/Beak, which are meant to
-    # appear constantly) are capped at once across the week -- same problem
-    # as the dedicated phrases above: no recap can see what another already
-    # said, so the running count has to be tracked here and fed forward.
+    # Used only to keep a forced-callout phrase from also getting used
+    # organically in a different matchup (see forced_callout_owner below) --
+    # not for any general repetition limit. Terms can repeat freely across
+    # the week and across weeks.
     vocab_terms = [v["term"] for v in _lore().get("vocab", []) if v["term"] not in ("Boss", "Beak")]
     term_signatures = {t: _term_signature(t).lower() for t in vocab_terms}
-    phrase_counts = Counter()
 
-    def record_usage(text):
-        # Matched on each term's signature (its distinctive core), not the
-        # full phrase -- a shortened or reworded reuse still counts.
-        lower = text.lower()
-        for term in vocab_terms:
-            n = lower.count(term_signatures[term])
-            if n:
-                phrase_counts[term] += n
-
-    # Keep the vocabulary feeling fresh week to week without banning last
-    # week's phrases outright: the week gets a shared budget of phrases
-    # allowed to carry over from last week, spent first-come-first-served
-    # as matchups generate in order, with a standing soft instruction to
-    # prefer anything unused over reaching for one of these. Once the
-    # budget's gone, whatever's left of last week's list gets folded into
-    # the normal hard cap below, same as anything already used this week.
-    # Only the single most recent prior week counts -- a rolling window,
-    # not a cumulative ban, so the pool replenishes every week.
-    CARRYOVER_BUDGET = 5
-    last_week = max(prior_weeks, key=lambda w: w["week"], default=None) if prior_weeks else None
-    last_week_terms = set()
-    if last_week:
-        last_week_text = " ".join(m.get("recap", "") for m in last_week["matchups"]).lower()
-        last_week_terms = {t for t in vocab_terms if term_signatures[t] in last_week_text}
-    carryover_used = set()
-
-    # The once-a-week cap stops any one phrase from dominating, but on its
-    # own it still lets the model settle into the same one or two "general
-    # bad performance" favorites and ignore the rest of that family. Force
-    # the issue: assign a handful of losing matchups each a different
-    # phrase from that family up front, so the week is guaranteed real
-    # spread rather than just staying under the cap. Last week's terms are
-    # excluded from this pool -- carrying one over is meant to be an
-    # organic fallback when nothing fresher fits, not something forced.
+    # A handful of losing matchups each get assigned a different phrase from
+    # the "bad performance (general)" family up front, so the week gets real
+    # spread across that family instead of the model settling into the same
+    # one or two favorites every time.
     bad_general_terms = [
         v["term"] for v in _lore().get("vocab", []) if v.get("category") == "bad-general"
-        and v["term"] not in last_week_terms
     ]
 
     # The shielded favourite is never framed as having played badly, so a
@@ -455,10 +404,6 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
         m["key"] = f"{m['home']['team_id']}v{m['away']['team_id']}"
         if cached.get(m["key"]):
             m["recap"] = cached[m["key"]]
-            record_usage(m["recap"])
-            for t in last_week_terms - carryover_used:
-                if term_signatures[t] in m["recap"].lower():
-                    carryover_used.add(t)
             continue
         if not client:
             m["recap"] = _fallback(m)
@@ -489,14 +434,6 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
         )
 
         assigned_term = assigned_bad_general.get(id(m))
-        if assigned_term and phrase_counts[assigned_term] >= 1:
-            # The bad-general assignments are all picked up front, before
-            # any matchup has actually run -- so it's possible for an
-            # earlier matchup to organically reach for the very term this
-            # one was assigned (the vocab pool isn't exclusive to its
-            # assignment). Once that's happened, the once-a-week cap wins:
-            # don't mandate a reuse just because it was assigned here.
-            assigned_term = None
         if assigned_term:
             system += BAD_GENERAL_ASSIGNED.format(term=assigned_term)
 
@@ -511,64 +448,37 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
                     has_forced_callout = True
                     forced_phrases.add(phrase.lower())
 
-        # Last week's carryover budget: while it's not yet spent, remind
-        # the model to prefer something fresh without hard-blocking these
-        # (an organic repeat is allowed to spend the budget). Once it's
-        # spent, whatever's left of last week's list folds into maxed_out
-        # below, same enforcement as anything already used this week.
-        carryover_remaining = max(0, CARRYOVER_BUDGET - len(carryover_used))
-        carryover_available = last_week_terms - carryover_used
-        if carryover_remaining > 0 and carryover_available:
-            system += PHRASE_CARRYOVER_RULE.format(
-                remaining=carryover_remaining,
-                terms="; ".join(sorted(carryover_available)),
-            )
-
-        # Exclude the term just mandated above (if any), and any term that
-        # happens to match a forced-callout phrase word-for-word (a forced
-        # callout can be an explicit request to use a phrase that's also a
-        # normal vocab entry -- e.g. "like a woodsman running to the camp
-        # store" -- and if an earlier matchup already used it organically,
-        # the cap would otherwise forbid the very phrase just mandated
-        # above). With a one-use cap, a term can go from unused to maxed
-        # the instant an earlier matchup happens to use it, and a mandate
-        # from this matchup would otherwise contradict the "don't use it"
-        # instruction below.
-        maxed_out = [
+        # A term reserved for a different matchup's mandatory forced callout
+        # is off-limits here, so this matchup doesn't organically steal the
+        # phrase before its owning matchup gets to use it.
+        reserved_for_others = [
             t for t in vocab_terms
-            if (
-                (phrase_counts[t] >= 1 and t != assigned_term and t.lower() not in forced_phrases)
-                or (t.lower() in forced_callout_owner and forced_callout_owner[t.lower()] != id(m))
-                or (
-                    carryover_remaining <= 0 and t in carryover_available
-                    and t != assigned_term and t.lower() not in forced_phrases
-                )
-            )
+            if t.lower() in forced_callout_owner and forced_callout_owner[t.lower()] != id(m)
         ]
-        if maxed_out:
-            system += PHRASE_LIMIT_RULE.format(maxed_out="; ".join(maxed_out))
+        if reserved_for_others:
+            system += RESERVED_PHRASE_RULE.format(reserved="; ".join(reserved_for_others))
 
         try:
             m["recap"] = _ask(client, system, _matchup_prompt(m, week_data["week"]))
             # The live reminder above isn't airtight -- verify the draft
-            # didn't reuse a phrase that was already at cap, and if it did,
-            # give it a few shots at a rewrite with an unambiguous ban.
-            # A retry can dodge the letter of the ban ("a Dutch Oven's
-            # cousin") while still tripping the same substring check, so
-            # this loops rather than trusting the first rewrite.
+            # didn't steal a phrase reserved for another matchup's forced
+            # callout, and if it did, give it a few shots at a rewrite with
+            # an unambiguous ban. A retry can dodge the letter of the ban
+            # while still tripping the same substring check, so this loops
+            # rather than trusting the first rewrite.
             for _ in range(3):
                 if not m["recap"]:
                     break
                 violated = [
-                    t for t in maxed_out if term_signatures[t] in m["recap"].lower()
+                    t for t in reserved_for_others if term_signatures[t] in m["recap"].lower()
                 ]
                 if not violated:
                     break
-                retry_system = system + PHRASE_LIMIT_RETRY.format(terms="; ".join(violated))
+                retry_system = system + RESERVED_PHRASE_RETRY.format(terms="; ".join(violated))
                 try:
                     m["recap"] = _ask(client, retry_system, _matchup_prompt(m, week_data["week"]))
                 except Exception as err:
-                    print(f"Phrase-limit retry failed for {m['key']}: {err}")
+                    print(f"Reserved-phrase retry failed for {m['key']}: {err}")
                     m["recap"] = ""
                     break
             if not m["recap"]:
@@ -577,26 +487,22 @@ def write_recaps(week_data, favourite_team, cache_path, prior_weeks=None, forced
                 # valid recap, and needs the same fallback as an exception.
                 raise ValueError("model returned an empty recap")
             still_violating = [
-                t for t in maxed_out if term_signatures[t] in m["recap"].lower()
+                t for t in reserved_for_others if term_signatures[t] in m["recap"].lower()
             ]
             if still_violating and not has_forced_callout:
-                # The cap is a hard rule now (once a week, not twice) -- if
-                # the model still can't shake a maxed-out phrase after every
-                # retry, a plain fallback recap beats publishing the
-                # violation. Exception: a matchup carrying a forced_callouts
+                # If the model still can't shake a reserved phrase after
+                # every retry, a plain fallback recap beats publishing the
+                # collision. Exception: a matchup carrying a forced_callouts
                 # mandate is a deliberate, explicit ask (e.g. "make sure
                 # this exact callout is in tomorrow's recap") -- the generic
                 # _fallback() doesn't know about forced callouts at all, so
                 # falling back here would silently drop it. A rare leftover
-                # cap violation is the lesser problem.
-                raise ValueError(f"recap still used a maxed-out phrase: {still_violating}")
+                # collision is the lesser problem.
+                raise ValueError(f"recap still used a reserved phrase: {still_violating}")
             if still_violating:
-                print(f"Keeping {m['key']} despite a cap violation ({still_violating}) "
-                      f"-- it carries a forced callout that a fallback would drop.")
-            record_usage(m["recap"])
-            for t in last_week_terms - carryover_used:
-                if term_signatures[t] in m["recap"].lower():
-                    carryover_used.add(t)
+                print(f"Keeping {m['key']} despite a reserved-phrase collision "
+                      f"({still_violating}) -- it carries a forced callout that a "
+                      f"fallback would drop.")
         except Exception as err:
             print(f"Recap failed for {m['key']}: {err}")
             m["recap"] = _fallback(m)
