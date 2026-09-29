@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Deerfoot Lodge Fantasy — Week 2</title>
-<meta name="description" content="Week 2 results, recaps and power rankings for Deerfoot Lodge Fantasy.">
+<meta name="description" content="Week 2 results and recaps for Deerfoot Lodge Fantasy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;500;600&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
     <p class="masthead__eyebrow">Official rulings &middot; 2026 season</p>
     <h1 class="masthead__title">Deerfoot Lodge Fantasy</h1>
     <p class="masthead__week">Week 2</p>
-<p class="masthead__headline">Week 2 settles nothing at all</p>  </div>
+<p class="masthead__headline">Week 2 wraps up six matchups across the league</p>  </div>
 </header>
 
 <div class="stripe" role="presentation"></div>
@@ -28,33 +28,78 @@
     <h2 class="section-title">Around the league</h2>
     <ul class="archive__list">
       <li><a class="archive__link" href="index.html">Home</a></li>
-      <li><a class="archive__link" href="keepers.html">Keeper declarations</a></li>
+      <li><a class="archive__link" href="waiver-recap.html">Waiver Recap</a></li>
+      <li><a class="archive__link" href="keepers.html">Keepers</a></li>
       <li><a class="archive__link" href="draft-history.html">Draft history</a></li>
       <li><a class="archive__link" href="standings-history.html">Standings history</a></li>
+      <li><a class="archive__link" href="league-basics.html">League basics</a></li>
+      <li><a class="archive__link" href="power-rankings.html">Power rankings</a></li>
     </ul>
   </nav>
 
+  <script>
+    (function () {
+      var schedule = {
+        'recap.html': ['Tue', 'Wed'],
+        'power-rankings.html': ['Tue', 'Wed'],
+        'standings-history.html': ['Tue', 'Wed'],
+        'waiver-recap.html': ['Wed', 'Thu'],
+      };
+      var today = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short' }).format(new Date());
+      document.querySelectorAll('nav[aria-label="Site"] .archive__list a.archive__link').forEach(function (a) {
+        var days = schedule[a.getAttribute('href')];
+        if (days && days.indexOf(today) !== -1) a.classList.add('archive__link--new');
+      });
+    })();
+  </script>
+
   <div class="stripe stripe--inline" role="presentation"></div>
 
-  <section class="flagwrap" aria-labelledby="flag-heading">
-    <h2 class="flagwrap__label" id="flag-heading">Flag of the week</h2>
+  <section class="peaks" aria-label="This week's high and low score">
+    <div class="peak peak--summit">
+      <div class="peak__body">
+        <p class="peak__call">Enjoying Virginia Pastries on Whiteface</p>
+        <p class="peak__team">The Island Gudge</p>
+        <p class="peak__line">
+          <span class="peak__number">134.88</span>
+          <span class="peak__unit">points</span>
+        </p>
+      </div>
+    </div>
+    <div class="peak peak--valley">
+      <div class="peak__body">
+        <p class="peak__call">Eating Wazi Tac in the Rain on Couchsachraga</p>
+        <p class="peak__team">Catalina Wine Mixon</p>
+        <p class="peak__line">
+          <span class="peak__number">59.46</span>
+          <span class="peak__unit">points</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="stripe stripe--inline" role="presentation"></div>
+
+
+  <section class="flagwrap" aria-label="Forgot the Gudge Roll">
     <div class="flag">
       <div class="flag__body">
-        <p class="flag__call">Illegal procedure</p>
-        <p class="flag__team">Waiver Wire Warriors</p>
+        <p class="flag__call">Forgot the Gudge Roll</p>
+        <p class="flag__team">Catalina Wine Mixon</p>
         <p class="flag__detail">
-          Started <strong>Rashad Vance</strong> at RB/WR/TE
-          for 3.62.
-          <strong>Bryce Mbeki</strong> sat on the bench
-          and scored 22.37.
+          Started <strong>Trevor Lawrence</strong> at QB
+          for 6.16.
+          <strong>Patrick Mahomes</strong> sat on the bench
+          and scored 28.98.
         </p>
         <p class="flag__penalty">
-          <span class="flag__number">18.75</span>
+          <span class="flag__number">22.82</span>
           <span class="flag__unit">points, declined</span>
         </p>
       </div>
     </div>
   </section>
+
 
   <section class="games" aria-labelledby="games-heading">
     <h2 class="section-title" id="games-heading">The matchups</h2>
@@ -63,40 +108,39 @@
 
       <div class="score">
         <div class="score__side">
-          <p class="score__team">Sunday Scaries</p>
-          <p class="score__points">110.86</p>
+          <p class="score__team">Rome-ans 10:9-10</p>
+          <p class="score__points">92.20</p>
         </div>
 <p class="score__v">vs</p>        <div class="score__side score__side--won">
-          <p class="score__team">The Punt Enthusiasts</p>
-          <p class="score__points">149.65</p>
+          <p class="score__team">Chase Brown Had a Bad Scare</p>
+          <p class="score__points">117.18</p>
         </div>
       </div>
 
-
-      <p class="game__recap">The final margin says close game. The tape says otherwise. The Punt Enthusiasts had this in hand by the second quarter and spent the afternoon watching Sunday Scaries chase points that were never coming.</p>
-      <p class="game__recap">That is now three straight for The Punt Enthusiasts, all of them built the same boring way: start the good players, sit the bad ones, collect the win. Revolutionary stuff.</p>
+      <p class="game__recap">Chase Brown Had a Bad Scare ran their cabin through the week like they had a real feel for the weather, and Brock Purdy answered with 28.48 to lead the charge, with Christian McCaffrey carrying the load like a Woodsman Chief on a hike right alongside him. Stefon Diggs chipped in at 19.2, and even with Carnell Tate and Tucker Kraft walking on the alpine vegetation for most of the afternoon, there was enough cushion banked that nobody noticed. A well-earned Tuna Casserole is served, no questions asked.</p>
+      <p class="game__recap">Rome-ans 10:9-10 had Travis Kelce and Omarion Hampton doing Boss work, and Lamar Jackson chipped in his usual, but the counselor's plan for the receivers was Bushwhacking without a compass from the opening whistle. Justin Jefferson at 7.0 and Jameson Williams at 4.3 stole the wow right out of the cabin's sails, and 92.2 points simply wasn't enough to survive a Beak stretch like that. Chalk this one up as another week the podium at Rome-ans belonged to somebody else's cabin entirely.</p>
 
       <div class="game__stats">
         <div class="statblock">
-          <p class="statblock__who">SCAR</p>
+          <p class="statblock__who">FOX</p>
           <p class="statblock__line">
             Top scorer
-            <span>Devon Dupree &middot; 39.36</span>
+            <span>Travis Kelce &middot; 20.6</span>
           </p>
           <p class="statblock__line">
             Best possible
-            <span>124.10</span>
+            <span>102.10</span>
           </p>
         </div>
         <div class="statblock">
-          <p class="statblock__who">PUNT</p>
+          <p class="statblock__who">CB</p>
           <p class="statblock__line">
             Top scorer
-            <span>Xavier Lindgren &middot; 35.83</span>
+            <span>Brock Purdy &middot; 28.48</span>
           </p>
           <p class="statblock__line">
             Best possible
-            <span>154.98</span>
+            <span>122.18</span>
           </p>
         </div>
       </div>
@@ -105,20 +149,146 @@
         <li class="penalty">
           <span class="penalty__mark" aria-hidden="true"></span>
           <span class="penalty__text">
-            <strong>Sunday Scaries</strong> benched Marcus Okafor
-            (19.95) and started Marcus Mbeki
-            (7.75) at RB/WR/TE.
+            <strong>Rome-ans 10:9-10</strong> benched Josh Downs
+            (10.7) and started Jameson Williams
+            (4.3) at WR.
           </span>
-          <span class="penalty__cost">&minus;13.24</span>
+          <span class="penalty__cost">&minus;9.9</span>
         </li>
         <li class="penalty">
           <span class="penalty__mark" aria-hidden="true"></span>
           <span class="penalty__text">
-            <strong>The Punt Enthusiasts</strong> benched Corey Whitfield
-            (16.68) and started Tyler Brennan
-            (11.35) at RB/WR/TE.
+            <strong>Chase Brown Had a Bad Scare</strong> benched Brian Robinson Jr.
+            (7.7) and started Carnell Tate
+            (4.2) at RB/WR/TE.
           </span>
-          <span class="penalty__cost">&minus;5.33</span>
+          <span class="penalty__cost">&minus;5.0</span>
+        </li>
+      </ul>
+
+    </article>
+    <article class="game">
+
+      <div class="score">
+        <div class="score__side score__side--won">
+          <p class="score__team">The Machine Knows</p>
+          <p class="score__points">102.82</p>
+        </div>
+<p class="score__v">vs</p>        <div class="score__side">
+          <p class="score__team">Catalina Wine Mixon</p>
+          <p class="score__points">59.46</p>
+        </div>
+      </div>
+
+      <p class="game__recap">The Machine Knows ran a pig and back off Josh Allen's 40.82, the kind of outing that makes preparation look like witchcraft, while Tre Tucker and Sam LaPorta chipped in like campers who actually read the trail map. Javonte Williams and Malik Nabers spent the afternoon Bushwhacking without a compass, Nabers turning in a full-blown Dutch Oven, but with Allen carrying the load like a Woodsman Chief on a hike none of that mattered. Earned a post hike scrub, sticky buns on Sunday morning, all of it.</p>
+      <p class="game__recap">Catalina Wine Mixon is stuck on the Point and Back, and this week's showing had Chief Ron Voice written all over it: "I'm disappointed in you." Trevor Lawrence and DK Metcalf walked on the alpine vegetation, the Buccaneers D/ST added to the puddle, and this cabin gonna need to patch those holes with more leaves, because this team got soaking wet. Trey McBride and De'Von Achane tried to keep the raft afloat but Stole my wow describes the rest. The Chair Force never adjusted, and it showed.</p>
+
+      <div class="game__stats">
+        <div class="statblock">
+          <p class="statblock__who">MK</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Josh Allen &middot; 40.82</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>114.62</span>
+          </p>
+        </div>
+        <div class="statblock">
+          <p class="statblock__who">CWU</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Trey McBride &middot; 14.1</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>103.48</span>
+          </p>
+        </div>
+      </div>
+
+      <ul class="penalties">
+        <li class="penalty">
+          <span class="penalty__mark" aria-hidden="true"></span>
+          <span class="penalty__text">
+            <strong>The Machine Knows</strong> benched Rachaad White
+            (11.3) and started Rico Dowdle
+            (5.4) at RB/WR/TE.
+          </span>
+          <span class="penalty__cost">&minus;11.8</span>
+        </li>
+        <li class="penalty">
+          <span class="penalty__mark" aria-hidden="true"></span>
+          <span class="penalty__text">
+            <strong>Catalina Wine Mixon</strong> benched Patrick Mahomes
+            (28.98) and started Trevor Lawrence
+            (6.16) at QB.
+          </span>
+          <span class="penalty__cost">&minus;44.02</span>
+        </li>
+      </ul>
+
+    </article>
+    <article class="game">
+
+      <div class="score">
+        <div class="score__side score__side--won">
+          <p class="score__team">The Goose is Loose</p>
+          <p class="score__points">134.56</p>
+        </div>
+<p class="score__v">vs</p>        <div class="score__side">
+          <p class="score__team">Harley Jarvis</p>
+          <p class="score__points">78.86</p>
+        </div>
+      </div>
+
+      <p class="game__recap">Coach Stefanowitcz ran the Goose is Loose through a Sunday session that bordered on cruelty to the visiting cabin. Dak Prescott logged 29.76, Jonathan Taylor went like a woodsman running to the camp store on his way to 27.2, and DeVonta Smith chipped in 22.7 for good measure. That's an assembled bullseye of arrows, a Guide Rec across the board, and a margin so lopsided it earned the whole cabin their post hike scrub. To the counselor and every camper standing near the fire pit tonight, I want you to BRING DOWN THE ROOF.</p>
+      <p class="game__recap">Harley Jarvis, meanwhile, brought a compass with no needle. Ja'Marr Chase and Jalen Hurts did their jobs, but David Montgomery's 3.4 and Dallas Goedert's 0.9 left the rest of the lineup gonna need to patch those holes with more leaves, because this team got soaking wet. By Sunday evening this cabin looked like a Woodsman playing Chief Tyler Hallenbeck in Tetherball, and no amount of sticky buns is coming their way this week.</p>
+
+      <div class="game__stats">
+        <div class="statblock">
+          <p class="statblock__who">GOOS</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Dak Prescott &middot; 29.76</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>137.46</span>
+          </p>
+        </div>
+        <div class="statblock">
+          <p class="statblock__who">NG</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Ja'Marr Chase &middot; 23.0</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>86.72</span>
+          </p>
+        </div>
+      </div>
+
+      <ul class="penalties">
+        <li class="penalty">
+          <span class="penalty__mark" aria-hidden="true"></span>
+          <span class="penalty__text">
+            <strong>The Goose is Loose</strong> benched Devaughn Vele
+            (8.9) and started Terry McLaurin
+            (6.0) at RB/WR/TE.
+          </span>
+          <span class="penalty__cost">&minus;2.9</span>
+        </li>
+        <li class="penalty">
+          <span class="penalty__mark" aria-hidden="true"></span>
+          <span class="penalty__text">
+            <strong>Harley Jarvis</strong> benched Rams D/ST
+            (11.0) and started Eagles D/ST
+            (4.0) at D/ST.
+          </span>
+          <span class="penalty__cost">&minus;7.86</span>
         </li>
       </ul>
 
@@ -127,40 +297,39 @@
 
       <div class="score">
         <div class="score__side">
-          <p class="score__team">Waiver Wire Warriors</p>
-          <p class="score__points">96.35</p>
+          <p class="score__team">Love Thy Naber</p>
+          <p class="score__points">109.14</p>
         </div>
 <p class="score__v">vs</p>        <div class="score__side score__side--won">
-          <p class="score__team">Third and Inches</p>
-          <p class="score__points">103.24</p>
+          <p class="score__team">Funk that Junk</p>
+          <p class="score__points">110.82</p>
         </div>
       </div>
 
-
-      <p class="game__recap">The final margin says close game. The tape says otherwise. Third and Inches had this in hand by the second quarter and spent the afternoon watching Waiver Wire Warriors chase points that were never coming.</p>
-      <p class="game__recap">That is now three straight for Third and Inches, all of them built the same boring way: start the good players, sit the bad ones, collect the win. Revolutionary stuff.</p>
+      <p class="game__recap">Old Balls survived a week that had no business being this close, riding Jaxon Smith-Njigba's 38.0 like a man clinging to a canoe in whitewater while the rest of the roster went Bushwhacking without a compass around him. Drake Maye turned in 8.02 on an 18.23 projection, Deebo Samuel stole his own wow at 5.0, and Kyle Pitts stood around like a stunned naval battle queen at 2.0 — but a single-point margin meant Funk that Junk still earned its sticky buns on Sunday morning, Canoeing Masters style, by the thinnest of finishes.</p>
+      <p class="game__recap">Love Thy Naber is stuck on the Point and Back after another gut-punch finish, and the counselor has to answer for Colston Loveland's 0.8 rotting at tight end while Dalton Kincaid piled up 19.0 in street clothes. Jadarian Price added his own puddle at 4.5 against a 12.33 projection, and even CeeDee Lamb's 31.3 and James Cook's 20.4 couldn't paper over a plan that left 36.84 points marooned on the bench. That's back-to-back losses now, and the cabin is starting to look like it's Bushwhacking without a compass on Sunday mornings too.</p>
 
       <div class="game__stats">
         <div class="statblock">
-          <p class="statblock__who">WWW</p>
+          <p class="statblock__who">Love</p>
           <p class="statblock__line">
             Top scorer
-            <span>Bryce Castillo &middot; 28.28</span>
+            <span>CeeDee Lamb &middot; 31.3</span>
           </p>
           <p class="statblock__line">
             Best possible
-            <span>130.02</span>
+            <span>145.98</span>
           </p>
         </div>
         <div class="statblock">
-          <p class="statblock__who">3RD</p>
+          <p class="statblock__who">FTj</p>
           <p class="statblock__line">
             Top scorer
-            <span>Trey Okafor &middot; 30.22</span>
+            <span>Jaxon Smith-Njigba &middot; 38.0</span>
           </p>
           <p class="statblock__line">
             Best possible
-            <span>133.71</span>
+            <span>116.62</span>
           </p>
         </div>
       </div>
@@ -169,62 +338,61 @@
         <li class="penalty">
           <span class="penalty__mark" aria-hidden="true"></span>
           <span class="penalty__text">
-            <strong>Waiver Wire Warriors</strong> benched Bryce Mbeki
-            (22.37) and started Rashad Vance
-            (3.62) at RB/WR/TE.
+            <strong>Love Thy Naber</strong> benched Dalton Kincaid
+            (19.0) and started Colston Loveland
+            (0.8) at TE.
           </span>
-          <span class="penalty__cost">&minus;33.67</span>
+          <span class="penalty__cost">&minus;36.84</span>
         </li>
         <li class="penalty">
           <span class="penalty__mark" aria-hidden="true"></span>
           <span class="penalty__text">
-            <strong>Third and Inches</strong> benched Donte Whitfield
-            (20.18) and started Marcus Ashworth
-            (4.33) at WR.
+            <strong>Funk that Junk</strong> benched Tank Bigsby
+            (10.8) and started Deebo Samuel Sr.
+            (5.0) at RB/WR/TE.
           </span>
-          <span class="penalty__cost">&minus;30.47</span>
+          <span class="penalty__cost">&minus;5.8</span>
         </li>
       </ul>
 
     </article>
-    <article class="game game--house">
+    <article class="game">
 
       <div class="score">
-        <div class="score__side">
-          <p class="score__team">Your Team Name</p>
-          <p class="score__points">103.60</p>
+        <div class="score__side score__side--won">
+          <p class="score__team">The Island Gudge</p>
+          <p class="score__points">134.88</p>
         </div>
-<p class="score__v">vs</p>        <div class="score__side score__side--won">
-          <p class="score__team">Bye Week Believers</p>
-          <p class="score__points">108.87</p>
+<p class="score__v">vs</p>        <div class="score__side">
+          <p class="score__team">55 Burgers</p>
+          <p class="score__points">98.98</p>
         </div>
       </div>
 
-<p class="game__tag">House team</p>
-      <p class="game__recap">The final margin says close game. The tape says otherwise. Bye Week Believers had this in hand by the second quarter and spent the afternoon watching Your Team Name chase points that were never coming.</p>
-      <p class="game__recap">That is now three straight for Bye Week Believers, all of them built the same boring way: start the good players, sit the bad ones, collect the win. Revolutionary stuff.</p>
+      <p class="game__recap">The Island Gudge ran a pig and back this week, with Amon-Ra St. Brown doing quiet, businesslike damage at 30.7 and Kenneth Walker III adding 20.8 of his own. Joe Burrow chipped in a Boss 16.18 to round things out, and the whole operation had that unhurried, we've-seen-this-before feel of a camp counselor who knew exactly which trail to take before the whistle blew. Thirty-five points and change is not luck, campers, that is preparation, and the 46er deserves his sticky buns on Sunday morning for it.</p>
+      <p class="game__recap">Counsel and the 55 Burgers, meanwhile, were Stuck in the Sewards from the opening horn. Justin Herbert turned in a Beak 7.88 against a projection nearly triple that, and Luther Burden III mustered only 4.7, leaving the cabin gonna need to patch those holes with more leaves, because this team got soaking wet. Jahmyr Gibbs and the Patriots defense tried to drag the canoe upstream alone, but with the quarterback bushwhacking without a compass all afternoon, this one was never in question.</p>
 
       <div class="game__stats">
         <div class="statblock">
-          <p class="statblock__who">YOUR</p>
+          <p class="statblock__who">OBRE</p>
           <p class="statblock__line">
             Top scorer
-            <span>Rashad Mbeki &middot; 24.6</span>
+            <span>Amon-Ra St. Brown &middot; 30.7</span>
           </p>
           <p class="statblock__line">
             Best possible
-            <span>131.85</span>
+            <span>134.88</span>
           </p>
         </div>
         <div class="statblock">
-          <p class="statblock__who">BYE</p>
+          <p class="statblock__who">SCUD</p>
           <p class="statblock__line">
             Top scorer
-            <span>Kenneth Okafor &middot; 26.84</span>
+            <span>Jahmyr Gibbs &middot; 20.3</span>
           </p>
           <p class="statblock__line">
             Best possible
-            <span>140.26</span>
+            <span>110.28</span>
           </p>
         </div>
       </div>
@@ -233,11 +401,74 @@
         <li class="penalty">
           <span class="penalty__mark" aria-hidden="true"></span>
           <span class="penalty__text">
-            <strong>Bye Week Believers</strong> benched Tyler Castillo
-            (22.97) and started Jalen Okafor
-            (4.75) at RB/WR/TE.
+            <strong>55 Burgers</strong> benched Terrance Ferguson
+            (14.4) and started Mark Andrews
+            (7.9) at TE.
           </span>
-          <span class="penalty__cost">&minus;31.39</span>
+          <span class="penalty__cost">&minus;11.3</span>
+        </li>
+      </ul>
+
+    </article>
+    <article class="game">
+
+      <div class="score">
+        <div class="score__side">
+          <p class="score__team">Ricky Huns</p>
+          <p class="score__points">71.02</p>
+        </div>
+<p class="score__v">vs</p>        <div class="score__side score__side--won">
+          <p class="score__team">Team Bradford</p>
+          <p class="score__points">102.50</p>
+        </div>
+      </div>
+
+      <p class="game__recap">Ricky Huns is stuck on the Point and Back through two weeks now, and this week's activity did nothing to change the diagnosis. Kyren Williams, Tee Higgins, and Romeo Doubs did their jobs well enough, but the counselor's two headline campers went Bushwhacking without a compass right when it counted — Caleb Williams turned in a shrug of a showing and Saquon Barkley flat out Stole my wow, managing all of 2.5 points on a day the whole cabin needed him carrying wood. That's a losing streak now, and the plan looked no better prepared for it than the last one.</p>
+      <p class="game__recap">Team Bradford, meanwhile, got its post hike scrub thanks almost entirely to Davante Adams, who put up 35.5 and carried the load like a Woodsman Chief on a hike while Bijan Robinson and DJ Moore quietly walked on the alpine vegetation around him. No matter — with Adams doing Penis Eating Pike numbers, Team No Creativity didn't need much else to go right, and it didn't. Sticky buns on Sunday morning for the Campcraft Enthusiast, who read the week fine even while half his roster napped through it.</p>
+
+      <div class="game__stats">
+        <div class="statblock">
+          <p class="statblock__who">BAUM</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Kyren Williams &middot; 14.7</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>92.02</span>
+          </p>
+        </div>
+        <div class="statblock">
+          <p class="statblock__who">BRAD</p>
+          <p class="statblock__line">
+            Top scorer
+            <span>Davante Adams &middot; 35.5</span>
+          </p>
+          <p class="statblock__line">
+            Best possible
+            <span>109.72</span>
+          </p>
+        </div>
+      </div>
+
+      <ul class="penalties">
+        <li class="penalty">
+          <span class="penalty__mark" aria-hidden="true"></span>
+          <span class="penalty__text">
+            <strong>Ricky Huns</strong> benched George Kittle
+            (16.0) and started T.J. Hockenson
+            (4.4) at TE.
+          </span>
+          <span class="penalty__cost">&minus;21.0</span>
+        </li>
+        <li class="penalty">
+          <span class="penalty__mark" aria-hidden="true"></span>
+          <span class="penalty__text">
+            <strong>Team Bradford</strong> benched Brian Thomas Jr.
+            (5.5) and started DJ Moore
+            (-0.1) at WR.
+          </span>
+          <span class="penalty__cost">&minus;7.22</span>
         </li>
       </ul>
 
@@ -245,94 +476,6 @@
   </section>
 
   <div class="stripe stripe--inline" role="presentation"></div>
-
-  <section class="power" aria-labelledby="power-heading">
-    <h2 class="section-title" id="power-heading">Power rankings</h2>
-    <p class="power__note">
-      Rating blends total points (60%)
-      and winning percentage (40%),
-      scaled across the league.
-    </p>
-
-    <ol class="board">
-      <li class="board__row">
-        <span class="board__rank">1</span>
-        <span class="board__move">&mdash;</span>
-        <span class="board__team">
-          The Punt Enthusiasts
-          <span class="board__record">2-0 &middot; 289.1 PF</span>
-        </span>
-        <span class="board__rating">
-          <span class="board__bar" style="--fill: 100.0%"></span>
-          <span class="board__value">100.0</span>
-        </span>
-      </li>
-      <li class="board__row">
-        <span class="board__rank">2</span>
-        <span class="board__move board__move--up">&#9650;1</span>
-        <span class="board__team">
-          Third and Inches
-          <span class="board__record">2-0 &middot; 222.6 PF</span>
-        </span>
-        <span class="board__rating">
-          <span class="board__bar" style="--fill: 60.2%"></span>
-          <span class="board__value">60.2</span>
-        </span>
-      </li>
-      <li class="board__row">
-        <span class="board__rank">3</span>
-        <span class="board__move board__move--up">&#9650;1</span>
-        <span class="board__team">
-          Bye Week Believers
-          <span class="board__record">1-1 &middot; 231.0 PF</span>
-        </span>
-        <span class="board__rating">
-          <span class="board__bar" style="--fill: 45.2%"></span>
-          <span class="board__value">45.2</span>
-        </span>
-      </li>
-      <li class="board__row board__row--house">
-        <span class="board__rank">4</span>
-        <span class="board__move board__move--down">&#9660;2</span>
-        <span class="board__team">
-          Your Team Name
-          <span class="board__record">1-1 &middot; 228.6 PF</span>
-        </span>
-        <span class="board__rating">
-          <span class="board__bar" style="--fill: 43.8%"></span>
-          <span class="board__value">43.8</span>
-        </span>
-      </li>
-      <li class="board__row">
-        <span class="board__rank">5</span>
-        <span class="board__move board__move--up">&#9650;1</span>
-        <span class="board__team">
-          Sunday Scaries
-          <span class="board__record">0-2 &middot; 200.5 PF</span>
-        </span>
-        <span class="board__rating">
-          <span class="board__bar" style="--fill: 7.0%"></span>
-          <span class="board__value">7.0</span>
-        </span>
-      </li>
-      <li class="board__row">
-        <span class="board__rank">6</span>
-        <span class="board__move board__move--down">&#9660;1</span>
-        <span class="board__team">
-          Waiver Wire Warriors
-          <span class="board__record">0-2 &middot; 188.8 PF</span>
-        </span>
-        <span class="board__rating">
-          <span class="board__bar" style="--fill: 0.0%"></span>
-          <span class="board__value">0.0</span>
-        </span>
-      </li>
-    </ol>
-
-    <p class="power__waste">
-      Season points left on benches:
-<span class="waste"><strong>Waiver Wire Warriors</strong> 87.7</span><span class="waste"><strong>Third and Inches</strong> 61.8</span><span class="waste"><strong>Bye Week Believers</strong> 47.3</span><span class="waste"><strong>Sunday Scaries</strong> 46.1</span><span class="waste"><strong>The Punt Enthusiasts</strong> 38.7</span>    </p>
-  </section>
 
   <nav class="archive" aria-label="Past weeks">
     <h2 class="section-title">Past weeks</h2>
@@ -361,7 +504,7 @@
 </main>
 
 <footer class="foot">
-  <p>Updated August 24, 2026 at 1:34 PM ET. Rebuilt every Tuesday from ESPN.</p>
+  <p>Updated September 29, 2026 at 6:53 AM ET. Rebuilt every Tuesday from ESPN.</p>
   <p class="foot__fine">Recaps are written by a language model and are not a reliable
   source of truth about anything, including whose fault it was.</p>
 </footer>
