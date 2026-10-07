@@ -2,8 +2,12 @@ name: Waiver Recap
 
 on:
   schedule:
-    # 10:00 UTC Wednesday = 6am ET in season, after FAAB waivers clear.
-    - cron: "0 10 * * 3"
+    # 10:07 UTC Wednesday = ~6am ET in season, after FAAB waivers clear.
+    # Off the :00 mark on purpose -- GitHub's own docs warn that scheduled
+    # workflows queued right at the top of the hour are the most likely to
+    # be delayed under load, since that's when the most repos worldwide are
+    # also scheduled to fire. A few minutes' offset avoids that pile-up.
+    - cron: "7 10 * * 3"
   workflow_dispatch:
     inputs:
       week:

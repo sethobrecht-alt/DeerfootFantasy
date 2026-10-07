@@ -2,8 +2,12 @@ name: Weekly update
 
 on:
   schedule:
-    # 10:00 UTC Tuesday = 6am ET in season, after Monday Night Football wraps.
-    - cron: "0 10 * * 2"
+    # 10:07 UTC Tuesday = ~6am ET in season, after Monday Night Football wraps.
+    # Off the :00 mark on purpose -- GitHub's own docs warn that scheduled
+    # workflows queued right at the top of the hour are the most likely to
+    # be delayed under load, since that's when the most repos worldwide are
+    # also scheduled to fire. A few minutes' offset avoids that pile-up.
+    - cron: "7 10 * * 2"
   workflow_dispatch:
     inputs:
       week:
