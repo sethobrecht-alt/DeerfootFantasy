@@ -2,12 +2,21 @@ name: Waiver Recap
 
 on:
   schedule:
-    # 10:07 UTC Wednesday = ~6am ET in season, after FAAB waivers clear.
-    # Off the :00 mark on purpose -- GitHub's own docs warn that scheduled
-    # workflows queued right at the top of the hour are the most likely to
-    # be delayed under load, since that's when the most repos worldwide are
-    # also scheduled to fire. A few minutes' offset avoids that pile-up.
+    # ~6am ET Wednesday, after FAAB waivers clear. GitHub gives the
+    # `schedule` trigger no SLA -- it can fire hours late under platform
+    # load, with no fix available from this repo's side (confirmed this
+    # isn't an Actions-minutes/quota issue: the repo is public, so minutes
+    # are unlimited, and the workflow's own `state` is "active"). Moving
+    # off :00 (the worst minute, since that's when most repos' crons also
+    # fire) helped but didn't fully fix it -- so this also carries three
+    # staggered backup attempts across the morning. waiver_recap.py only
+    # ever commits when there's new data, so an attempt that finds nothing
+    # new is a harmless no-op; this just raises the odds that AN attempt
+    # lands close to on time instead of relying on exactly one shot.
     - cron: "7 10 * * 3"
+    - cron: "23 11 * * 3"
+    - cron: "41 12 * * 3"
+    - cron: "19 14 * * 3"
   workflow_dispatch:
     inputs:
       week:
