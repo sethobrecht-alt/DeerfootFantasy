@@ -409,55 +409,55 @@
         "regular_finish": 1,
         "team": "The Island Gudge",
         "owner_id": "{2BE26C0C-7996-45E9-A1C1-CF8A812FDB6D}",
-        "wins": 8,
+        "wins": 9,
         "losses": 0,
         "ties": 0,
-        "points_for": 1015.32,
-        "points_against": 704.26
+        "points_for": 1154.66,
+        "points_against": 770.44
       },
       {
         "rank": 2,
         "regular_finish": 2,
         "team": "The Machine Knows",
         "owner_id": "{37DF44E7-ACA6-4878-8E9C-00A911A5C694}",
-        "wins": 6,
+        "wins": 7,
         "losses": 2,
         "ties": 0,
-        "points_for": 928.14,
-        "points_against": 741.4
+        "points_for": 1049.1,
+        "points_against": 831.6
       },
       {
         "rank": 3,
         "regular_finish": 3,
         "team": "Funk that Junk",
         "owner_id": "{FDAF4290-9AEE-404D-AF42-909AEE704D17}",
-        "wins": 5,
+        "wins": 6,
         "losses": 3,
         "ties": 0,
-        "points_for": 850.2,
-        "points_against": 873.22
+        "points_for": 962.96,
+        "points_against": 981.08
       },
       {
         "rank": 4,
         "regular_finish": 4,
         "team": "Harley Jarvis",
         "owner_id": "{0B744E23-6904-4429-B44E-23690454295B}",
-        "wins": 4,
+        "wins": 5,
         "losses": 4,
         "ties": 0,
-        "points_for": 833.52,
-        "points_against": 838.8
+        "points_for": 920.7,
+        "points_against": 919.66
       },
       {
         "rank": 5,
         "regular_finish": 5,
         "team": "Rome-ans 10:9-10",
         "owner_id": "{F162071D-EADB-4823-813E-3D8F9EBD1416}",
-        "wins": 4,
+        "wins": 5,
         "losses": 4,
         "ties": 0,
-        "points_for": 812.98,
-        "points_against": 874.12
+        "points_for": 905.98,
+        "points_against": 962.9
       },
       {
         "rank": 6,
@@ -465,10 +465,10 @@
         "team": "The Goose is Loose",
         "owner_id": "{1F1DA703-B172-47A3-8EFD-074DDD7569E0}",
         "wins": 4,
-        "losses": 4,
+        "losses": 5,
         "ties": 0,
-        "points_for": 811.14,
-        "points_against": 807.2
+        "points_for": 901.34,
+        "points_against": 928.16
       },
       {
         "rank": 7,
@@ -476,10 +476,10 @@
         "team": "Ricky Huns",
         "owner_id": "{ACE7B88E-F828-40FF-A7B8-8EF82830FF2E}",
         "wins": 4,
-        "losses": 4,
+        "losses": 5,
         "ties": 0,
-        "points_for": 796.64,
-        "points_against": 877.48
+        "points_for": 877.5,
+        "points_against": 964.66
       },
       {
         "rank": 8,
@@ -487,10 +487,10 @@
         "team": "55 Burgers",
         "owner_id": "{4E2CE906-A043-4565-ACE9-06A0435565A2}",
         "wins": 3,
-        "losses": 5,
+        "losses": 6,
         "ties": 0,
-        "points_for": 845.04,
-        "points_against": 900.56
+        "points_for": 933.82,
+        "points_against": 993.56
       },
       {
         "rank": 9,
@@ -498,10 +498,10 @@
         "team": "Chase Brown Had a Bad Scare",
         "owner_id": "{72D6456C-81BD-4242-B2FF-B3CEAB6FDE1B}",
         "wins": 3,
-        "losses": 5,
+        "losses": 6,
         "ties": 0,
-        "points_for": 790.18,
-        "points_against": 829.06
+        "points_for": 887.76,
+        "points_against": 935.82
       },
       {
         "rank": 10,
@@ -509,10 +509,10 @@
         "team": "Team Bradford",
         "owner_id": "{B4BC08AF-67FC-4E6C-98E4-229B461B0BF3}",
         "wins": 3,
-        "losses": 5,
+        "losses": 6,
         "ties": 0,
-        "points_for": 750.74,
-        "points_against": 724.62
+        "points_for": 858.6,
+        "points_against": 837.38
       },
       {
         "rank": 11,
@@ -520,21 +520,21 @@
         "team": "Catalina Wine Mixon",
         "owner_id": "{EC3802A9-E787-49E5-B802-A9E78799E58F}",
         "wins": 3,
-        "losses": 5,
+        "losses": 6,
         "ties": 0,
-        "points_for": 696.04,
-        "points_against": 792.14
+        "points_for": 762.22,
+        "points_against": 931.48
       },
       {
         "rank": 12,
         "regular_finish": 12,
         "team": "Love Thy Naber",
         "owner_id": "{DCFE1660-8D0A-4854-BE16-608D0A585439}",
-        "wins": 1,
+        "wins": 2,
         "losses": 7,
         "ties": 0,
-        "points_for": 772.0,
-        "points_against": 939.08
+        "points_for": 878.76,
+        "points_against": 1036.66
       }
     ]
   },
