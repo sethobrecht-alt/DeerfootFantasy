@@ -1,0 +1,3048 @@
+{
+  "week": 11,
+  "matchups": [
+    {
+      "home": {
+        "team_id": 7,
+        "name": "Harley Jarvis",
+        "abbrev": "NG",
+        "logo": "https://g.espncdn.com/lm-static/logo-packs/ffl/Referee-MartinLaksman/referee-01.svg",
+        "score": 116.06,
+        "starters": [
+          {
+            "name": "Ashton Jeanty",
+            "position": "RB",
+            "slot": "RB/WR/TE",
+            "points": 25.4,
+            "projected": 11.93,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "LV",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "C.J. Stroud",
+            "position": "QB",
+            "slot": "QB",
+            "points": 20.46,
+            "projected": 21.84,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "HOU",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Bears D/ST",
+            "position": "D/ST",
+            "slot": "D/ST",
+            "points": 15.0,
+            "projected": 5.91,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "CHI",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "David Montgomery",
+            "position": "RB",
+            "slot": "RB",
+            "points": 13.9,
+            "projected": 12.81,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "HOU",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Zay Flowers",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 12.4,
+            "projected": 11.03,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "BAL",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Tony Pollard",
+            "position": "RB",
+            "slot": "RB",
+            "points": 11.0,
+            "projected": 19.06,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "TEN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Rashee Rice",
+            "position": "WR",
+            "slot": "WR",
+            "points": 8.3,
+            "projected": 10.49,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "KC",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Ja'Marr Chase",
+            "position": "WR",
+            "slot": "WR",
+            "points": 5.6,
+            "projected": 21.02,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CIN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Isaiah Likely",
+            "position": "TE",
+            "slot": "TE",
+            "points": 4.0,
+            "projected": 10.13,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NYG",
+            "injury": "ACTIVE"
+          }
+        ],
+        "bench": [
+          {
+            "name": "J.J. McCarthy",
+            "position": "QB",
+            "slot": "BE",
+            "points": 14.22,
+            "projected": 13.37,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "NYG",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Keenan Allen",
+            "position": "WR",
+            "slot": "BE",
+            "points": 5.3,
+            "projected": 6.13,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "SF",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Dallas Goedert",
+            "position": "TE",
+            "slot": "BE",
+            "points": 4.3,
+            "projected": 6.12,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "PHI",
+            "injury": "QUESTIONABLE"
+          },
+          {
+            "name": "Emari Demercado",
+            "position": "RB",
+            "slot": "BE",
+            "points": 3.9,
+            "projected": 7.57,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "HOU",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Rashid Shaheed",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "SEA",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Dylan Sampson",
+            "position": "RB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CLE",
+            "injury": "ACTIVE"
+          }
+        ],
+        "blunders": [
+          {
+            "slot": "TE",
+            "should_have_started": "Dallas Goedert",
+            "bench_points": 4.3,
+            "actually_started": "Isaiah Likely",
+            "starter_points": 4.0,
+            "points_lost": 0.3
+          }
+        ],
+        "points_left_on_bench": 0.3,
+        "optimal_score": 116.36
+      },
+      "away": {
+        "team_id": 12,
+        "name": "Omarion Did You Know",
+        "abbrev": "FOX",
+        "logo": "https://mystique-api.fantasy.espn.com/apis/v1/domains/lm/images/583e4f30-aabf-11f1-adbb-af55773333bb",
+        "score": 113.7,
+        "starters": [
+          {
+            "name": "Jonah Coleman",
+            "position": "RB",
+            "slot": "RB",
+            "points": 32.9,
+            "projected": 17.81,
+            "eligible": [
+              "Rookie",
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "DEN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Travis Kelce",
+            "position": "TE",
+            "slot": "TE",
+            "points": 22.4,
+            "projected": 9.49,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "KC",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Texans D/ST",
+            "position": "D/ST",
+            "slot": "D/ST",
+            "points": 15.0,
+            "projected": 6.7,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "HOU",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "Justin Jefferson",
+            "position": "WR",
+            "slot": "WR",
+            "points": 10.2,
+            "projected": 16.38,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "MIN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Omarion Hampton",
+            "position": "RB",
+            "slot": "RB/WR/TE",
+            "points": 9.8,
+            "projected": 12.66,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "LAC",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Josh Downs",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 7.9,
+            "projected": 7.77,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "KC",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Kirk Cousins",
+            "position": "QB",
+            "slot": "QB",
+            "points": 7.4,
+            "projected": 14.66,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "MIN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Tank Dell",
+            "position": "WR",
+            "slot": "WR",
+            "points": 4.2,
+            "projected": 9.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "HOU",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jaylen Warren",
+            "position": "RB",
+            "slot": "RB",
+            "points": 3.9,
+            "projected": 14.37,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "PIT",
+            "injury": "ACTIVE"
+          }
+        ],
+        "bench": [
+          {
+            "name": "Justin Herbert",
+            "position": "QB",
+            "slot": "BE",
+            "points": 22.44,
+            "projected": 14.65,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "LAC",
+            "injury": "QUESTIONABLE"
+          },
+          {
+            "name": "Jameson Williams",
+            "position": "WR",
+            "slot": "BE",
+            "points": 17.3,
+            "projected": 9.36,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "DET",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Aaron Jones Sr.",
+            "position": "RB",
+            "slot": "BE",
+            "points": 10.8,
+            "projected": 7.34,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "MIN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Caleb Douglas",
+            "position": "WR",
+            "slot": "BE",
+            "points": 4.0,
+            "projected": 7.84,
+            "eligible": [
+              "Rookie",
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "MIA",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Mack Hollins",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NE",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Kaleb Johnson",
+            "position": "RB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "GB",
+            "injury": "ACTIVE"
+          }
+        ],
+        "blunders": [
+          {
+            "slot": "QB",
+            "should_have_started": "Justin Herbert",
+            "bench_points": 22.44,
+            "actually_started": "Kirk Cousins",
+            "starter_points": 7.4,
+            "points_lost": 15.04
+          },
+          {
+            "slot": "WR",
+            "should_have_started": "Jameson Williams",
+            "bench_points": 17.3,
+            "actually_started": "Tank Dell",
+            "starter_points": 4.2,
+            "points_lost": 13.1
+          },
+          {
+            "slot": "RB",
+            "should_have_started": "Aaron Jones Sr.",
+            "bench_points": 10.8,
+            "actually_started": "Jaylen Warren",
+            "starter_points": 3.9,
+            "points_lost": 6.9
+          }
+        ],
+        "points_left_on_bench": 35.04,
+        "optimal_score": 148.74
+      },
+      "margin": 2.36,
+      "winner": "Harley Jarvis",
+      "total": 229.76,
+      "key": "7v12",
+      "recap": "Harley Jarvis scraped out his Canoeing Masters this week, 116.06 to 113.7, on the strength of Ashton Jeanty running like a woodsman running to the camp store for 25.4 and C.J. Stroud turning in a Guide Rec of his own at 20.46. Good thing those two showed up, because Ja'Marr Chase had his lunch eaten by Yellow Yellow, managing a measly 5.6 against a 21-point projection, and Isaiah Likely added to the gloom at 4.0. Call it Blue Ridge's tug of war \u2014 won, but nobody's framing the box score.\n\nOmarion Did You Know ran this week's activity bushwhacking without a compass at the quarterback position, riding Kirk Cousins's 7.4 while Jonah Coleman carried the load like a Woodsman Chief on a hike with 32.9 and Travis Kelce chipped in 22.4. Tank Dell and Jaylen Warren both walked on the alpine vegetation, combining for 8.1 points on a projected 23.37, and the whole cabin is left wondering what might have been. Chalk this one up as poor preparation meeting a counselor who simply read the week better."
+    },
+    {
+      "home": {
+        "team_id": 11,
+        "name": "Funk that Junk",
+        "abbrev": "FTj",
+        "logo": "https://g.espncdn.com/lm-static/logo-packs/core/AnimalHeads/animal_heads-13.svg",
+        "score": 103.62,
+        "starters": [
+          {
+            "name": "Cam Ward",
+            "position": "QB",
+            "slot": "QB",
+            "points": 22.22,
+            "projected": 16.96,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "TEN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Breece Hall",
+            "position": "RB",
+            "slot": "RB",
+            "points": 17.5,
+            "projected": 11.59,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NYJ",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Bucky Irving",
+            "position": "RB",
+            "slot": "RB",
+            "points": 17.5,
+            "projected": 16.0,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "TB",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Nico Collins",
+            "position": "WR",
+            "slot": "WR",
+            "points": 13.3,
+            "projected": 13.44,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "HOU",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Mike Gesicki",
+            "position": "TE",
+            "slot": "TE",
+            "points": 10.2,
+            "projected": 6.12,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CIN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Kenny Gainwell",
+            "position": "RB",
+            "slot": "RB/WR/TE",
+            "points": 7.9,
+            "projected": 7.75,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "TB",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Deebo Samuel Sr.",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 6.2,
+            "projected": 8.79,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "SF",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Giants D/ST",
+            "position": "D/ST",
+            "slot": "D/ST",
+            "points": 6.0,
+            "projected": 3.64,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "NYG",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "Emeka Egbuka",
+            "position": "WR",
+            "slot": "WR",
+            "points": 2.8,
+            "projected": 9.03,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "TB",
+            "injury": "ACTIVE"
+          }
+        ],
+        "bench": [
+          {
+            "name": "Treylon Burks",
+            "position": "WR",
+            "slot": "BE",
+            "points": 4.0,
+            "projected": 7.2,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "WSH",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jaxon Smith-Njigba",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "SEA",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Drake Maye",
+            "position": "QB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "NE",
+            "injury": "OUT"
+          },
+          {
+            "name": "Michael Pittman Jr.",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0.0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "PIT",
+            "injury": "INJURY_RESERVE"
+          },
+          {
+            "name": "Kyle Pitts Sr.",
+            "position": "TE",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "ATL",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Kyler Murray",
+            "position": "QB",
+            "slot": "BE",
+            "points": 0.0,
+            "projected": 0.0,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "MIN",
+            "injury": "QUESTIONABLE"
+          }
+        ],
+        "blunders": [
+          {
+            "slot": "WR",
+            "should_have_started": "Treylon Burks",
+            "bench_points": 4.0,
+            "actually_started": "Emeka Egbuka",
+            "starter_points": 2.8,
+            "points_lost": 1.2
+          }
+        ],
+        "points_left_on_bench": 1.2,
+        "optimal_score": 104.82
+      },
+      "away": {
+        "team_id": 6,
+        "name": "Catalina Wine Mixon",
+        "abbrev": "CWU",
+        "logo": "https://m.media-amazon.com/images/M/MV5BODViZDg3ZjYtMzhiYS00YTVkLTk4MzktYWUxMTlkYjc1NjdlXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg",
+        "score": 107.86,
+        "starters": [
+          {
+            "name": "Patrick Mahomes",
+            "position": "QB",
+            "slot": "QB",
+            "points": 24.96,
+            "projected": 21.78,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "KC",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "George Pickens",
+            "position": "WR",
+            "slot": "WR",
+            "points": 20.3,
+            "projected": 13.15,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "DAL",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Mike Evans",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 19.9,
+            "projected": 9.47,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "SF",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Broncos D/ST",
+            "position": "D/ST",
+            "slot": "D/ST",
+            "points": 12.0,
+            "projected": 6.46,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "DEN",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "Trey McBride",
+            "position": "TE",
+            "slot": "TE",
+            "points": 10.3,
+            "projected": 9.61,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "ARI",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Braelon Allen",
+            "position": "RB",
+            "slot": "RB",
+            "points": 8.9,
+            "projected": 6.91,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NYJ",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Rome Odunze",
+            "position": "WR",
+            "slot": "WR",
+            "points": 6.5,
+            "projected": 9.74,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CHI",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Cam Skattebo",
+            "position": "RB",
+            "slot": "RB",
+            "points": 4.3,
+            "projected": 13.13,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NYG",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "DK Metcalf",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 0.7,
+            "projected": 9.53,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "PIT",
+            "injury": "ACTIVE"
+          }
+        ],
+        "bench": [
+          {
+            "name": "Adonai Mitchell",
+            "position": "WR",
+            "slot": "BE",
+            "points": 4.0,
+            "projected": 8.99,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NYJ",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Makai Lemon",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0.8,
+            "projected": 5.69,
+            "eligible": [
+              "Rookie",
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "PHI",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Rhamondre Stevenson",
+            "position": "RB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NE",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jordan Addison",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0.0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "MIN",
+            "injury": "DOUBTFUL"
+          },
+          {
+            "name": "Zach Charbonnet",
+            "position": "RB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "SEA",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Woody Marks",
+            "position": "RB",
+            "slot": "BE",
+            "points": 0.0,
+            "projected": 0.0,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "HOU",
+            "injury": "QUESTIONABLE"
+          }
+        ],
+        "blunders": [
+          {
+            "slot": "RB/WR/TE",
+            "should_have_started": "Adonai Mitchell",
+            "bench_points": 4.0,
+            "actually_started": "DK Metcalf",
+            "starter_points": 0.7,
+            "points_lost": 3.3
+          }
+        ],
+        "points_left_on_bench": 3.3,
+        "optimal_score": 111.16
+      },
+      "margin": 4.24,
+      "winner": "Catalina Wine Mixon",
+      "total": 211.48,
+      "key": "11v6",
+      "recap": "This week's canoe trip down the scoreboard came down to a paddle-length, Catalina Wine Mixon edging Funk that Junk by 4.24 in a real tug of war. Patrick Mahomes carried the load like a Woodsman Chief on a hike with 24.96, and George Pickens and Mike Evans both turned in Guide Rec outings, enough to cover for DK Metcalf's stunned naval battle queen impression at 0.7 and Cam Skattebo quietly ate his trail cheese and salami at 4.3. Call it preparation, call it luck, either way the Chair Force found just enough arrows for the bullseye.\n\nFunk that Junk had the horsepower \u2014 Cam Ward's 22.22 and a matched set of 17.5s from Breece Hall and Bucky Irving \u2014 but Emeka Egbuka Stole my wow with a measly 2.8 against a 9.03 projection, and that gap was the whole ballgame. Old balls ran a respectable camp activity otherwise, but one Beak outing from the receiver room left this cabin bushwhacking without a compass down the stretch, and Catalina's counselor earns the sticky buns on Sunday morning for it."
+    },
+    {
+      "home": {
+        "team_id": 8,
+        "name": "55 Burgers",
+        "abbrev": "SCUD",
+        "logo": "https://g.espncdn.com/lm-static/logo-packs/core/BobsBurgers/Burger_Logo.svg",
+        "score": 107.64,
+        "starters": [
+          {
+            "name": "Chuba Hubbard",
+            "position": "RB",
+            "slot": "RB",
+            "points": 26.0,
+            "projected": 18.93,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CAR",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jahmyr Gibbs",
+            "position": "RB",
+            "slot": "RB",
+            "points": 25.8,
+            "projected": 19.8,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "DET",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "49ers D/ST",
+            "position": "D/ST",
+            "slot": "D/ST",
+            "points": 14.0,
+            "projected": 5.39,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "SF",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "Trevor Lawrence",
+            "position": "QB",
+            "slot": "QB",
+            "points": 12.74,
+            "projected": 19.49,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "JAX",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "D'Andre Swift",
+            "position": "RB",
+            "slot": "RB/WR/TE",
+            "points": 10.9,
+            "projected": 15.63,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CHI",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Chig Okonkwo",
+            "position": "TE",
+            "slot": "RB/WR/TE",
+            "points": 8.6,
+            "projected": 7.79,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "WSH",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Darren Waller",
+            "position": "TE",
+            "slot": "TE",
+            "points": 5.7,
+            "projected": 7.02,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CAR",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Luther Burden III",
+            "position": "WR",
+            "slot": "WR",
+            "points": 2.3,
+            "projected": 12.4,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CHI",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Ryan Flournoy",
+            "position": "WR",
+            "slot": "WR",
+            "points": 1.6,
+            "projected": 7.97,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "DAL",
+            "injury": "ACTIVE"
+          }
+        ],
+        "bench": [
+          {
+            "name": "Mike Washington Jr.",
+            "position": "RB",
+            "slot": "BE",
+            "points": 4.2,
+            "projected": 6.17,
+            "eligible": [
+              "Rookie",
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "LV",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Kaelon Black",
+            "position": "RB",
+            "slot": "BE",
+            "points": 2.0,
+            "projected": 6.0,
+            "eligible": [
+              "Rookie",
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "SF",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "A.J. Brown",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NE",
+            "injury": "DOUBTFUL"
+          },
+          {
+            "name": "KC Concepcion",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "Rookie",
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CLE",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Ja'Kobi Lane",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0.0,
+            "projected": 5.37,
+            "eligible": [
+              "Rookie",
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "BAL",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Denzel Boston",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "Rookie",
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CLE",
+            "injury": "QUESTIONABLE"
+          }
+        ],
+        "blunders": [],
+        "points_left_on_bench": 0,
+        "optimal_score": 107.64
+      },
+      "away": {
+        "team_id": 3,
+        "name": "Chase Brown Had a Bad Scare",
+        "abbrev": "CB",
+        "logo": "https://g.espncdn.com/lm-static/logo-packs/ffl/BlitznBears-MartinLaksman/bears-07.svg",
+        "score": 88.3,
+        "starters": [
+          {
+            "name": "Brock Purdy",
+            "position": "QB",
+            "slot": "QB",
+            "points": 22.2,
+            "projected": 17.58,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "SF",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Chris Olave",
+            "position": "WR",
+            "slot": "WR",
+            "points": 14.7,
+            "projected": 11.24,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NO",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Christian McCaffrey",
+            "position": "RB",
+            "slot": "RB",
+            "points": 13.2,
+            "projected": 17.63,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "SF",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Carnell Tate",
+            "position": "WR",
+            "slot": "WR",
+            "points": 12.8,
+            "projected": 10.48,
+            "eligible": [
+              "Rookie",
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "TEN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Stefon Diggs",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 6.5,
+            "projected": 10.53,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "WSH",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Chase Brown",
+            "position": "RB",
+            "slot": "RB",
+            "points": 6.1,
+            "projected": 13.16,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CIN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Cowboys D/ST",
+            "position": "D/ST",
+            "slot": "D/ST",
+            "points": 6.0,
+            "projected": 3.69,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "DAL",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "Dawson Knox",
+            "position": "TE",
+            "slot": "TE",
+            "points": 4.1,
+            "projected": 6.07,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "BUF",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Tez Johnson",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 2.7,
+            "projected": 5.6,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "TB",
+            "injury": "ACTIVE"
+          }
+        ],
+        "bench": [
+          {
+            "name": "Jared Goff",
+            "position": "QB",
+            "slot": "BE",
+            "points": 20.36,
+            "projected": 14.77,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "DET",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Roman Wilson",
+            "position": "WR",
+            "slot": "BE",
+            "points": 5.8,
+            "projected": 7.03,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "PIT",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Drake London",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "ATL",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Marvin Harrison Jr.",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0.0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "HOU",
+            "injury": "QUESTIONABLE"
+          },
+          {
+            "name": "Tucker Kraft",
+            "position": "TE",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "GB",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jerry Jeudy",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CLE",
+            "injury": "ACTIVE"
+          }
+        ],
+        "blunders": [
+          {
+            "slot": "RB/WR/TE",
+            "should_have_started": "Roman Wilson",
+            "bench_points": 5.8,
+            "actually_started": "Tez Johnson",
+            "starter_points": 2.7,
+            "points_lost": 3.1
+          }
+        ],
+        "points_left_on_bench": 3.1,
+        "optimal_score": 91.4
+      },
+      "margin": 19.34,
+      "winner": "55 Burgers",
+      "total": 195.94,
+      "key": "8v3",
+      "recap": "Paralegal ran a pig and back at the backfield this week, letting Chuba Hubbard and Jahmyr Gibbs carry the load like a pair of Woodsman Chiefs on the same hike, 26.0 and 25.8 respectively, while the 49ers D/ST chipped in 14.0 just to make the math embarrassing. Luther Burden III did his best impression of a Dutch Oven, managing only 2.3 on a 12.4 projection, but with that kind of production up front, 55 Burgers still cruised to a well-earned Tuna Casserole and a Guide Rec for Counsel's weekly planning.\n\nBabysitter of little children 2014 got a Boss showing from Brock Purdy and Christian McCaffrey, but the man whose name is on the cabin, Chase Brown, spent the afternoon like living on the Point, scraping together 6.1 on a 13.16 projection. That kind of lead-foot performance from your namesake back is hard to recover from, and Chase Brown Had a Bad Scare never found the footing to make this a tug of war, falling by 19.34 and heading home to patch up the lineup before next week's hike."
+    },
+    {
+      "home": {
+        "team_id": 5,
+        "name": "Team Bradford",
+        "abbrev": "BRAD",
+        "logo": "https://g.espncdn.com/lm-static/logo-packs/core/Incredibles/incredibles_1.svg",
+        "score": 100.1,
+        "starters": [
+          {
+            "name": "Emmett Johnson",
+            "position": "RB",
+            "slot": "RB",
+            "points": 22.3,
+            "projected": 18.88,
+            "eligible": [
+              "Rookie",
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "KC",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "DJ Moore",
+            "position": "WR",
+            "slot": "WR",
+            "points": 19.1,
+            "projected": 11.75,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "BUF",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Derrick Henry",
+            "position": "RB",
+            "slot": "RB",
+            "points": 17.1,
+            "projected": 13.55,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "BAL",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Khalil Shakir",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 12.8,
+            "projected": 8.24,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "BUF",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Bo Nix",
+            "position": "QB",
+            "slot": "QB",
+            "points": 11.5,
+            "projected": 20.78,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "DEN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Ravens D/ST",
+            "position": "D/ST",
+            "slot": "D/ST",
+            "points": 9.0,
+            "projected": 4.9,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "BAL",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "Jalen Coker",
+            "position": "WR",
+            "slot": "WR",
+            "points": 6.7,
+            "projected": 7.43,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CAR",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Dalton Schultz",
+            "position": "TE",
+            "slot": "TE",
+            "points": 1.6,
+            "projected": 7.05,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "HOU",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Courtland Sutton",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 0.0,
+            "projected": 8.79,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "DEN",
+            "injury": "ACTIVE"
+          }
+        ],
+        "bench": [
+          {
+            "name": "Brian Thomas Jr.",
+            "position": "WR",
+            "slot": "BE",
+            "points": 8.3,
+            "projected": 4.86,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "JAX",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Bijan Robinson",
+            "position": "RB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "ATL",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Davante Adams",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "LAR",
+            "injury": "INJURY_RESERVE"
+          },
+          {
+            "name": "Harold Fannin Jr.",
+            "position": "TE",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CLE",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jordan Love",
+            "position": "QB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "GB",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "DeMario Douglas",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NE",
+            "injury": "ACTIVE"
+          }
+        ],
+        "blunders": [
+          {
+            "slot": "RB/WR/TE",
+            "should_have_started": "Brian Thomas Jr.",
+            "bench_points": 8.3,
+            "actually_started": "Courtland Sutton",
+            "starter_points": 0.0,
+            "points_lost": 8.3
+          }
+        ],
+        "points_left_on_bench": 8.3,
+        "optimal_score": 108.4
+      },
+      "away": {
+        "team_id": 4,
+        "name": "The Machine Knows",
+        "abbrev": "MK",
+        "logo": "https://g.espncdn.com/lm-static/ffl/images/default_logos/6.svg",
+        "score": 81.36,
+        "starters": [
+          {
+            "name": "Javonte Williams",
+            "position": "RB",
+            "slot": "RB",
+            "points": 22.6,
+            "projected": 18.3,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "DAL",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Malik Nabers",
+            "position": "WR",
+            "slot": "WR",
+            "points": 15.0,
+            "projected": 12.74,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NYG",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Josh Allen",
+            "position": "QB",
+            "slot": "QB",
+            "points": 12.16,
+            "projected": 23.38,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "BUF",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Sam LaPorta",
+            "position": "TE",
+            "slot": "TE",
+            "points": 7.7,
+            "projected": 7.74,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "DET",
+            "injury": "QUESTIONABLE"
+          },
+          {
+            "name": "Travis Etienne Jr.",
+            "position": "RB",
+            "slot": "RB",
+            "points": 7.6,
+            "projected": 10.44,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NO",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Alvin Kamara",
+            "position": "RB",
+            "slot": "RB/WR/TE",
+            "points": 6.7,
+            "projected": 7.63,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NO",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Rico Dowdle",
+            "position": "RB",
+            "slot": "RB/WR/TE",
+            "points": 5.4,
+            "projected": 8.15,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "PIT",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Elic Ayomanor",
+            "position": "WR",
+            "slot": "WR",
+            "points": 4.2,
+            "projected": 7.98,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "TEN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Vikings D/ST",
+            "position": "D/ST",
+            "slot": "D/ST",
+            "points": 0.0,
+            "projected": 4.47,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "MIN",
+            "injury": "NORMAL"
+          }
+        ],
+        "bench": [
+          {
+            "name": "Tyler Shough",
+            "position": "QB",
+            "slot": "BE",
+            "points": 14.28,
+            "projected": 14.95,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "NO",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Tre Tucker",
+            "position": "WR",
+            "slot": "BE",
+            "points": 6.0,
+            "projected": 7.95,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "LV",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Matthew Golden",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "GB",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Rachaad White",
+            "position": "RB",
+            "slot": "BE",
+            "points": 0.0,
+            "projected": 6.76,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "WSH",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Tyler Higbee",
+            "position": "TE",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "LAR",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Omar Cooper Jr.",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0.0,
+            "projected": 0.0,
+            "eligible": [
+              "Rookie",
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NYJ",
+            "injury": "QUESTIONABLE"
+          }
+        ],
+        "blunders": [
+          {
+            "slot": "QB",
+            "should_have_started": "Tyler Shough",
+            "bench_points": 14.28,
+            "actually_started": "Josh Allen",
+            "starter_points": 12.16,
+            "points_lost": 2.12
+          },
+          {
+            "slot": "WR",
+            "should_have_started": "Tre Tucker",
+            "bench_points": 6.0,
+            "actually_started": "Elic Ayomanor",
+            "starter_points": 4.2,
+            "points_lost": 1.8
+          }
+        ],
+        "points_left_on_bench": 3.92,
+        "optimal_score": 85.28
+      },
+      "margin": 18.74,
+      "winner": "Team Bradford",
+      "total": 181.46,
+      "key": "5v4",
+      "recap": "Team Bradford, still living up to the Campcraft Enthusiast tag, ran a pig and back of a week despite handing the ball to Courtland Sutton and watching him turn in a full-blown Dutch Oven, 0.0 points on a near-nine-point projection. No matter \u2014 Emmett Johnson carried the load like a Woodsman Chief on a hike with 22.3, DJ Moore chipped in 19.1, and Derrick Henry kept grinding like a woodsman running to the camp store all afternoon. The margin got a little tighter than it should have, but 100.1 points papers over a lot of Beak.\n\nThe Machine Knows, meanwhile, is stuck on the Point and Back, dropping a second straight and showing no real feel for the week. Javonte Williams went off for 22.6 and Malik Nabers added 15.0, but Josh Allen's 12.16 was strictly living-on-the-Point stuff, and the whole operation never found its footing. Bradford's cabin earns the sticky buns on Sunday morning while the Machine counselor heads back to the drawing board \u2014 again."
+    },
+    {
+      "home": {
+        "team_id": 9,
+        "name": "Ricky Huns",
+        "abbrev": "BAUM",
+        "logo": "https://g.espncdn.com/lm-static/logo-packs/core/CatsAndDogs/cats_dogs-6.svg",
+        "score": 73.64,
+        "starters": [
+          {
+            "name": "George Kittle",
+            "position": "TE",
+            "slot": "TE",
+            "points": 16.9,
+            "projected": 10.67,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "SF",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Caleb Williams",
+            "position": "QB",
+            "slot": "QB",
+            "points": 14.34,
+            "projected": 18.96,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "CHI",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Saquon Barkley",
+            "position": "RB",
+            "slot": "RB",
+            "points": 13.5,
+            "projected": 11.05,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "PHI",
+            "injury": "QUESTIONABLE"
+          },
+          {
+            "name": "Tee Higgins",
+            "position": "WR",
+            "slot": "WR",
+            "points": 11.3,
+            "projected": 13.75,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CIN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Bills D/ST",
+            "position": "D/ST",
+            "slot": "D/ST",
+            "points": 10.0,
+            "projected": 7.11,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "BUF",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "Malachi Fields",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 3.5,
+            "projected": 6.04,
+            "eligible": [
+              "Rookie",
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NYG",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Xavier Hutchinson",
+            "position": "WR",
+            "slot": "WR",
+            "points": 2.3,
+            "projected": 9.39,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "HOU",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Kyle Monangai",
+            "position": "RB",
+            "slot": "RB",
+            "points": 1.8,
+            "projected": 8.36,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CHI",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "J.K. Dobbins",
+            "position": "RB",
+            "slot": "RB/WR/TE",
+            "points": 0.0,
+            "projected": 8.03,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "DEN",
+            "injury": "ACTIVE"
+          }
+        ],
+        "bench": [
+          {
+            "name": "Ladd McConkey",
+            "position": "WR",
+            "slot": "BE",
+            "points": 18.2,
+            "projected": 8.99,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "LAC",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Bryce Young",
+            "position": "QB",
+            "slot": "BE",
+            "points": 15.96,
+            "projected": 17.37,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "CAR",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Mason Taylor",
+            "position": "TE",
+            "slot": "BE",
+            "points": 3.5,
+            "projected": 5.67,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NYJ",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Kyren Williams",
+            "position": "RB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "LAR",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Blake Corum",
+            "position": "RB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "LAR",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Romeo Doubs",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NE",
+            "injury": "INJURY_RESERVE"
+          }
+        ],
+        "blunders": [
+          {
+            "slot": "RB/WR/TE",
+            "should_have_started": "Ladd McConkey",
+            "bench_points": 18.2,
+            "actually_started": "J.K. Dobbins",
+            "starter_points": 0.0,
+            "points_lost": 18.2
+          },
+          {
+            "slot": "QB",
+            "should_have_started": "Bryce Young",
+            "bench_points": 15.96,
+            "actually_started": "Caleb Williams",
+            "starter_points": 14.34,
+            "points_lost": 1.62
+          }
+        ],
+        "points_left_on_bench": 19.82,
+        "optimal_score": 93.46
+      },
+      "away": {
+        "team_id": 2,
+        "name": "The Goose is Loose",
+        "abbrev": "GOOS",
+        "logo": "https://g.espncdn.com/lm-static/logo-packs/ffl/CreepShow-ToddDetwiler/CreepShow-01.svg",
+        "score": 96.1,
+        "starters": [
+          {
+            "name": "Dak Prescott",
+            "position": "QB",
+            "slot": "QB",
+            "points": 35.9,
+            "projected": 21.89,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "DAL",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Tetairoa McMillan",
+            "position": "WR",
+            "slot": "WR",
+            "points": 16.1,
+            "projected": 11.67,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CAR",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Devaughn Vele",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 11.1,
+            "projected": 4.8,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NO",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jakobi Meyers",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 10.5,
+            "projected": 9.2,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "JAX",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jets D/ST",
+            "position": "D/ST",
+            "slot": "D/ST",
+            "points": 8.0,
+            "projected": 6.22,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "NYJ",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "DeVonta Smith",
+            "position": "WR",
+            "slot": "WR",
+            "points": 6.6,
+            "projected": 10.67,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "PHI",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jonathan Taylor",
+            "position": "RB",
+            "slot": "RB",
+            "points": 4.7,
+            "projected": 15.17,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "IND",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Tyler Allgeier",
+            "position": "RB",
+            "slot": "RB",
+            "points": 2.3,
+            "projected": 6.13,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "ARI",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Michael Mayer",
+            "position": "TE",
+            "slot": "TE",
+            "points": 0.9,
+            "projected": 6.61,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "LV",
+            "injury": "ACTIVE"
+          }
+        ],
+        "bench": [
+          {
+            "name": "Darius Cooper",
+            "position": "WR",
+            "slot": "BE",
+            "points": 7.9,
+            "projected": 4.48,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "PHI",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Pat Freiermuth",
+            "position": "TE",
+            "slot": "BE",
+            "points": 6.5,
+            "projected": 6.23,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "PIT",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Chris Godwin Jr.",
+            "position": "WR",
+            "slot": "BE",
+            "points": 2.8,
+            "projected": 5.31,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "TB",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Brock Bowers",
+            "position": "TE",
+            "slot": "BE",
+            "points": 0.0,
+            "projected": 0.0,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "LV",
+            "injury": "QUESTIONABLE"
+          },
+          {
+            "name": "Seahawks D/ST",
+            "position": "D/ST",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "SEA",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "Sam Darnold",
+            "position": "QB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "SEA",
+            "injury": "QUESTIONABLE"
+          }
+        ],
+        "blunders": [
+          {
+            "slot": "TE",
+            "should_have_started": "Pat Freiermuth",
+            "bench_points": 6.5,
+            "actually_started": "Michael Mayer",
+            "starter_points": 0.9,
+            "points_lost": 5.6
+          },
+          {
+            "slot": "WR",
+            "should_have_started": "Darius Cooper",
+            "bench_points": 7.9,
+            "actually_started": "DeVonta Smith",
+            "starter_points": 6.6,
+            "points_lost": 1.3
+          }
+        ],
+        "points_left_on_bench": 6.9,
+        "optimal_score": 103.0
+      },
+      "margin": 22.46,
+      "winner": "The Goose is Loose",
+      "total": 169.74,
+      "key": "9v2",
+      "recap": "Chef Boyardee ran this one like a man who already knew the weather forecast. Dak Prescott threw for 35.9 and carried the load like a Woodsman Chief on a hike, Tetairoa McMillan and Devaughn Vele chipped in without drama, and even with Jonathan Taylor ate his trail cheese and salami at 4.7, The Goose is Loose had all the arrows in the bullseye en route to a 96.1 showing. Call it Stefanowitz-approved preparation, however you want to misspell the name on the cabin roster.\n\nRicky Huns, meanwhile, is stuck on the Point and Back for a second straight week, Bushwhacking without a compass behind a trio of zeroes and near-zeroes \u2014 Xavier Hutchinson, Kyle Monangai, and J.K. Dobbins combined to give back nearly ten projected points apiece worth of nothing. Kittle, Williams, and Barkley tried to drag the canoe themselves, but the rest of the roster was Stuck in the Sewards, and the losing streak just keeps writing itself."
+    },
+    {
+      "home": {
+        "team_id": 1,
+        "name": "The Island Gudge",
+        "abbrev": "OBRE",
+        "logo": "https://g.espncdn.com/lm-static/logo-packs/ffl/AtTheStadium-RobbHarskamp/At_The_Stadium_13.svg",
+        "score": 74.8,
+        "starters": [
+          {
+            "name": "Joe Burrow",
+            "position": "QB",
+            "slot": "QB",
+            "points": 19.9,
+            "projected": 22.86,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "CIN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jacory Croskey-Merritt",
+            "position": "RB",
+            "slot": "RB/WR/TE",
+            "points": 14.7,
+            "projected": 7.12,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "WSH",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Amon-Ra St. Brown",
+            "position": "WR",
+            "slot": "WR",
+            "points": 12.2,
+            "projected": 14.27,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "DET",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Steelers D/ST",
+            "position": "D/ST",
+            "slot": "D/ST",
+            "points": 7.0,
+            "projected": 8.32,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "PIT",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "Bhayshul Tuten",
+            "position": "RB",
+            "slot": "RB",
+            "points": 6.8,
+            "projected": 15.89,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "JAX",
+            "injury": "QUESTIONABLE"
+          },
+          {
+            "name": "Garrett Wilson",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 5.4,
+            "projected": 11.33,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NYJ",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jordan Mason",
+            "position": "RB",
+            "slot": "RB",
+            "points": 4.2,
+            "projected": 7.91,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "MIN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Brenton Strange",
+            "position": "TE",
+            "slot": "TE",
+            "points": 3.1,
+            "projected": 6.38,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "JAX",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jordyn Tyson",
+            "position": "WR",
+            "slot": "WR",
+            "points": 1.5,
+            "projected": 9.09,
+            "eligible": [
+              "Rookie",
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "NO",
+            "injury": "ACTIVE"
+          }
+        ],
+        "bench": [
+          {
+            "name": "Antonio Williams",
+            "position": "WR",
+            "slot": "BE",
+            "points": 16.7,
+            "projected": 7.14,
+            "eligible": [
+              "Rookie",
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "WSH",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jaguars D/ST",
+            "position": "D/ST",
+            "slot": "BE",
+            "points": 5.0,
+            "projected": 7.06,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "JAX",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "Chris Rodriguez Jr.",
+            "position": "RB",
+            "slot": "BE",
+            "points": 4.6,
+            "projected": 5.62,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "JAX",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Tyler Warren",
+            "position": "TE",
+            "slot": "BE",
+            "points": 2.7,
+            "projected": 6.62,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "IND",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Christian Watson",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "GB",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Quinshon Judkins",
+            "position": "RB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CLE",
+            "injury": "ACTIVE"
+          }
+        ],
+        "blunders": [
+          {
+            "slot": "WR",
+            "should_have_started": "Antonio Williams",
+            "bench_points": 16.7,
+            "actually_started": "Jordyn Tyson",
+            "starter_points": 1.5,
+            "points_lost": 15.2
+          },
+          {
+            "slot": "RB",
+            "should_have_started": "Chris Rodriguez Jr.",
+            "bench_points": 4.6,
+            "actually_started": "Jordan Mason",
+            "starter_points": 4.2,
+            "points_lost": 0.4
+          }
+        ],
+        "points_left_on_bench": 15.6,
+        "optimal_score": 90.4
+      },
+      "away": {
+        "team_id": 10,
+        "name": "Love Thy Naber",
+        "abbrev": "Love",
+        "logo": "https://g.espncdn.com/lm-static/logo-packs/core/Mascots/mascots-1.svg",
+        "score": 111.56,
+        "starters": [
+          {
+            "name": "CeeDee Lamb",
+            "position": "WR",
+            "slot": "WR",
+            "points": 24.7,
+            "projected": 18.87,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "DAL",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jayden Daniels",
+            "position": "QB",
+            "slot": "QB",
+            "points": 17.06,
+            "projected": 19.56,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "WSH",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "James Cook III",
+            "position": "RB",
+            "slot": "RB",
+            "points": 16.2,
+            "projected": 20.18,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "BUF",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Parker Washington",
+            "position": "WR",
+            "slot": "WR",
+            "points": 14.3,
+            "projected": 13.34,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "JAX",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Colston Loveland",
+            "position": "TE",
+            "slot": "TE",
+            "points": 10.4,
+            "projected": 10.31,
+            "eligible": [
+              "WR/TE",
+              "TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "CHI",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Chiefs D/ST",
+            "position": "D/ST",
+            "slot": "D/ST",
+            "points": 8.0,
+            "projected": 7.01,
+            "eligible": [
+              "D/ST"
+            ],
+            "pro_team": "KC",
+            "injury": "NORMAL"
+          },
+          {
+            "name": "Ollie Gordon II",
+            "position": "RB",
+            "slot": "RB",
+            "points": 7.7,
+            "projected": 12.86,
+            "eligible": [
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "MIA",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Jaylen Waddle",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 7.6,
+            "projected": 10.34,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "DEN",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Malik Washington",
+            "position": "WR",
+            "slot": "RB/WR/TE",
+            "points": 5.6,
+            "projected": 6.03,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "MIA",
+            "injury": "ACTIVE"
+          }
+        ],
+        "bench": [
+          {
+            "name": "Fernando Mendoza",
+            "position": "QB",
+            "slot": "BE",
+            "points": 22.88,
+            "projected": 14.46,
+            "eligible": [
+              "Rookie",
+              "QB",
+              "OP"
+            ],
+            "pro_team": "LV",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Seth McGowan",
+            "position": "RB",
+            "slot": "BE",
+            "points": 1.3,
+            "projected": 5.11,
+            "eligible": [
+              "Rookie",
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "IND",
+            "injury": "OUT"
+          },
+          {
+            "name": "Jadarian Price",
+            "position": "RB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "Rookie",
+              "RB",
+              "RB/WR",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "SEA",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Matthew Stafford",
+            "position": "QB",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "QB",
+              "OP"
+            ],
+            "pro_team": "LAR",
+            "injury": "ACTIVE"
+          },
+          {
+            "name": "Konata Mumpfield",
+            "position": "WR",
+            "slot": "BE",
+            "points": 0,
+            "projected": 0.0,
+            "eligible": [
+              "RB/WR",
+              "WR",
+              "WR/TE",
+              "RB/WR/TE",
+              "OP"
+            ],
+            "pro_team": "LAR",
+            "injury": "ACTIVE"
+          }
+        ],
+        "blunders": [
+          {
+            "slot": "QB",
+            "should_have_started": "Fernando Mendoza",
+            "bench_points": 22.88,
+            "actually_started": "Jayden Daniels",
+            "starter_points": 17.06,
+            "points_lost": 5.82
+          }
+        ],
+        "points_left_on_bench": 5.82,
+        "optimal_score": 117.38
+      },
+      "margin": 36.76,
+      "winner": "Love Thy Naber",
+      "total": 186.36,
+      "key": "1v10",
+      "recap": "The Island Gudge posted 74.8, which on most weeks is a perfectly respectable showing at this camp, but Love Thy Naber had other plans and torched the scoreboard for 111.56. CeeDee Lamb went like a woodsman running to the camp store with 24.7, Jayden Daniels chipped in 17.06, and James Cook III carried his share \u2014 the whole operation had all the arrows in the bullseye. This was the largest margin of victory across all of camp this week, so Flame On, I want you to BRING DOWN THE ROOF.\n\nThe Gudge got a genuine Guide Rec from Joe Burrow's 19.9 and Jacory Croskey-Merritt's 14.7, but Bhayshul Tuten, Garrett Wilson, and Jordyn Tyson all walked on the alpine vegetation, combining for barely more than Lamb scored alone. That's gonna need to patch those holes with more leaves territory. No fault of the plan here \u2014 the dice just landed Beak side up, and the Island Gudge will be back on the trail next week."
+    }
+  ],
+  "headline": "Week 11 wraps up with upsets and lopsided scores"
+}
